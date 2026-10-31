@@ -1,0 +1,282 @@
+import HeroScene from "@/components/hero-scene";
+import { branches, whatsappUrl } from "@/data/site";
+import Reveal from "@/components/reveal";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Globe2,
+  MousePointer2,
+  BookOpen,
+  Users,
+  BriefcaseBusiness,
+  Compass,
+  GraduationCap,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
+import { Button, CourseCard, CTA } from "@/components/ui";
+import { courses } from "@/data/courses";
+export const metadata = { alternates: { canonical: "/" } };
+export default function Home() {
+  return (
+    <>
+      <section className="hero hero--immersive">
+        <div className="container hero-layout">
+          <div className="hero-copy">
+            <div className="hero-label">
+              <span /> BUILD SKILLS. BUILD INCOME. BUILD EMPIRE.
+            </div>
+            <h1>
+              Learn skills that
+              <br />
+              change <span>your life.</span>
+              <svg viewBox="0 0 310 15" aria-hidden="true">
+                <path d="M3 11 Q150 -3 306 8" />
+              </svg>
+            </h1>
+            <p>
+              Master the digital skills, business strategies, and practical
+              knowledge to build your future in the global digital economy.
+            </p>
+            <div className="hero-actions">
+              <Button href="/courses">Explore our courses</Button>
+              <Link className="text-button" href="/book-a-call">
+                Book a consultation <ArrowUpRight size={17} />
+              </Link>
+            </div>
+            <div className="hero-points">
+              <span>
+                <Check /> Practical learning
+              </span>
+              <span>
+                <Check /> Global opportunities
+              </span>
+              <span>
+                <Check /> Your pace, your path
+              </span>
+            </div>
+          </div>
+          <HeroScene />
+        </div>
+        <div className="container hero-bottom">
+          <span>BUILT FOR THE WAY THE WORLD WORKS</span>
+          <div>
+            <BookOpen /> Learn with purpose
+          </div>
+          <div>
+            <Users /> Grow with a community
+          </div>
+          <div>
+            <BriefcaseBusiness /> Build your next opportunity
+          </div>
+        </div>
+      </section>
+      <div className="campus-ribbon">
+        <div className="container">
+          <span>
+            <span className="campus-dot" /> YOUR AMBITION HAS A PLACE TO GROW
+          </span>
+          <div>
+            {branches.map((branch) => (
+              <a
+                key={branch.id}
+                href={whatsappUrl(branch)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {branch.name} <ArrowUpRight size={13} />
+              </a>
+            ))}
+            <Link href="/contact">
+              Visit our Karachi campuses <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <section className="platform-strip">
+        <div className="container">
+          <span>
+            LEARN THE PLATFORMS.
+            <br />
+            <b>UNLOCK THE POSSIBILITIES.</b>
+          </span>
+          <strong className="shopify-word">▰ shopify</strong>
+          <strong className="amazon-word">
+            amazon<span>⌣</span>
+          </strong>
+          <strong className="etsy-word">Etsy</strong>
+          <strong className="google-word">Google</strong>
+          <strong className="tiktok-word">♪ TikTok</strong>
+          <strong className="youtube-word">▰ YouTube</strong>
+        </div>
+      </section>
+      <section className="section container">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">YOUR SKILLS. YOUR ADVANTAGE.</span>
+            <h2>
+              Find the path that
+              <br />
+              moves you <span>forward.</span>
+            </h2>
+          </div>
+          <div>
+            <p>
+              From your first idea to your next big move.
+              <br />
+              Build skills that open doors to what’s next.
+            </p>
+            <Link className="inline-link" href="/courses">
+              Explore all courses <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+        <Reveal>
+          <div className="featured-grid">
+            {courses.slice(0, 9).map((c) => (
+              <CourseCard key={c.slug} course={c} />
+            ))}
+          </div>
+        </Reveal>
+        <div className="course-note">
+          <Compass size={19} />
+          <span>
+            Not sure where to start? Let’s find the right path for you.
+          </span>
+          <Link href="/book-a-call">
+            Talk to our team <ArrowRight size={15} />
+          </Link>
+        </div>
+      </section>
+      <section className="about-home section">
+        <div className="container about-grid">
+          <div className="about-image">
+            <Image
+              src="/images/learning.jpg"
+              alt="A learner developing digital skills with a laptop"
+              fill
+              sizes="(max-width: 760px) 90vw, 45vw"
+            />
+            <div className="image-note">
+              <span>THE DIGITAL EMPIRE MINDSET</span>
+              <strong>
+                Learn with purpose.
+                <br />
+                Build with confidence.
+              </strong>
+            </div>
+          </div>
+          <div>
+            <span className="eyebrow">
+              MORE THAN A COURSE. A NEW DIRECTION.
+            </span>
+            <h2>
+              Big ambitions.
+              <br />
+              Real-world <span>skills.</span>
+            </h2>
+            <p>
+              We believe your future should be shaped by your ambition. At
+              Digital Empire, we make digital learning practical, purposeful,
+              and connected to the world beyond the classroom.
+            </p>
+            <p>
+              Explore ideas. Put knowledge into practice. Build the confidence
+              to take your next step.
+            </p>
+            <div className="about-ticks">
+              <span>
+                <ShieldCheck /> Practical, step-by-step learning
+              </span>
+              <span>
+                <Users /> A supportive learning community
+              </span>
+              <span>
+                <Globe2 /> A business-minded, global outlook
+              </span>
+            </div>
+            <Button href="/about">Get to know Digital Empire</Button>
+          </div>
+        </div>
+      </section>
+      <section className="section container">
+        <div className="center-heading">
+          <span className="eyebrow">SMALL STEPS. BIG POSSIBILITIES.</span>
+          <h2>Your ambition. A clear path forward.</h2>
+          <p>
+            You don’t need to have it all figured out. You just need a place to
+            start.
+          </p>
+        </div>
+        <div className="steps">
+          {[
+            [
+              Compass,
+              "Explore your options",
+              "Find the skills that match your interests.",
+            ],
+            [
+              MousePointer2,
+              "Choose your path",
+              "Turn your goals into a learning direction.",
+            ],
+            [
+              BookOpen,
+              "Learn by doing",
+              "Put knowledge into practice, step by step.",
+            ],
+            [
+              Sparkles,
+              "Build your future",
+              "Take your new skills into your next chapter.",
+            ],
+          ].map(([Icon, title, text], i) => {
+            const I = Icon as typeof Compass;
+            return (
+              <div key={i}>
+                <span className="step-number">0{i + 1}</span>
+                <I size={26} />
+                <h3>{title as string}</h3>
+                <p>{text as string}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section className="community">
+        <div className="container community-inner">
+          <div>
+            <span className="eyebrow gold">A COMMUNITY WITH AMBITION</span>
+            <h2>
+              Different starting points.
+              <br />A shared drive to grow.
+            </h2>
+            <p>
+              Student stories belong to the people who live them. As our
+              community grows, this space will feature their experiences, in
+              their own words.
+            </p>
+            <Link className="inline-link" href="/contact">
+              Share your learning story <ArrowUpRight size={17} />
+            </Link>
+          </div>
+          <div className="community-quote">
+            <span>“</span>
+            <h3>
+              Build Skills.
+              <br />
+              Build Income.
+              <br />
+              <em>Build Empire.</em>
+            </h3>
+            <small>THE DIGITAL EMPIRE VISION</small>
+          </div>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
