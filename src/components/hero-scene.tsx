@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import PlatformLogo from "./platform-logo";
 import { useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import {
@@ -57,8 +58,8 @@ export default function HeroScene() {
             <Crown size={18} />
           </span>
           <div>
-            <strong>Build your own empire.</strong>
-            <small>One practical skill at a time.</small>
+            <strong>Your next chapter starts here.</strong>
+            <small>Learn today. Earn tomorrow.</small>
           </div>
         </div>
         <div className="scene-label label-two">
@@ -71,14 +72,23 @@ export default function HeroScene() {
           </div>
           <ArrowUpRight size={17} />
         </div>
-        <div className="scene-tile tile-commerce">
-          <Layers3 size={21} />
-          <span>E-commerce</span>
+        <div className="scene-tile tile-commerce brand-satellite">
+          <PlatformLogo platform="shopify" />
+          <span>Build your brand</span>
         </div>
-        <div className="scene-tile tile-digital">
-          <Sparkles size={19} />
-          <span>Digital skills</span>
+        <div className="scene-tile tile-digital brand-satellite">
+          <PlatformLogo platform="amazon" />
+          <span>Explore global commerce</span>
         </div>
+        <div className="scene-tile tile-google brand-satellite">
+          <PlatformLogo platform="google" />
+          <span>Reach your audience</span>
+        </div>
+        <div className="scene-tile tile-etsy brand-satellite">
+          <PlatformLogo platform="etsy" />
+          <span>Turn creativity into business</span>
+        </div>
+        <div className="scene-depth-ring" aria-hidden="true" />
         <div className="scene-plinth" aria-hidden="true" />
       </div>
       <div className="scene-caption">

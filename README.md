@@ -54,3 +54,7 @@ The owner supplied `https://digital-empire-skills-university.vercel.app/` as the
 ## Updating the existing Vercel site
 
 In Vercel, open the Digital Empire project → Settings → Git and connect `Yaseen302/Digitalempireskillsuniversity` with production branch `main`, if not already connected. Changes pushed to that branch can then trigger Vercel automatically. Check the deployment status in Vercel; a successful Git push alone does not prove a deployment succeeded. Do not post Vercel tokens, Supabase service-role keys or email API keys in chat.
+
+## Premium platform branding
+
+The sticky header includes a keyboard-operable course menu and a compact scroll state. Original SVG platform logos are used in the homepage brand strip, floating 3D scene and applicable course cards. Sources are recorded in `public/logos/SOURCES.md`. Assets preserve their brand colors and proportions. Animation pause and reduced-motion support apply to the enhanced scene.

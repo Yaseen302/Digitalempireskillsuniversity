@@ -1,3 +1,4 @@
+import PlatformLogo from "@/components/platform-logo";
 import HeroScene from "@/components/hero-scene";
 import { branches, whatsappUrl } from "@/data/site";
 import Reveal from "@/components/reveal";
@@ -96,21 +97,25 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="platform-strip">
+      <section className="platform-strip premium-platforms">
         <div className="container">
-          <span>
-            LEARN THE PLATFORMS.
-            <br />
-            <b>UNLOCK THE POSSIBILITIES.</b>
-          </span>
-          <strong className="shopify-word">▰ shopify</strong>
-          <strong className="amazon-word">
-            amazon<span>⌣</span>
-          </strong>
-          <strong className="etsy-word">Etsy</strong>
-          <strong className="google-word">Google</strong>
-          <strong className="tiktok-word">♪ TikTok</strong>
-          <strong className="youtube-word">▰ YouTube</strong>
+          <div className="platform-intro">
+            <span className="eyebrow">REAL PLATFORMS. REAL-WORLD SKILLS.</span>
+            <h2>
+              Learn where the
+              <br />
+              <strong>world does business.</strong>
+            </h2>
+          </div>
+          <div className="platform-logo-row">
+            {["shopify", "amazon", "google", "etsy", "ebay", "youtube"].map(
+              (platform) => (
+                <div className="platform-brand" key={platform}>
+                  <PlatformLogo platform={platform} />
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </section>
       <section className="section container">

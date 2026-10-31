@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import CourseMenu from "./course-menu";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, MessageCircle, ArrowRight } from "lucide-react";
 import { Logo } from "./ui";
@@ -10,17 +11,40 @@ import SocialLinks from "./social-links";
 export function Header() {
   const [open, setOpen] = useState(false);
   const path = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 20);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   return (
     <>
-      <div className="announcement">
-        A world of opportunity starts with a new skill.{" "}
-        <Link href="/courses">
-          Find your path <ArrowRight size={12} />
-        </Link>
+      <div className="announcement premium-announcement">
+        <div className="container">
+          <span>
+            <span className="announcement-dot" /> KARACHI CAMPUSES · GLOBAL
+            AMBITIONS
+          </span>
+          <span>
+            Learn today. <strong>Earn tomorrow.</strong>
+          </span>
+          <Link href="/contact">
+            Find your campus <ArrowUpRight size={12} />
+          </Link>
+        </div>
       </div>
-      <header>
+      <header className={`premium-header ${scrolled ? "header-scrolled" : ""}`}>
         <div className="container nav">
-          <Logo />
+          <div className="header-brand">
+            <Logo />
+            <span className="header-brand-divider" />
+            <span className="header-brand-note">
+              PRACTICAL SKILLS.
+              <br />
+              <b>EXTRAORDINARY POSSIBILITIES.</b>
+            </span>
+          </div>
           <button
             className="menu-toggle"
             onClick={() => setOpen(!open)}
@@ -36,16 +60,24 @@ export function Header() {
               ["/courses", "Courses"],
               ["/contact", "Contact"],
               ["/book-a-call", "Book a call"],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                className={path === href ? "active" : ""}
-                onClick={() => setOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
+            ].map(([href, label]) =>
+              href === "/courses" ? (
+                <CourseMenu
+                  key={href}
+                  active={path.startsWith("/courses")}
+                  onNavigate={() => setOpen(false)}
+                />
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`${path === href ? "active" : ""} ${href === "/book-a-call" ? "nav-consultation" : ""}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {label}
+                </Link>
+              ),
+            )}
             <Link
               className="nav-apply"
               href="/apply"

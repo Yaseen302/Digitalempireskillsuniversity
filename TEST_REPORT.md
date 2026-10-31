@@ -4,7 +4,7 @@ Validated in the current cloud workspace on 2026-10-31.
 
 - Production build: passed (Next.js 16.4.3, webpack; 31 generated entries including metadata and 17 course detail paths).
 - TypeScript: passed `npm run typecheck`.
-- Chromium integration suite: **8 tests passed**.
+- Chromium integration suite: **9 tests passed**.
 - Pages checked: Home, About, Courses, Contact, Book a Call, Apply, Privacy, Terms and Shopify course detail.
 - Courses: discovery, category filtering, search, no-result recovery, detail navigation and curriculum accordion passed.
 - Mobile: navigation and horizontal-overflow checks passed at 390px on six representative pages. Desktop and mobile screenshots inspected.
@@ -22,3 +22,7 @@ The owner supplied `https://digital-empire-skills-university.vercel.app/` and th
 No Supabase project or Resend credentials were provided. Live database insertion, migration execution, notification delivery and production form delivery remain unrun. The SQL migration and server integrations are included. The online submission endpoint returns 503 until required settings exist; visitors can use the verified email, phone or WhatsApp handoff now.
 
 No live Core Web Vitals or Safari/Firefox measurements were run. Confirm actual syllabuses, duration, fees, trainer availability and legal policies before accepting enrollment. Trainer images will be supplied later. Illustrative photos do not represent actual facilities or testimonials.
+
+## Premium design refresh
+
+Original vector platform assets are served locally. Verified Shopify, Amazon, Google and Etsy asset loading, keyboard activation of the course dropdown, navigation to its Amazon course, and the header scroll state. Desktop/mobile visual inspection completed. Production build and TypeScript passed; nine Chromium tests passed. Latest refreshed deployment remains subject to Vercel publishing the pushed commit.

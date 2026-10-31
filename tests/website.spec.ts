@@ -217,3 +217,25 @@ test("WhatsApp form handoff includes chosen branch and entered details without c
   );
   await expect(page.getByText("Your request is with us.")).toHaveCount(0);
 });
+
+test("premium navigation exposes course paths and original platform assets load", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const brand of ["shopify", "amazon", "google", "etsy"]) {
+    const logo = page.locator(`.premium-platforms .platform-logo-${brand}`);
+    await expect(logo).toBeVisible();
+    await expect(logo).toHaveAttribute("src", `/logos/${brand}.svg`);
+    expect(
+      await logo.evaluate((el) => (el as HTMLImageElement).naturalWidth > 0),
+    ).toBeTruthy();
+  }
+  await page.getByRole("button", { name: "Explore learning paths" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#course-mega-menu")).toBeVisible();
+  await page.locator('#course-mega-menu a[href="/courses/amazon"]').click();
+  await expect(page).toHaveURL(/\/courses\/amazon$/);
+  await page.goto("/");
+  await page.evaluate(() => window.scrollTo(0, 700));
+  await expect(page.locator("header")).toHaveClass(/header-scrolled/);
+});

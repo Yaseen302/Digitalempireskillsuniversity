@@ -1,3 +1,4 @@
+import PlatformLogo, { platformAssets } from "./platform-logo";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Crown, ArrowRight } from "lucide-react";
@@ -41,11 +42,15 @@ export function CourseCard({
     <Link className="course-card" href={`/courses/${c.slug}`}>
       <div className={`course-art ${c.color}`}>
         <span className="art-grid" />
-        <span className="platform">
-          {c.word === "SHOPIFY" ? (
-            <span className="shopping-bag">S</span>
-          ) : null}
-          {c.word}
+        {platformAssets[c.slug] ? (
+          <div className="course-logo-plaque">
+            <PlatformLogo platform={c.slug} />
+          </div>
+        ) : (
+          <span className="platform">{c.word}</span>
+        )}
+        <span className="course-art-topline">
+          DIGITAL EMPIRE <span>LEARNING PATH</span>
         </span>
         <span className="art-tag">THE NEXT CHAPTER IS YOURS</span>
         <ArrowUpRight className="art-arrow" size={24} />
