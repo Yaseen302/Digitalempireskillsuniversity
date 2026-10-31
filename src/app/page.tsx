@@ -24,16 +24,19 @@ export const metadata = { alternates: { canonical: "/" } };
 export default function Home() {
   return (
     <>
-      <section className="hero hero--immersive editorial-hero">
+      <section className="hero hero--immersive">
         <div className="container hero-layout">
           <div className="hero-copy">
             <div className="hero-label">
-              <span /> THE NEXT CHAPTER IS YOURS TO BUILD.
+              <span /> BUILD SKILLS. BUILD INCOME. BUILD EMPIRE.
             </div>
             <h1>
-              Learn skills.
+              Learn skills that
               <br />
-              Change <span>your life.</span>
+              change <span>your life.</span>
+              <svg viewBox="0 0 310 15" aria-hidden="true">
+                <path d="M3 11 Q150 -3 306 8" />
+              </svg>
             </h1>
             <p>
               Master the digital skills, business strategies, and practical
@@ -57,19 +60,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="hero-showcase">
-            <div className="showcase-heading">
-              <span>THE DIGITAL EMPIRE EXPERIENCE</span>
-              <span>EST. FOR YOUR FUTURE ↗</span>
-            </div>
-            <HeroScene />
-            <div className="showcase-footer">
-              <span>
-                <span /> AMBITION, MEET OPPORTUNITY.
-              </span>
-              <span>01 — ∞</span>
-            </div>
-          </div>
+          <HeroScene />
         </div>
         <div className="container hero-bottom">
           <span>BUILT FOR THE WAY THE WORLD WORKS</span>
