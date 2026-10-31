@@ -58,3 +58,7 @@ In Vercel, open the Digital Empire project → Settings → Git and connect `Yas
 ## Premium platform branding
 
 The sticky header includes a keyboard-operable course menu and a compact scroll state. Original SVG platform logos are used in the homepage brand strip, floating 3D scene and applicable course cards. Sources are recorded in `public/logos/SOURCES.md`. Assets preserve their brand colors and proportions. Animation pause and reduced-motion support apply to the enhanced scene.
+
+## Editorial layout
+
+`src/app/editorial.css` contains the final editorial theme, applied after the shared base styles. Desktop navigation is centered independently of the logo and CTA widths. Below 1000px it switches to the mobile menu. Home includes learning-path bento links and FAQs; Contact includes a larger campus introduction, direct channels, branch illustrations and maps. Decorative campus artwork is schematic; actual directions use the supplied addresses on Google Maps.

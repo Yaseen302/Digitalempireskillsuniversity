@@ -1,3 +1,4 @@
+import CampusVisual from "@/components/campus-visual";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { PageIntro } from "@/components/ui";
 import InquiryForm from "@/components/inquiry-form";
@@ -14,12 +15,58 @@ export const metadata = {
 export default function Contact() {
   return (
     <>
-      <PageIntro
-        label="LET’S BUILD YOUR NEXT CHAPTER"
-        title="A conversation away from what’s next."
-        text="Visit us in Saddar or Gulshan-e-Iqbal, ask a course question, or tell us about the future you want to build."
-      />
-      <section className="section container branch-section">
+      <section className="contact-editorial-hero container">
+        <div>
+          <span className="eyebrow">EVERY NEXT CHAPTER STARTS WITH HELLO.</span>
+          <h1>
+            Big ambitions.
+            <br />
+            <span>Let’s talk.</span>
+          </h1>
+          <p>
+            A question, an idea, a new direction. Wherever you are in your
+            journey, we’ll help you find your next practical step.
+          </p>
+          <div className="contact-hero-actions">
+            <a className="button" href="#send-a-message">
+              Start a conversation <ArrowUpRight size={17} />
+            </a>
+            <a className="inline-link" href={`mailto:${site.email}`}>
+              Email our team <ArrowUpRight size={16} />
+            </a>
+          </div>
+          <div className="contact-hero-note">
+            <span /> SADDAR & GULSHAN-E-IQBAL · KARACHI
+          </div>
+        </div>
+        <CampusVisual />
+      </section>
+      <section className="contact-channel-bar container">
+        <a href={`mailto:${site.email}`}>
+          <Mail size={22} />
+          <div>
+            <span>WRITE TO US</span>
+            <strong>{site.email}</strong>
+          </div>
+          <ArrowUpRight size={18} />
+        </a>
+        {branches.map((branch) => (
+          <a
+            key={branch.id}
+            href={whatsappUrl(branch)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <WhatsAppIcon size={24} />
+            <div>
+              <span>{branch.name.toUpperCase()}</span>
+              <strong>{branch.phone}</strong>
+            </div>
+            <ArrowUpRight size={18} />
+          </a>
+        ))}
+      </section>
+      <section className="section container branch-section" id="our-campuses">
         <div className="section-heading">
           <div>
             <span className="eyebrow">
@@ -38,6 +85,15 @@ export default function Contact() {
         <div className="branch-grid">
           {branches.map((branch, index) => (
             <article className="branch-card" key={branch.id}>
+              <div
+                className={`branch-architectural branch-architectural-${branch.id}`}
+                aria-hidden="true"
+              >
+                <div className="architectural-grid" />
+                <span className="architectural-city">KARACHI</span>
+                <span className="architectural-label">{branch.area}</span>
+                <MapPin size={35} />
+              </div>
               <div className="branch-card-top">
                 <span className="branch-number">0{index + 1}</span>
                 <span className="eyebrow">KARACHI, PAKISTAN</span>
@@ -76,7 +132,10 @@ export default function Contact() {
           ))}
         </div>
       </section>
-      <section className="section container form-layout contact-form-section">
+      <section
+        className="section container form-layout contact-form-section"
+        id="send-a-message"
+      >
         <aside>
           <span className="eyebrow">EVERY BIG IDEA STARTS WITH HELLO</span>
           <h2>
@@ -111,6 +170,21 @@ export default function Contact() {
           </div>
         </aside>
         <InquiryForm kind="contact" />
+      </section>
+      <section className="contact-next-step container">
+        <span className="eyebrow gold">YOUR AMBITION HAS A PLACE HERE.</span>
+        <h2>
+          You don’t have to
+          <br />
+          figure it out alone.
+        </h2>
+        <p>
+          Explore your options with our team. A conversation is a good place to
+          begin.
+        </p>
+        <a className="button light" href="/book-a-call">
+          Find your learning path <ArrowUpRight size={17} />
+        </a>
       </section>
     </>
   );

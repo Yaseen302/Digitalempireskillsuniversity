@@ -4,7 +4,7 @@ Validated in the current cloud workspace on 2026-10-31.
 
 - Production build: passed (Next.js 16.4.3, webpack; 31 generated entries including metadata and 17 course detail paths).
 - TypeScript: passed `npm run typecheck`.
-- Chromium integration suite: **9 tests passed**.
+- Chromium integration suite: **10 tests passed**.
 - Pages checked: Home, About, Courses, Contact, Book a Call, Apply, Privacy, Terms and Shopify course detail.
 - Courses: discovery, category filtering, search, no-result recovery, detail navigation and curriculum accordion passed.
 - Mobile: navigation and horizontal-overflow checks passed at 390px on six representative pages. Desktop and mobile screenshots inspected.
@@ -26,3 +26,7 @@ No live Core Web Vitals or Safari/Firefox measurements were run. Confirm actual 
 ## Premium design refresh
 
 Original vector platform assets are served locally. Verified Shopify, Amazon, Google and Etsy asset loading, keyboard activation of the course dropdown, navigation to its Amazon course, and the header scroll state. Desktop/mobile visual inspection completed. Production build and TypeScript passed; nine Chromium tests passed. Latest refreshed deployment remains subject to Vercel publishing the pushed commit.
+
+## Editorial redesign
+
+The main navigation is geometrically centered at a 1440px viewport (within 2px), with the brand left and a separate primary action right. Home includes a white oversized editorial hero, framed 3D showcase, learning-path bento grid, extended course discovery, learning process and FAQ. Contact includes an expanded hero, decorative campus illustration (not a geospatial map), direct contact bar, architectural branch cards, actual Google Maps expansion, inquiry form and final consultation section. Ten browser tests passed, including the centered navigation and campus anchor. Desktop and 390px mobile screenshots inspected.

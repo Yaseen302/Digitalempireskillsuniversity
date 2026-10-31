@@ -239,3 +239,21 @@ test("premium navigation exposes course paths and original platform assets load"
   await page.evaluate(() => window.scrollTo(0, 700));
   await expect(page.locator("header")).toHaveClass(/header-scrolled/);
 });
+
+test("editorial navigation stays centered and contact navigation reaches the expanded campus section", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/");
+  const nav = await page.locator("header nav").boundingBox();
+  expect(nav).not.toBeNull();
+  expect(Math.abs(nav!.x + nav!.width / 2 - 720)).toBeLessThan(2);
+  await expect(page.locator(".learning-bento>a")).toHaveCount(3);
+  await page.goto("/contact");
+  await page
+    .getByRole("link", { name: "Find your campus", exact: true })
+    .last()
+    .click();
+  await expect(page).toHaveURL(/#our-campuses$/);
+  await expect(page.locator(".branch-card")).toHaveCount(2);
+});

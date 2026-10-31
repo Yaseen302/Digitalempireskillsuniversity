@@ -38,12 +38,6 @@ export function Header() {
         <div className="container nav">
           <div className="header-brand">
             <Logo />
-            <span className="header-brand-divider" />
-            <span className="header-brand-note">
-              PRACTICAL SKILLS.
-              <br />
-              <b>EXTRAORDINARY POSSIBILITIES.</b>
-            </span>
           </div>
           <button
             className="menu-toggle"
@@ -79,13 +73,16 @@ export function Header() {
               ),
             )}
             <Link
-              className="nav-apply"
+              className="nav-apply mobile-apply"
               href="/apply"
               onClick={() => setOpen(false)}
             >
               Apply now <ArrowUpRight size={16} />
             </Link>
           </nav>
+          <Link className="header-apply" href="/apply">
+            Start your journey <ArrowUpRight size={17} />
+          </Link>
         </div>
       </header>
     </>

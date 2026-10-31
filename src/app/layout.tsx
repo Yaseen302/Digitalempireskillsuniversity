@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/plus-jakarta-sans";
 import "./globals.css";
+import "./editorial.css";
 import { branches, socials, site } from "@/data/site";
 import { Header, Footer } from "@/components/chrome";
 export const metadata: Metadata = {

@@ -24,19 +24,16 @@ export const metadata = { alternates: { canonical: "/" } };
 export default function Home() {
   return (
     <>
-      <section className="hero hero--immersive">
+      <section className="hero hero--immersive editorial-hero">
         <div className="container hero-layout">
           <div className="hero-copy">
             <div className="hero-label">
-              <span /> BUILD SKILLS. BUILD INCOME. BUILD EMPIRE.
+              <span /> THE NEXT CHAPTER IS YOURS TO BUILD.
             </div>
             <h1>
-              Learn skills that
+              Learn skills.
               <br />
-              change <span>your life.</span>
-              <svg viewBox="0 0 310 15" aria-hidden="true">
-                <path d="M3 11 Q150 -3 306 8" />
-              </svg>
+              Change <span>your life.</span>
             </h1>
             <p>
               Master the digital skills, business strategies, and practical
@@ -60,7 +57,19 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <HeroScene />
+          <div className="hero-showcase">
+            <div className="showcase-heading">
+              <span>THE DIGITAL EMPIRE EXPERIENCE</span>
+              <span>EST. FOR YOUR FUTURE ↗</span>
+            </div>
+            <HeroScene />
+            <div className="showcase-footer">
+              <span>
+                <span /> AMBITION, MEET OPPORTUNITY.
+              </span>
+              <span>01 — ∞</span>
+            </div>
+          </div>
         </div>
         <div className="container hero-bottom">
           <span>BUILT FOR THE WAY THE WORLD WORKS</span>
@@ -117,6 +126,79 @@ export default function Home() {
             )}
           </div>
         </div>
+      </section>
+      <section className="editorial-intro container section">
+        <div>
+          <span className="eyebrow">A DIFFERENT KIND OF EDUCATION</span>
+          <h2>
+            The world is changing.
+            <br />
+            <span>Be ready for what’s next.</span>
+          </h2>
+        </div>
+        <div>
+          <p>
+            Your ideas deserve more than a someday. Build practical skills,
+            explore digital business, and turn your curiosity into a clear next
+            step.
+          </p>
+          <Link className="inline-link" href="/about">
+            Discover the Digital Empire approach <ArrowUpRight size={18} />
+          </Link>
+        </div>
+      </section>
+      <section className="container learning-bento">
+        <Link className="bento-commerce" href="/courses?category=E-commerce">
+          <span className="eyebrow">01 / DIGITAL COMMERCE</span>
+          <h3>
+            Don’t just shop.
+            <br />
+            Build the store.
+          </h3>
+          <div className="bento-brands">
+            <PlatformLogo platform="shopify" />
+            <PlatformLogo platform="amazon" />
+            <PlatformLogo platform="etsy" />
+          </div>
+          <span className="bento-link">
+            Explore e-commerce <ArrowUpRight size={20} />
+          </span>
+        </Link>
+        <Link
+          className="bento-marketing"
+          href="/courses?category=Digital%20Marketing"
+        >
+          <span className="eyebrow">02 / DIGITAL MARKETING</span>
+          <h3>
+            Make your ideas
+            <br />
+            impossible to ignore.
+          </h3>
+          <div className="marketing-orbits" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <ArrowUpRight size={65} />
+          </div>
+          <span className="bento-link">
+            Explore marketing <ArrowUpRight size={20} />
+          </span>
+        </Link>
+        <Link
+          className="bento-business"
+          href="/courses?category=Digital%20Business"
+        >
+          <span className="eyebrow">03 / DIGITAL BUSINESS</span>
+          <h3>
+            Your skill.
+            <br />
+            Your next opportunity.
+          </h3>
+          <p>Think independently. Create thoughtfully. Build with intention.</p>
+          <span className="bento-link">
+            Explore digital business <ArrowUpRight size={20} />
+          </span>
+        </Link>
       </section>
       <section className="section container">
         <div className="section-heading">
@@ -279,6 +361,48 @@ export default function Home() {
             </h3>
             <small>THE DIGITAL EMPIRE VISION</small>
           </div>
+        </div>
+      </section>
+      <section className="section container home-faq">
+        <div>
+          <span className="eyebrow">BEFORE YOUR FIRST STEP</span>
+          <h2>
+            Big questions.
+            <br />
+            <span>Honest answers.</span>
+          </h2>
+          <p>Clarity helps you make the right decision.</p>
+          <Link href="/contact" className="inline-link">
+            Ask us anything <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <div>
+          {[
+            [
+              "Where should I start?",
+              "Start with what interests you. Explore our courses, or speak with our team to find a path that fits your experience and goals.",
+            ],
+            [
+              "Can I visit a campus?",
+              "Yes. We have branches in Saddar and Gulshan-e-Iqbal, Karachi. Call your preferred branch before visiting so the team can guide you.",
+            ],
+            [
+              "What are the course fees and timings?",
+              "Our admissions team confirms the current fees, duration, delivery format and schedules for each intake before enrollment.",
+            ],
+            [
+              "Will a course guarantee income?",
+              "No. Education develops knowledge and skills. Business, career and trading outcomes depend on your circumstances, effort and market conditions.",
+            ],
+          ].map(([question, answer]) => (
+            <details className="module" key={question}>
+              <summary>
+                {question}
+                <span>+</span>
+              </summary>
+              <p>{answer}</p>
+            </details>
+          ))}
         </div>
       </section>
       <CTA />
