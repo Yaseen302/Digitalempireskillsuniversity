@@ -4317,3 +4317,9 @@ footer {
 .hero.hero--immersive .stats-source-note { margin:0 auto; padding:12px 0 20px; color:#aebfd6; font-size:9px; line-height:1.6; }
 @media(max-width:1000px) { .hero.hero--immersive .empire-stats { grid-template-columns:1fr 1fr; } .empire-stat:nth-child(2) { border-right:0; } .empire-stat:nth-child(-n+2) { border-bottom:1px solid #ffffff1c; } }
 @media(max-width:550px) { .empire-stat { padding:22px 14px; } .stat-label { font-size:7px; letter-spacing:.1em; } .hero.hero--immersive .stat-value { font-size:37px; } .branch-rating a { gap:7px; } .branch-rating strong { font-size:26px; } .branch-rating b { font-size:8px; } .rating-stars { font-size:10px; letter-spacing:1px; } .hero.hero--immersive .empire-stat p { font-size:10px; } .stat-detail { font-size:8px; } }
+
+/* Centered About Us introduction */
+.home-about-centered { background:#fff; text-align:center; padding:64px 24px 68px; }
+.home-about-centered h2 { font-family:Georgia,"Times New Roman",serif; color:#0b285b; font-size:clamp(32px,3vw,42px); font-weight:700; letter-spacing:-.025em; line-height:1.2; margin:0 0 22px; }
+.home-about-centered p { max-width:660px; margin:0 auto; color:#7b7f87; font-size:14px; line-height:1.85; font-weight:400; }
+@media(max-width:760px) { .home-about-centered { padding:45px 25px 48px; } .home-about-centered p { font-size:13px; line-height:1.85; } }

@@ -92,18 +92,9 @@ export default function Home() {
         </div>
       </div>
       <PlatformMarquee />
-      <section className="editorial-intro container section" aria-labelledby="home-about-title">
-        <div>
-          <span className="eyebrow">ABOUT US</span>
-          <h2 id="home-about-title">Your ambition.<br/><span>Our shared purpose.</span></h2>
-        </div>
-        <div>
-          <p>At Digital Empire Skills University, we believe a better future begins with the confidence to learn something new.<br/>
-          We help aspiring learners turn their ambition into practical skills in e-commerce, digital marketing and online business.<br/>
-          From our Saddar and Gulshan-e-Iqbal campuses in Karachi, we encourage you to learn, practise and grow one step at a time.<br/>
-          Wherever you are starting from, your next chapter can begin with a skill—and the courage to take that first step.</p>
-          <Link className="inline-link" href="/about">Get to know Digital Empire <ArrowUpRight size={18}/></Link>
-        </div>
+      <section className="home-about-centered" aria-labelledby="home-about-title">
+        <h2 id="home-about-title">About Us</h2>
+        <p>At Digital Empire Skills University, we believe every ambition deserves a chance to grow. We help learners build practical skills in e-commerce, digital marketing and online business. From our Saddar and Gulshan-e-Iqbal campuses in Karachi, we encourage you to learn with purpose, practise with confidence and take the first step towards a brighter future.</p>
       </section>
       <section className="container learning-bento">
         <Link className="bento-commerce" href="/courses?category=E-commerce">
