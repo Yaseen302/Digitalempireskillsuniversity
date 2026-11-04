@@ -1,4 +1,5 @@
 import PlatformLogo from "@/components/platform-logo";
+import PlatformMarquee from "@/components/platform-marquee";
 import HeroScene from "@/components/hero-scene";
 import { branches, whatsappUrl } from "@/data/site";
 import Reveal from "@/components/reveal";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
+  MessageCircle,
   Globe2,
   MousePointer2,
   BookOpen,
@@ -45,17 +46,7 @@ export default function Home() {
                 Book a consultation <ArrowUpRight size={17} />
               </Link>
             </div>
-            <div className="hero-points">
-              <span>
-                <Check /> Practical learning
-              </span>
-              <span>
-                <Check /> Global opportunities
-              </span>
-              <span>
-                <Check /> Your pace, your path
-              </span>
-            </div>
+            <a className="hero-whatsapp" href={whatsappUrl(branches[0])} target="_blank" rel="noopener noreferrer"><MessageCircle size={21}/> Contact on WhatsApp <ArrowUpRight size={17}/></a>
           </div>
           <div className="hero-showcase">
             <div className="showcase-heading">
@@ -106,28 +97,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="platform-strip premium-platforms">
-        <div className="container">
-          <div className="platform-intro">
-            <span className="eyebrow">REAL PLATFORMS. REAL-WORLD SKILLS.</span>
-            <h2>
-              Learn where the
-              <br />
-              <strong>world does business.</strong>
-            </h2>
-          </div>
-          <div className="platform-logo-row">
-            {["shopify", "amazon", "google", "etsy", "ebay", "youtube"].map(
-              (platform) => (
-                <div className="platform-brand" key={platform}>
-                  <PlatformLogo platform={platform} />
-                </div>
-              ),
-            )}
-          </div>
-        </div>
-      </section>
-      <section className="container section"><span className="eyebrow">PRACTICAL TRAINING IN KARACHI</span><h2>E-commerce, marketing and website skills</h2><p>Explore courses in online selling, digital marketing, website development and creative production at our Saddar and Gulshan-e-Iqbal campuses. Speak with admissions about the current syllabus, course fees and available class formats.</p><div className="outcomes">{courses.filter(c => ["shopify","amazon","etsy","ebay","daraz","walmart","meta","wordpress","woocommerce","magento","erp","oms","graphic-design","video-editing"].includes(c.slug)).map(c => <p key={c.slug}><Link className="inline-link" href={`/courses/${c.slug}`}>{c.title} course in Karachi <ArrowUpRight size={15}/></Link></p>)}</div><p>Need help with a business project? <Link className="inline-link" href="/services">Explore our digital services</Link>. For free guidance, visit <a className="inline-link" href="https://www.youtube.com/@alibuttempire" target="_blank" rel="noopener noreferrer">our YouTube channel</a>. Contact admissions for paid course enrollment.</p></section><section className="editorial-intro container section">
+      <PlatformMarquee />
+      <section className="editorial-intro container section">
         <div>
           <span className="eyebrow">A DIFFERENT KIND OF EDUCATION</span>
           <h2>

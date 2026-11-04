@@ -4253,3 +4253,29 @@ footer {
 .hero.hero--immersive .founder-ring { width:260px; height:260px; }
 }
 @media(prefers-reduced-motion:reduce) { .hero.hero--immersive .founder-crown { animation:none; } }
+
+/* Homepage contact and platform marquee */
+.hero.hero--immersive .hero-whatsapp { display:inline-flex; align-items:center; justify-content:center; gap:11px; margin-top:25px; padding:16px 24px; border-radius:9px; background:#15803d; border:1px solid #4ade8060; color:#fff; font-size:14px; font-weight:700; box-shadow:0 9px 25px #0002; }
+.hero.hero--immersive .hero-whatsapp:hover { background:#166534; transform:translateY(-2px); }
+.hero.hero--immersive .founder-name .founder-role { font-size:12px; font-weight:750; line-height:1.6; color:#fff; }
+.marketplace-marquee { position:relative; padding:34px 45px; background:#fff; border-bottom:1px solid #e7edf5; overflow:hidden; }
+.marketplace-window { overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); }
+.marketplace-track { display:flex; width:max-content; animation:marketplace-scroll 40s linear infinite; }
+.marketplace-group { display:flex; align-items:center; flex-shrink:0; }
+.marketplace-logo { width:235px; height:90px; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:10px 26px; }
+.marketplace-logo .platform-logo { width:180px; height:65px; object-fit:contain; max-width:100%; }
+.market-wordmark { display:inline-flex; align-items:center; white-space:nowrap; font-size:31px; font-weight:750; letter-spacing:-1px; }
+.aliexpress-wordmark { color:#e62e04; font-weight:550; }
+.aliexpress-wordmark > span { color:#f57921; }
+.alibaba-wordmark { color:#f60; font-style:italic; }
+.alibaba-wordmark > span { font-size:20px; }
+.forex-wordmark { color:#0c356e; gap:9px; font-size:24px; letter-spacing:-.7px; }
+.forex-wordmark svg { color:#16a34a; width:32px; height:32px; }
+.tiktok-wordmark { gap:6px; color:#111; }
+.marketplace-logo .tiktok-wordmark .platform-logo { width:125px; height:55px; }
+.tiktok-wordmark b { font-size:23px; }
+.marquee-toggle { position:absolute; right:10px; bottom:8px; display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:1px solid #dce4ef; border-radius:50%; background:#fff; color:#0c356e; }
+.marketplace-marquee:hover .marketplace-track,.marketplace-marquee:focus-within .marketplace-track,.marquee-paused .marketplace-track { animation-play-state:paused; }
+@keyframes marketplace-scroll { to { transform:translateX(-50%); } }
+@media(max-width:760px) { .marketplace-marquee { padding:24px 15px; } .marketplace-logo { width:200px; height:80px; padding:10px 20px; } .marketplace-logo .platform-logo { width:160px; height:60px; } .hero.hero--immersive .hero-whatsapp { font-size:13px; padding:15px 20px; } .hero.hero--immersive .founder-name .founder-role { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .marketplace-track { animation:none; width:auto; } .marketplace-group { flex-wrap:wrap; justify-content:center; } .marketplace-group[aria-hidden="true"] { display:none; } .marketplace-window { mask-image:none; } .marquee-toggle { display:none; } }
