@@ -7,6 +7,7 @@ export default function sitemap() {
     "/about",
     "/courses",
     "/services",
+    "/forex-trading",
     "/contact",
     "/book-a-call",
     "/apply",

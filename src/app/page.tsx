@@ -97,57 +97,9 @@ export default function Home() {
         <p>At Digital Empire Skills University, we believe every ambition deserves a chance to grow. We help learners build practical skills in e-commerce, digital marketing and online business. From our Saddar and Gulshan-e-Iqbal campuses in Karachi, we encourage you to learn with purpose, practise with confidence and take the first step towards a brighter future.</p>
       </section>
       <section className="container learning-bento">
-        <Link className="bento-commerce" href="/courses?category=E-commerce">
-          <span className="eyebrow">01 / DIGITAL COMMERCE</span>
-          <h3>
-            Don’t just shop.
-            <br />
-            Build the store.
-          </h3>
-          <div className="bento-brands">
-            <PlatformLogo platform="shopify" />
-            <PlatformLogo platform="amazon" />
-            <PlatformLogo platform="etsy" />
-          </div>
-          <span className="bento-link">
-            Explore e-commerce <ArrowUpRight size={20} />
-          </span>
-        </Link>
-        <Link
-          className="bento-marketing"
-          href="/courses?category=Digital%20Marketing"
-        >
-          <span className="eyebrow">02 / DIGITAL MARKETING</span>
-          <h3>
-            Make your ideas
-            <br />
-            impossible to ignore.
-          </h3>
-          <div className="marketing-orbits" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <ArrowUpRight size={65} />
-          </div>
-          <span className="bento-link">
-            Explore marketing <ArrowUpRight size={20} />
-          </span>
-        </Link>
-        <Link
-          className="bento-business"
-          href="/courses?category=Digital%20Business"
-        >
-          <span className="eyebrow">03 / DIGITAL BUSINESS</span>
-          <h3>
-            Your skill.
-            <br />
-            Your next opportunity.
-          </h3>
-          <p>Think independently. Create thoughtfully. Build with intention.</p>
-          <span className="bento-link">
-            Explore digital business <ArrowUpRight size={20} />
-          </span>
-        </Link>
+        <Link className="bento-commerce" href="/courses?category=E-commerce"><span className="eyebrow">01 / E-COMMERCE</span><h3>Build your store.<br/>Grow your ambition.</h3><div className="bento-brands"><PlatformLogo platform="shopify"/><PlatformLogo platform="amazon"/><PlatformLogo platform="etsy"/></div><span className="bento-link">Explore e-commerce <ArrowUpRight size={20}/></span></Link>
+        <Link className="bento-business bento-forex" href="/forex-trading"><span className="eyebrow">02 / FOREX TRADING</span><h3>Understand the chart.<br/>Build your discipline.</h3><div className="bento-chart" aria-hidden="true"><span/><span/><span/><span/><span/><span/><span/><span/></div><span className="bento-link">Explore forex trading <ArrowUpRight size={20}/></span></Link>
+        <Link className="bento-marketing" href="/courses?category=Digital%20Marketing"><span className="eyebrow">03 / DIGITAL MARKETING</span><h3>Reach the right people.<br/>Make your brand matter.</h3><div className="marketing-orbits" aria-hidden="true"><span/><span/><span/><ArrowUpRight size={65}/></div><span className="bento-link">Explore digital marketing <ArrowUpRight size={20}/></span></Link>
       </section>
       <section className="section container">
         <div className="section-heading">
