@@ -15,10 +15,9 @@ export function Header() {
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 20);
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    if(path.startsWith("/admin")) return null;
-  return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", update, { passive: true });  return () => window.removeEventListener("scroll", update);
   }, []);
+  if(path.startsWith("/admin")) return null;
   return (
     <>
       <div className="announcement premium-announcement">
