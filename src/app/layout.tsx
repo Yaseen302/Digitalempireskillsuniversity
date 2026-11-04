@@ -1,3 +1,4 @@
+import TrafficTracker from "@/components/traffic-tracker";
 import type { Metadata } from "next";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/plus-jakarta-sans";
@@ -44,6 +45,7 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <TrafficTracker />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

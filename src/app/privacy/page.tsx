@@ -1,3 +1,4 @@
+import { AnalyticsPreferences } from "@/components/traffic-tracker";
 import { PageIntro } from "@/components/ui";
 export const metadata = {
   description:
@@ -43,10 +44,10 @@ export default function Privacy() {
         </p>
         <h2>Cookies and analytics</h2>
         <p>
-          This website does not currently load advertising pixels or optional
-          analytics. If optional tracking is introduced, the privacy notice and
-          consent controls must be updated before activation.
+          With your permission, we collect basic visit analytics: page paths (without query strings), referring domains or campaign source names, device type, approximate country/city and WhatsApp-link clicks. A temporary browser-session identifier estimates visits; we do not identify individual people or record raw IP addresses in our analytics tables. Vercel supplies approximate IP-based location. Supabase stores these events for up to 90 days. Active visitors are estimated from visible-page activity within five minutes.
         </p>
+        <p>You can decline analytics or change your choice below. Do Not Track and Global Privacy Control requests are respected. We do not load advertising pixels. IP-derived, daily-rotating hashes are used to limit abuse and are not linked to inquiry details.</p>
+        <AnalyticsPreferences />
       </article>
     </>
   );
