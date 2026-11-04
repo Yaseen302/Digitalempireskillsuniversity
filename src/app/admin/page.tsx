@@ -1,0 +1,1 @@
+import AdminStudio from "@/components/admin-studio";import "./admin.css";export const metadata={title:"Admin Studio",robots:{index:false,follow:false},alternates:{canonical:"/admin"}};export default function Admin(){return <AdminStudio/>;}

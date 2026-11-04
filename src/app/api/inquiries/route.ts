@@ -79,10 +79,7 @@ export async function POST(req: NextRequest) {
     key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (
     !url ||
-    !key ||
-    !process.env.RESEND_API_KEY ||
-    !process.env.NOTIFICATION_EMAIL ||
-    !process.env.NOTIFICATION_FROM
+    !key
   )
     return NextResponse.json(
       {
@@ -135,6 +132,7 @@ export async function POST(req: NextRequest) {
         })[c]!,
     );
   try {
+    if (!process.env.RESEND_API_KEY || !process.env.NOTIFICATION_EMAIL || !process.env.NOTIFICATION_FROM) return NextResponse.json({ok:true,reference:data},{status:201});
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {

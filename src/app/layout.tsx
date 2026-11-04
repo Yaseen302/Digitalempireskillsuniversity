@@ -3,6 +3,7 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/plus-jakarta-sans";
 import "./globals.css";
 import "./editorial.css";
+import "./cms-public.css";
 import { branches, socials, site } from "@/data/site";
 import { Header, Footer } from "@/components/chrome";
 export const metadata: Metadata = {

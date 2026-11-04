@@ -1,3 +1,6 @@
+import { Fragment } from "react";
+import { pageContent } from "@/lib/cms-server";
+import ContentBlock from "@/components/content-block";
 import { SocialIcon } from "@/components/social-links";
 import PlatformLogo from "@/components/platform-logo";
 import PlatformMarquee from "@/components/platform-marquee";
@@ -24,24 +27,16 @@ import {
 import { Button, CourseCard, CTA } from "@/components/ui";
 import { courses } from "@/data/courses";
 export const metadata = { title: {absolute:"Digital Skills & E-commerce Courses in Karachi | Digital Empire"}, description:"Learn Shopify, Amazon, Etsy, Meta Ads, WordPress and digital business skills at Digital Empire Skills University in Karachi. Saddar and Gulshan campuses.", alternates: { canonical: "/" } };
-export default function Home() {
-  return (
-    <>
-      <section className="hero hero--immersive editorial-hero">
+export default async function Home({searchParams}:{searchParams:Promise<{cmsPreview?:string}>}) {
+ const preview=(await searchParams).cmsPreview==="1";const content=await pageContent(preview);
+ const sections:Record<string,React.ReactNode>={"hero": (      <section className="hero hero--immersive editorial-hero">
         <div className="container hero-layout">
           <div className="hero-copy">
             <div className="hero-label">
               <span /> THE NEXT CHAPTER IS YOURS TO BUILD.
             </div>
-            <h1>
-              Learn skills.
-              <br />
-              Change <span>your life.</span>
-            </h1>
-            <p>
-              Master the digital skills, business strategies, and practical
-              knowledge to build your future in the global digital economy.
-            </p>
+            <h1>{content.heroTitle}<br/><span>{content.heroAccent}</span></h1>
+            <p>{content.heroText}</p>
             <div className="hero-actions">
               <Button href="/courses">Explore our courses</Button>
               <a className="hero-whatsapp" href={whatsappUrl(branches[0])} target="_blank" rel="noopener noreferrer"><span className="whatsapp-button-icon"><MessageCircle size={20}/></span><span>Contact on WhatsApp</span><span className="whatsapp-button-arrow"><ArrowUpRight size={19}/></span></a>
@@ -53,7 +48,7 @@ export default function Home() {
               <span>THE DIGITAL EMPIRE EXPERIENCE</span>
               <span>EST. FOR YOUR FUTURE ↗</span>
             </div>
-            <HeroScene />
+            <HeroScene role={content.founderRole}/>
             <div className="showcase-footer">
               <span>
                 <span /> AMBITION, MEET OPPORTUNITY.
@@ -68,8 +63,8 @@ export default function Home() {
           <div className="empire-stat"><span className="stat-label"><BookOpen size={16}/> LEARNING PATHS</span><strong className="stat-value">{courses.length}<span>+</span></strong><p>Practical digital skills courses</p><Link className="stat-link" href="/courses">Explore courses <ArrowUpRight size={15}/></Link></div>
           <div className="empire-stat"><span className="stat-label"><MapPin size={16}/> KARACHI CAMPUSES</span><strong className="stat-value">2</strong><p>Saddar &amp; Gulshan-e-Iqbal</p><Link className="stat-link" href="/contact">Find your campus <ArrowUpRight size={15}/></Link></div>
         </div><p className="stats-source-note container">Ratings and social counts from supplied profile screenshots · 4 November 2026. Combined account counts may include the same people across platforms.</p>
-      </section>
-      <div className="campus-ribbon">
+      </section>),
+"ribbon": (      <div className="campus-ribbon">
         <div className="container">
           <span>
             <span className="campus-dot" /> YOUR AMBITION HAS A PLACE TO GROW
@@ -90,18 +85,18 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div>
-      <PlatformMarquee />
-      <section className="home-about-centered" aria-labelledby="home-about-title">
-        <h2 id="home-about-title">About Us</h2>
-        <p>At Digital Empire Skills University, we believe every ambition deserves a chance to grow. We help learners build practical skills in e-commerce, digital marketing and online business. From our Saddar and Gulshan-e-Iqbal campuses in Karachi, we encourage you to learn with purpose, practise with confidence and take the first step towards a brighter future.</p>
-      </section>
-      <section className="container learning-bento">
+      </div>),
+"marquee": (      <PlatformMarquee />),
+"about": (      <section className="home-about-centered" aria-labelledby="home-about-title">
+        <h2 id="home-about-title">{content.aboutTitle}</h2>
+        <p>{content.aboutText}</p>
+      </section>),
+"paths": (      <section className="container learning-bento">
         <Link className="bento-commerce" href="/courses?category=E-commerce"><span className="eyebrow">01 / E-COMMERCE</span><h3>Build your store.<br/>Grow your ambition.</h3><div className="bento-brands"><PlatformLogo platform="shopify"/><PlatformLogo platform="amazon"/><PlatformLogo platform="etsy"/></div><span className="bento-link">Explore e-commerce <ArrowUpRight size={20}/></span></Link>
         <Link className="bento-business bento-forex" href="/forex-trading"><span className="eyebrow">02 / FOREX TRADING</span><h3>Understand the chart.<br/>Build your discipline.</h3><div className="bento-chart" aria-hidden="true"><span/><span/><span/><span/><span/><span/><span/><span/></div><span className="bento-link">Explore forex trading <ArrowUpRight size={20}/></span></Link>
         <Link className="bento-marketing" href="/courses?category=Digital%20Marketing"><span className="eyebrow">03 / DIGITAL MARKETING</span><h3>Reach the right people.<br/>Make your brand matter.</h3><div className="marketing-orbits" aria-hidden="true"><span/><span/><span/><ArrowUpRight size={65}/></div><span className="bento-link">Explore digital marketing <ArrowUpRight size={20}/></span></Link>
-      </section>
-      <section className="section container">
+      </section>),
+"courses": (      <section className="section container">
         <div className="section-heading">
           <div>
             <span className="eyebrow">YOUR SKILLS. YOUR ADVANTAGE.</span>
@@ -138,8 +133,8 @@ export default function Home() {
             Talk to our team <ArrowRight size={15} />
           </Link>
         </div>
-      </section>
-      <section className="about-home section">
+      </section>),
+"story": (      <section className="about-home section">
         <div className="container about-grid">
           <div className="about-image">
             <Image
@@ -189,8 +184,8 @@ export default function Home() {
             <Button href="/about">Get to know Digital Empire</Button>
           </div>
         </div>
-      </section>
-      <section className="section container">
+      </section>),
+"steps": (      <section className="section container">
         <div className="center-heading">
           <span className="eyebrow">SMALL STEPS. BIG POSSIBILITIES.</span>
           <h2>Your ambition. A clear path forward.</h2>
@@ -233,8 +228,8 @@ export default function Home() {
             );
           })}
         </div>
-      </section>
-      <section className="community">
+      </section>),
+"community": (      <section className="community">
         <div className="container community-inner">
           <div>
             <span className="eyebrow gold">A COMMUNITY WITH AMBITION</span>
@@ -263,8 +258,8 @@ export default function Home() {
             <small>THE DIGITAL EMPIRE VISION</small>
           </div>
         </div>
-      </section>
-      <section className="section container home-faq">
+      </section>),
+"faq": (      <section className="section container home-faq">
         <div>
           <span className="eyebrow">BEFORE YOUR FIRST STEP</span>
           <h2>
@@ -305,8 +300,7 @@ export default function Home() {
             </details>
           ))}
         </div>
-      </section>
-      <CTA />
-    </>
-  );
+      </section>),
+"cta": (      <CTA />)};
+ return <>{preview&&<meta name="robots" content="noindex,nofollow"/>}{content.sections.filter(b=>b.enabled).map(block=><Fragment key={block.id}>{sections[block.type]||<ContentBlock block={block} content={content}/>}</Fragment>)}</>;
 }

@@ -1,0 +1,5 @@
+import {type Block,type SiteContent} from "@/lib/cms-model";
+export default function ContentBlock({block,content}:{block:Block;content:SiteContent}){
+if(block.type==="gallery"&&!content.gallery.length||block.type==="reviews"&&!content.reviews.length)return null;
+return <section className="container cms-public-section">{block.title&&<h2>{block.title}</h2>}{block.text&&<p>{block.text}</p>}{block.type==="text"&&block.image&&<img className="cms-public-text-image" src={block.image} alt={block.title||""} loading="lazy"/>}{block.type==="gallery"&&<div className="cms-public-gallery">{content.gallery.map(m=><figure key={m.id}><img src={m.url} alt={m.alt} loading="lazy" decoding="async"/>{m.alt&&<figcaption>{m.alt}</figcaption>}</figure>)}</div>}{block.type==="reviews"&&<div className="cms-public-reviews">{content.reviews.map(r=><article key={r.id}><span aria-label={r.rating+" out of 5"}>{"★".repeat(Math.round(r.rating))}</span><p>{r.text}</p><strong>{r.name}</strong>{r.url?<a href={r.url} target="_blank" rel="noopener noreferrer">{r.source||"View original review"} ↗</a>:<small>{r.source}</small>}</article>)}</div>}</section>;
+}
