@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { Crown, Pause, Play, Sparkles } from "lucide-react";
+import { Pause, Play, Sparkles } from "lucide-react";
 export default function HeroScene() {
  const [paused, setPaused] = useState(false);
  return <div className={`empire-scene founder-scene ${paused ? "scene-paused" : ""}`}>
   <div className="founder-glow" aria-hidden="true" />
   <div className="founder-ring" aria-hidden="true" />
-  <div className="founder-crown" aria-hidden="true"><Crown strokeWidth={1.3} /></div>
+  <div className="founder-crown" aria-hidden="true"><div className="original-gold-crown" /></div>
   <div className="founder-image"><Image src="/images/ali-butt-cutout.png" alt="Ali Butt, CEO of Digital Empire Skills University" fill priority sizes="(max-width: 760px) 340px, 440px" /></div>
   <div className="founder-name"><span>THE VISION BEHIND THE EMPIRE</span><strong>Ali Butt</strong><p>CEO · Digital Empire Skills University</p></div>
   <div className="founder-seal"><Sparkles size={15} /><span>Learn. Lead. Build your empire.</span></div>

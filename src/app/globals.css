@@ -4199,3 +4199,19 @@ footer {
 @media(max-width:760px) { .founder-scene { height:490px; margin-top:20px; } .founder-image { width:340px; height:455px; bottom:30px; } .founder-crown { top:25px; width:90px; left:calc(50% - 61px); } .founder-ring { width:280px; height:280px; top:90px; } .founder-name { width:min(300px,90%); bottom:33px; padding:14px; } .founder-name strong { font-size:29px; } .founder-name p { font-size:10px; } .founder-seal { bottom:5px; font-size:8px; } .founder-scene .scene-animation-toggle { right:0; bottom:155px; } }
 @media(prefers-reduced-motion:reduce) { .founder-crown { animation:none; } }
 
+/* Original sculpted gold crown and refined founder composition */
+.hero.hero--immersive { background:radial-gradient(ellipse at 78% 42%,#12458b 0%,#092b62 34%,#041630 78%); }
+.founder-scene { height:550px; }
+.founder-crown { top:-12px; left:calc(50% - 131px); width:255px; height:180px; filter:drop-shadow(0 8px 20px #dca93a30); mix-blend-mode:screen; animation:founder-crown-float 6s ease-in-out infinite; }
+.original-gold-crown { width:255px; height:180px; background-image:url('/images/empire-banner.webp'); background-repeat:no-repeat; background-size:1050px 700px; background-position:-675px -60px; mask-image:radial-gradient(ellipse at 52% 50%,#000 48%,transparent 75%); }
+.founder-ring { width:380px; height:380px; border-color:#cfae6025; top:100px; box-shadow:0 0 0 28px #5a9aff04,0 0 0 60px #5a9aff03; }
+.founder-glow { background:radial-gradient(ellipse,#4389dc55,transparent 68%); }
+.founder-name { background:linear-gradient(135deg,#071e43ee,#0c3065ee); border-color:#d9b76866; border-radius:12px; box-shadow:0 15px 40px #0003; }
+.founder-name strong { font-size:32px; font-weight:650; letter-spacing:-.03em; }
+.founder-name > span { font-size:8px; letter-spacing:.18em; }
+.hero--immersive .hero-layout { padding-top:35px; padding-bottom:35px; }
+@keyframes founder-crown-float { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-9px) rotate(2deg); } }
+@media(max-width:1000px) { .founder-scene { height:510px; } .founder-crown { top:-26px; } }
+@media(max-width:760px) { .founder-scene { height:490px; } .founder-crown { top:-32px; left:calc(50% - 131px); width:255px; height:180px; transform-origin:center; } .founder-ring { width:285px; height:285px; } .founder-name strong { font-size:29px; } .hero--immersive .hero-layout { padding-top:40px; padding-bottom:30px; } }
+@media(prefers-reduced-motion:reduce) { .founder-crown { animation:none; } }
+
