@@ -14,7 +14,8 @@ Existing homepage sections can be reordered and hidden. Hero copy, founder title
 ## Data & security
 CMS and inbox queries run server-side. Every protected route validates the Supabase session and ADMIN_EMAILS. Images are public media, not private documents. Database tables have RLS enabled without public policies. Cookie sessions expire after the Supabase access token lifetime. Publishing invalidates the cached homepage data; draft preview never exposes content to anonymous visitors.
 Inquiries are saved without requiring Resend. Email notifications are optional.
-## Current external blocker
-The supplied organization login cannot create projects (Supabase displays an additional-permissions error). Database provisioning and production account validation require the organization owner.
+## Production project
+Digital Empire CMS uses the dedicated Supabase project ztsisvvfnfjxjzjdbavu in the Digital empire organization. The inquiries table, CMS content table and site-media bucket have been provisioned.
 
-Requested admin email: digitalempireuniversiy@gmail.com
+Allowed admin email: digitalempireuniversiy@gmail.com
+Server credentials are stored only in Vercel environment variables. Complete the user password setup in Supabase Authentication, then verify login and publishing.
