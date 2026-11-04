@@ -51,6 +51,10 @@ export default function HeroScene() {
           />
           <div className="scene-artwork-vignette" />
         </div>
+        <figure className="ceo-portrait">
+          <div className="ceo-photo"><Image src="/images/ali-butt-ceo.jpg" alt="Ali Butt, CEO of Digital Empire Skills University" fill priority sizes="(max-width: 760px) 230px, 280px" /></div>
+          <figcaption><span>MEET OUR CEO</span><strong>Ali Butt</strong><small>Digital Empire Skills University</small></figcaption>
+        </figure>
         <div className="scene-orbit orbit-a" aria-hidden="true" />
         <div className="scene-orbit orbit-b" aria-hidden="true" />
         <div className="scene-label label-one">

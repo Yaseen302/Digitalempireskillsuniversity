@@ -62,5 +62,3 @@ The sticky header includes a keyboard-operable course menu and a compact scroll 
 ## Editorial layout
 
 `src/app/editorial.css` contains the final editorial theme, applied after the shared base styles. Desktop navigation is centered independently of the logo and CTA widths. Below 1000px it switches to the mobile menu. Home includes learning-path bento links and FAQs; Contact includes a larger campus introduction, direct channels, branch illustrations and maps. Decorative campus artwork is schematic; actual directions use the supplied addresses on Google Maps.
-
-The homepage hero has been restored to the earlier full-width navy design at the owner’s request. The centered navigation, expanded homepage sections and redesigned contact page are retained.

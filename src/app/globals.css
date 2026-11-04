@@ -4146,3 +4146,27 @@ footer {
     transform: none;
   }
 }
+
+/* CEO introduction and rounded brand navigation */
+.ceo-portrait { position:absolute; z-index:4; width:250px; left:50%; top:105px; transform:translateX(-50%); margin:0; border:1px solid #d5b565; border-radius:22px; overflow:hidden; background:#061d49; box-shadow:0 20px 65px #0006; }
+.ceo-photo { position:relative; height:255px; overflow:hidden; }
+.ceo-photo img { object-fit:cover; object-position:50% 35%; }
+.ceo-portrait figcaption { padding:15px 12px 17px; text-align:center; background:linear-gradient(135deg,#061d49,#103368); }
+.ceo-portrait figcaption span { display:block; font-size:9px; letter-spacing:.2em; color:#e3c575; }
+.ceo-portrait figcaption strong { display:block; margin:5px 0; font-size:25px; line-height:1.2; color:#fff; }
+.ceo-portrait figcaption small { display:block; font-size:10px; color:#dbe5f6; }
+@media(min-width:1001px) {
+ .premium-header nav { background:#f2f5fa; border:1px solid #dde4ef; padding:6px; gap:8px; }
+ .premium-header nav > a, .nav-course-trigger > a { padding:12px 18px; }
+ .premium-header nav > a.active { background:#fff; color:#061d49; box-shadow:0 2px 8px #061d4909; }
+ .premium-header nav > a.active:before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:#c4a04d; margin-right:8px; }
+ .premium-header .header-apply { border-radius:50px; }
+}
+@media(max-width:760px) {
+ .ceo-portrait { width:210px; top:70px; }
+ .ceo-photo { height:205px; }
+ .ceo-portrait figcaption { padding:10px; }
+ .ceo-portrait figcaption strong { font-size:21px; }
+ .empire-scene .label-one { top:4px; }
+ .empire-scene .label-two { bottom:0; }
+}

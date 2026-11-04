@@ -80,8 +80,8 @@ export function Header() {
               Apply now <ArrowUpRight size={16} />
             </Link>
           </nav>
-          <Link className="header-apply" href="/apply">
-            Start your journey <ArrowUpRight size={17} />
+          <Link className="header-apply" href="/contact">
+            Contact Us <ArrowUpRight size={17} />
           </Link>
         </div>
       </header>
