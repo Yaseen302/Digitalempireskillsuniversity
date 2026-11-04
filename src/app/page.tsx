@@ -42,11 +42,9 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <Button href="/courses">Explore our courses</Button>
-              <Link className="text-button" href="/book-a-call">
-                Book a consultation <ArrowUpRight size={17} />
-              </Link>
+              <a className="hero-whatsapp" href={whatsappUrl(branches[0])} target="_blank" rel="noopener noreferrer"><span className="whatsapp-button-icon"><MessageCircle size={20}/></span><span>Contact on WhatsApp</span><span className="whatsapp-button-arrow"><ArrowUpRight size={19}/></span></a>
             </div>
-            <a className="hero-whatsapp" href={whatsappUrl(branches[0])} target="_blank" rel="noopener noreferrer"><MessageCircle size={21}/> Contact on WhatsApp <ArrowUpRight size={17}/></a>
+
           </div>
           <div className="hero-showcase">
             <div className="showcase-heading">
