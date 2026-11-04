@@ -4233,7 +4233,7 @@ footer {
 .hero.hero--immersive .showcase-heading,.hero.hero--immersive .showcase-footer { color:#c5d7ee; border-color:#ffffff16; }
 .hero.hero--immersive .founder-scene { height:510px; overflow:visible; }
 .hero.hero--immersive .founder-image { width:340px; height:450px; bottom:22px; }
-.hero.hero--immersive .founder-crown { width:150px; height:106px; top:0; left:calc(50% - 88px); animation:clean-crown-float 6s ease-in-out infinite; }
+.hero.hero--immersive .founder-crown { width:150px; height:106px; top:38px; left:calc(50% - 88px); animation:clean-crown-float 6s ease-in-out infinite; }
 .hero.hero--immersive .original-gold-crown { width:150px; height:106px; background-size:617.65px 411.77px; background-position:-397.06px -35.29px; }
 .hero.hero--immersive .founder-name { bottom:15px; width:310px; padding:14px 18px; }
 .hero.hero--immersive .founder-name strong { color:#fff; font-size:30px; }
@@ -4248,7 +4248,7 @@ footer {
 .hero.hero--immersive .hero-points { font-size:9px; flex-wrap:wrap; gap:12px; }
 .hero.hero--immersive .founder-scene { height:470px; }
 .hero.hero--immersive .founder-image { width:300px; height:410px; bottom:18px; }
-.hero.hero--immersive .founder-crown { top:0; left:calc(50% - 82px); }
+.hero.hero--immersive .founder-crown { top:30px; left:calc(50% - 82px); }
 .hero.hero--immersive .founder-name { width:min(285px,90%); bottom:8px; }
 .hero.hero--immersive .founder-ring { width:260px; height:260px; }
 }
