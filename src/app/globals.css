@@ -4215,3 +4215,41 @@ footer {
 @media(max-width:760px) { .founder-scene { height:490px; } .founder-crown { top:-32px; left:calc(50% - 131px); width:255px; height:180px; transform-origin:center; } .founder-ring { width:285px; height:285px; } .founder-name strong { font-size:29px; } .hero--immersive .hero-layout { padding-top:40px; padding-bottom:30px; } }
 @media(prefers-reduced-motion:reduce) { .founder-crown { animation:none; } }
 
+
+/* Accessible navy hero and unobstructed founder portrait */
+.hero.hero--immersive .hero-copy h1 { color:#ffffff; font-size:clamp(44px,4.8vw,70px); line-height:1.12; letter-spacing:-.045em; }
+.hero.hero--immersive .hero-copy h1 > span { color:#f2cc76; }
+.hero.hero--immersive .hero-copy > p { color:#d3e0f2; font-size:15px; line-height:1.85; }
+.hero.hero--immersive .hero-label { color:#f2cc76; }
+.hero.hero--immersive .hero-label > span { background:#f2cc76; box-shadow:none; }
+.hero.hero--immersive .hero-points { color:#d3e0f2; font-size:11px; }
+.hero.hero--immersive .hero-points svg { color:#f2cc76; }
+.hero.hero--immersive .hero-actions .button { background:#f2cc76; color:#061d49; box-shadow:0 8px 25px #0002; }
+.hero.hero--immersive .hero-actions .text-button { color:#ffffff; }
+.hero.hero--immersive .hero-bottom { border-color:#ffffff26; }
+.hero.hero--immersive .hero-bottom > span,.hero.hero--immersive .hero-bottom > div { color:#d3e0f2; }
+.hero.hero--immersive .hero-bottom svg { color:#f2cc76; }
+.hero.hero--immersive .hero-showcase { transform:none; background:linear-gradient(145deg,#12386c,#071e43); border:1px solid #ffffff20; border-radius:24px; box-shadow:0 24px 70px #0003; }
+.hero.hero--immersive .showcase-heading,.hero.hero--immersive .showcase-footer { color:#c5d7ee; border-color:#ffffff16; }
+.hero.hero--immersive .founder-scene { height:510px; overflow:visible; }
+.hero.hero--immersive .founder-image { width:340px; height:450px; bottom:22px; }
+.hero.hero--immersive .founder-crown { width:150px; height:106px; top:0; left:calc(50% - 88px); animation:clean-crown-float 6s ease-in-out infinite; }
+.hero.hero--immersive .original-gold-crown { width:150px; height:106px; background-size:617.65px 411.77px; background-position:-397.06px -35.29px; }
+.hero.hero--immersive .founder-name { bottom:15px; width:310px; padding:14px 18px; }
+.hero.hero--immersive .founder-name strong { color:#fff; font-size:30px; }
+.hero.hero--immersive .founder-name p { color:#e0e9f7; }
+.hero.hero--immersive .founder-ring { width:310px; height:310px; top:130px; }
+.hero.hero--immersive .founder-seal { display:none; }
+.hero.hero--immersive .scene-animation-toggle { right:12px; bottom:125px; color:#e0e9f7; }
+@keyframes clean-crown-float { 0%,100% { transform:translateY(0) rotate(-2deg); } 50% { transform:translateY(-6px) rotate(2deg); } }
+@media(max-width:760px) {
+.hero.hero--immersive .hero-copy h1 { font-size:44px; }
+.hero.hero--immersive .hero-copy > p { font-size:14px; }
+.hero.hero--immersive .hero-points { font-size:9px; flex-wrap:wrap; gap:12px; }
+.hero.hero--immersive .founder-scene { height:470px; }
+.hero.hero--immersive .founder-image { width:300px; height:410px; bottom:18px; }
+.hero.hero--immersive .founder-crown { top:0; left:calc(50% - 82px); }
+.hero.hero--immersive .founder-name { width:min(285px,90%); bottom:8px; }
+.hero.hero--immersive .founder-ring { width:260px; height:260px; }
+}
+@media(prefers-reduced-motion:reduce) { .hero.hero--immersive .founder-crown { animation:none; } }
