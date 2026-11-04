@@ -7,6 +7,7 @@ import { branches, socials, site } from "@/data/site";
 import { Header, Footer } from "@/components/chrome";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  verification: { google: "uc1BC9eJusZGvRn0XHjD560xjflH9E9_6HVw2XR1VsI" },
   title: {
     default: "Digital Skills & E-commerce Courses in Karachi | Digital Empire",
     template: "%s | Digital Empire",
