@@ -16,7 +16,8 @@ export function Header() {
     const update = () => setScrolled(window.scrollY > 20);
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    if(path.startsWith("/admin")) return null;
+  return () => window.removeEventListener("scroll", update);
   }, []);
   return (
     <>
@@ -89,7 +90,9 @@ export function Header() {
   );
 }
 export function Footer() {
-  return (
+  const adminPath=usePathname();
+  if(adminPath.startsWith("/admin")) return null;
+return (
     <footer>
       <div className="container footer-grid">
         <div>
