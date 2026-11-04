@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import CourseMenu from "./course-menu";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, MessageCircle, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle, ArrowRight, LockKeyhole } from "lucide-react";
 import { Logo } from "./ui";
 import { site, branches, whatsappUrl } from "@/data/site";
 import WhatsAppWidget from "./whatsapp";
@@ -163,7 +163,7 @@ return (
           <Link href="/privacy">Privacy policy</Link>
           <Link href="/terms">Terms & conditions</Link>
         </div>
-        <span>Learn today. Earn tomorrow.</span>
+        <Link className="footer-admin-login" href="/admin"><LockKeyhole size={14}/><span>Admin Login</span><ArrowUpRight size={14}/></Link>
       </div>
       <WhatsAppWidget />
     </footer>
