@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { Button, CourseCard, CTA } from "@/components/ui";
 import { courses } from "@/data/courses";
-export const metadata = { alternates: { canonical: "/" } };
+export const metadata = { title: {absolute:"Digital Skills & E-commerce Courses in Karachi | Digital Empire"}, description:"Learn Shopify, Amazon, Etsy, Meta Ads, WordPress and digital business skills at Digital Empire Skills University in Karachi. Saddar and Gulshan campuses.", alternates: { canonical: "/" } };
 export default function Home() {
   return (
     <>
@@ -127,7 +127,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="editorial-intro container section">
+      <section className="container section"><span className="eyebrow">PRACTICAL TRAINING IN KARACHI</span><h2>E-commerce, marketing and website skills</h2><p>Explore courses in online selling, digital marketing, website development and creative production at our Saddar and Gulshan-e-Iqbal campuses. Speak with admissions about the current syllabus, course fees and available class formats.</p><div className="outcomes">{courses.filter(c => ["shopify","amazon","etsy","ebay","daraz","walmart","meta","wordpress","woocommerce","magento","erp","oms","graphic-design","video-editing"].includes(c.slug)).map(c => <p key={c.slug}><Link className="inline-link" href={`/courses/${c.slug}`}>{c.title} course in Karachi <ArrowUpRight size={15}/></Link></p>)}</div><p>Need help with a business project? <Link className="inline-link" href="/services">Explore our digital services</Link>. For free guidance, visit <a className="inline-link" href="https://www.youtube.com/@alibuttempire" target="_blank" rel="noopener noreferrer">our YouTube channel</a>. Contact admissions for paid course enrollment.</p></section><section className="editorial-intro container section">
         <div>
           <span className="eyebrow">A DIFFERENT KIND OF EDUCATION</span>
           <h2>

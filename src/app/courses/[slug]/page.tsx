@@ -1,3 +1,5 @@
+import { courseSeo } from "@/data/course-seo";
+import { site } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -20,8 +22,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const c = courses.find((c) => c.slug === slug);
   return {
-    title: c?.title,
-    description: c?.description,
+    title: c ? `${c.title} Course in Karachi` : "Course not found",
+    description: c ? (courseSeo[slug]?.description || `${c.title} course in Karachi. Contact Digital Empire Skills University for fees and schedule.`) : undefined,
+    openGraph: { title: `${c?.title || "Course"} Course in Karachi`, description: courseSeo[slug]?.description, url: `/courses/${slug}` },
     alternates: { canonical: `/courses/${slug}` },
   };
 }
@@ -42,10 +45,9 @@ export default async function Course({
             {c.title}
           </div>
           <span className="eyebrow gold">{c.category}</span>
-          <h1>{c.title}</h1>
+          <h1>{c.title} Course in Karachi</h1>
           <p>
-            {c.description} Develop a practical foundation, explore essential
-            workflows, and plan your next step with intention.
+            {courseSeo[slug]?.description || c.description}
           </p>
           <Button href={`/apply?course=${c.slug}`} light>
             Apply for this course
@@ -62,6 +64,7 @@ export default async function Course({
             thoughtful decision-making. Ask admissions for the current syllabus,
             trainer availability and delivery schedule before enrolling.
           </p>
+          {courseSeo[slug] && <section><h3>Topics to discuss with your trainer</h3><p>Ask admissions which of these topics are included in the current {c.title} syllabus and practical projects.</p><ul>{courseSeo[slug].topics.map(topic => <li key={topic}>{topic}</li>)}</ul></section>}
           <h3>What you’ll work towards</h3>
           <div className="outcomes">
             {[
@@ -94,8 +97,11 @@ export default async function Course({
               </ul>
             </details>
           ))}
+          <h2 className="curriculum-title">Study in Saddar or Gulshan-e-Iqbal</h2><p>Contact our Karachi admissions team to confirm the current {c.title} course fees, class timings, trainer and online or campus availability. <Link href="/contact">View campus addresses and contact details</Link>.</p>
           <h2 className="curriculum-title">Good questions. Clear answers.</h2>
           {[
+            ["What are the course fees?", "Contact admissions for the current fee, payment terms and intake. We do not advertise these paid courses as free."],
+            ["Where can I find free guidance?", "Free guidance is available on our Ali Butt Empire YouTube channel. Contact admissions for structured course enrollment."],
             [
               "Do I need previous experience?",
               "This path is designed as a beginner-friendly introduction. Tell our team about your experience so they can advise on suitability.",
@@ -152,7 +158,7 @@ export default async function Course({
           </div>
         </aside>
       </section>
-      <CTA />
+      <section className="container section"><h2>Explore related learning paths</h2><div className="outcomes">{courses.filter(other => other.category === c.category && other.slug !== c.slug).slice(0,4).map(other => <p key={other.slug}><Link className="inline-link" href={`/courses/${other.slug}`}>{other.title} course <ArrowRight size={15}/></Link></p>)}</div><p>Looking for free guidance? Visit <a href="https://www.youtube.com/@alibuttempire" target="_blank" rel="noopener noreferrer">Ali Butt Empire on YouTube</a>. Course fees are confirmed by admissions.</p></section><CTA />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -160,10 +166,14 @@ export default async function Course({
             "@context": "https://schema.org",
             "@type": "Course",
             name: c.title,
-            description: c.description,
+            description: courseSeo[slug]?.description || c.description,
+            url: site.url + "/courses/" + c.slug,
+            inLanguage: ["en", "ur"],
             provider: {
               "@type": "Organization",
               name: "Digital Empire Skills University",
+              "@id": site.url + "/#organization",
+              url: site.url,
             },
           }),
         }}

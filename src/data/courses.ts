@@ -143,6 +143,14 @@ const entries = [
     "dark",
   ],
 ];
+entries.push(["Daraz E-commerce","Explore Daraz Seller Center, product listings, pricing, order fulfillment and marketplace operations.","E-commerce","daraz","Daraz E-commerce","blue"]);
+entries.push(["WordPress","Explore WordPress website setup, themes, plugins, page building, backups and website maintenance.","Digital Business","wordpress","WordPress","blue"]);
+entries.push(["WooCommerce","Explore WooCommerce product catalogs, checkout configuration, shipping, payments and store management.","E-commerce","woocommerce","WooCommerce","blue"]);
+entries.push(["Magento / Adobe Commerce","Explore Magento catalog structure, store administration, checkout workflows and commerce project planning.","E-commerce","magento","Magento / Adobe Commerce","blue"]);
+entries.push(["ERP Systems","Explore ERP business workflows, inventory records, purchasing, sales processes and reporting.","Digital Business","erp","ERP Systems","blue"]);
+entries.push(["Order Management Systems (OMS)","Explore order management, stock synchronization, fulfillment, returns and multi-channel operations.","Digital Business","oms","Order Management Systems (OMS)","blue"]);
+entries.push(["Graphic Designing","Explore graphic design fundamentals, typography, layout, brand identity and portfolio development.","Digital Business","graphic-design","Graphic Designing","blue"]);
+entries.push(["Video Editing","Explore video editing workflows, timeline organization, cuts, audio, captions and export settings.","Digital Business","video-editing","Video Editing","blue"]);
 export const courses = entries.map(
   ([title, description, category, slug, word, color]) => ({
     title,

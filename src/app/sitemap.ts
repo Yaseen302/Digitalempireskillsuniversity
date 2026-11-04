@@ -6,6 +6,7 @@ export default function sitemap() {
     "",
     "/about",
     "/courses",
+    "/services",
     "/contact",
     "/book-a-call",
     "/apply",

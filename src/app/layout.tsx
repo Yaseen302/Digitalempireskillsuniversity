@@ -8,11 +8,11 @@ import { Header, Footer } from "@/components/chrome";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Digital Empire Skills University | Learn Today. Earn Tomorrow.",
+    default: "Digital Skills & E-commerce Courses in Karachi | Digital Empire",
     template: "%s | Digital Empire",
   },
   description:
-    "Build practical digital skills in e-commerce, digital marketing and online business. Explore your next learning path with Digital Empire.",
+    "Shopify, Amazon, Etsy, digital marketing and web development courses in Karachi. Visit Digital Empire Skills University in Saddar or Gulshan-e-Iqbal.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/empire-banner.webp",
-        width: 1536,
-        height: 1024,
+        width: 1400,
+        height: 933,
         alt: "Digital Empire — Build Skills. Build Income. Build Empire.",
       },
     ],
@@ -47,7 +47,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "EducationalOrganization",
+              "@id": site.url + "/#organization",
+              logo: site.url + "/images/digital-empire-logo.webp",
+              areaServed: { "@type": "City", name: "Karachi" },
               name: site.name,
               email: site.email,
               sameAs: socials
