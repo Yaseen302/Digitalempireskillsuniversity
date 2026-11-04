@@ -4287,3 +4287,33 @@ footer {
 .whatsapp-button-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; flex-shrink:0; border:1px solid #ffffff50; border-radius:50%; background:#ffffff14; }
 .whatsapp-button-arrow { display:flex; align-items:center; justify-content:center; width:36px; height:36px; flex-shrink:0; margin-left:3px; background:#fff; color:#087f3c; border-radius:50%; box-shadow:0 3px 10px #064e3b25; }
 @media(max-width:760px) { .hero.hero--immersive .hero-actions .hero-whatsapp { font-size:13px; gap:9px; min-height:56px; } }
+
+/* Community proof inside the navy hero */
+.hero.hero--immersive .empire-stats { display:grid; grid-template-columns:1.18fr 1.12fr 1fr 1fr; padding:0; border-top:1px solid #ffffff22; border-bottom:1px solid #ffffff22; margin-top:10px; background:linear-gradient(110deg,#071d3b66,#123c6b44); }
+.empire-stat { padding:28px 26px; border-right:1px solid #ffffff1c; min-width:0; }
+.empire-stat:last-child { border-right:0; }
+.stat-label { display:flex; align-items:center; gap:9px; font-size:9px; font-weight:650; letter-spacing:.17em; color:#c4d4e9; }
+.stat-label svg { color:#f2cc76; }
+.google-stat-mark { font-size:21px; font-weight:800; color:#68a7ff; letter-spacing:0; }
+.hero.hero--immersive .stat-value { display:block; font-size:46px; color:#fff; line-height:1.2; letter-spacing:-.05em; margin:20px 0 10px; }
+.stat-value > span { font-size:23px; color:#f2cc76; margin-left:4px; }
+.hero.hero--immersive .empire-stat p { color:#d1dded; font-size:11px; line-height:1.6; }
+.stat-socials { display:flex; gap:14px; align-items:center; margin-top:14px; color:#fff; }
+.stat-socials a { display:inline-flex; align-items:center; justify-content:center; min-width:24px; min-height:24px; }
+.stat-socials a:hover { color:#f2cc76; }
+.stat-socials a:first-child { color:#71a8ff; }
+.stat-socials a:nth-child(2) { color:#f3a7d8; }
+.stat-socials a:nth-child(3) { color:#ff7979; }
+.stat-tiktok { font-size:25px; line-height:1; font-weight:800; }
+.stat-detail { display:block; margin-top:10px; color:#aebfd6; font-size:8px; line-height:1.6; }
+.stat-link { display:inline-flex; align-items:center; gap:7px; color:#f2cc76; font-size:10px; margin-top:17px; font-weight:600; }
+.branch-rating { display:grid; gap:16px; margin-top:20px; }
+.branch-rating a { display:flex; align-items:center; gap:14px; }
+.branch-rating strong { color:#fff; font-size:32px; line-height:1; letter-spacing:-.04em; }
+.branch-rating strong small { font-size:13px; margin-left:3px; color:#b2c4dd; }
+.branch-rating a > span { display:grid; gap:4px; }
+.rating-stars { color:#f2cc76; letter-spacing:2px; font-size:12px; }
+.branch-rating b { color:#d1dded; font-size:9px; font-weight:500; }
+.hero.hero--immersive .stats-source-note { margin:0 auto; padding:12px 0 20px; color:#aebfd6; font-size:9px; line-height:1.6; }
+@media(max-width:1000px) { .hero.hero--immersive .empire-stats { grid-template-columns:1fr 1fr; } .empire-stat:nth-child(2) { border-right:0; } .empire-stat:nth-child(-n+2) { border-bottom:1px solid #ffffff1c; } }
+@media(max-width:550px) { .empire-stat { padding:22px 14px; } .stat-label { font-size:7px; letter-spacing:.1em; } .hero.hero--immersive .stat-value { font-size:37px; } .branch-rating a { gap:7px; } .branch-rating strong { font-size:26px; } .branch-rating b { font-size:8px; } .rating-stars { font-size:10px; letter-spacing:1px; } .hero.hero--immersive .empire-stat p { font-size:10px; } .stat-detail { font-size:8px; } }

@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { socials } from "@/data/site";
-function SocialIcon({ name }: { name: string }) {
+export function SocialIcon({ name }: { name: string }) {
   return (
     <svg
       width="17"
