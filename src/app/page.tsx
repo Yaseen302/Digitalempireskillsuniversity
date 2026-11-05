@@ -163,23 +163,22 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         <Link className="bento-marketing" href="/courses?category=Digital%20Marketing"><span className="eyebrow">03 / GROWTH &amp; TECHNOLOGY</span><h3><small className="mb-1 block text-sm font-semibold leading-tight tracking-normal">Learn</small>Digital Marketing<br/>&amp; AI Tools</h3><div className="marketing-orbits" aria-hidden="true"><span/><span/><span/><ArrowUpRight size={65}/></div><span className="bento-link">Explore digital marketing <ArrowUpRight size={20}/></span></Link>
       </section>),
 "courses": (      <section className="section container">
-        <div className="section-heading">
+        <div className="relative isolate mb-8 grid items-end gap-7 overflow-hidden rounded-3xl border border-[#244977] bg-gradient-to-br from-[#07182f] to-[#143d75] px-6 py-8 shadow-lg sm:mb-10 sm:px-10 sm:py-12 lg:grid-cols-[1fr_340px] lg:gap-12">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-36 -z-10 size-96 rounded-full border border-white/15 shadow-[0_0_0_40px_#ffffff08,0_0_0_80px_#ffffff05]" />
           <div>
-            <span className="eyebrow">YOUR SKILLS. YOUR ADVANTAGE.</span>
-            <h2>
-              Find the path that
-              <br />
-              moves you <span>forward.</span>
+            <span className="mb-4 inline-flex rounded-full border border-[#f2cc76]/40 bg-[#f2cc76]/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#f2cc76]">
+              Your skills. Your advantage.
+            </span>
+            <h2 className="m-0 text-3xl leading-tight text-white sm:text-5xl" style={{ color: "#fff" }}>
+              Find the path that<br className="hidden sm:block" /> moves you <span style={{ color: "#f2cc76" }}>forward.</span>
             </h2>
           </div>
-          <div>
-            <p>
-              From your first idea to your next big move.
-              <br />
-              Build skills that open doors to what’s next.
+          <div className="border-t border-white/20 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <p className="mb-5 text-sm leading-relaxed sm:text-base" style={{ color: "#dce8f9" }}>
+              From your first idea to your next big move. Build skills that open doors to what’s next.
             </p>
-            <Link className="inline-link" href="/courses">
-              Explore all courses <ArrowUpRight size={17} />
+            <Link className="inline-flex items-center gap-3 rounded-full bg-[#f2cc76] px-5 py-3 text-sm font-bold text-[#07182f] hover:bg-[#ffe2a0] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" href="/courses">
+              Explore all courses <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
         </div>
