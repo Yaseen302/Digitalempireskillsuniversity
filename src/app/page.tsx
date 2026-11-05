@@ -188,7 +188,24 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         </div>
         <Reveal>
           <div className="featured-grid">
-            {courses.slice(0, 9).map((c) => (
+            <article className="course-card">
+              <div className="course-art green">
+                <span className="art-grid" />
+                <div className="course-logo-plaque"><PlatformLogo platform="shopify" /></div>
+                <span className="course-art-topline">DIGITAL EMPIRE <span>LEARNING PATH</span></span>
+                <span className="art-tag">SHOPIFY + DIGITAL MARKETING</span>
+              </div>
+              <div className="course-content">
+                <span className="eyebrow">E-commerce &amp; Marketing</span>
+                <h3>Shopify + Digital Marketing</h3>
+                <p>Build a Shopify store and learn how to promote it online.</p>
+                <div className="course-bottom flex-wrap gap-2">
+                  <Link className="inline-link" href="/courses/shopify">Shopify <ArrowRight size={15} /></Link>
+                  <Link className="inline-link" href="/courses/marketing">Digital Marketing <ArrowRight size={15} /></Link>
+                </div>
+              </div>
+            </article>
+            {courses.filter((course) => course.slug === "etsy" || course.slug === "forex").map((c) => (
               <CourseCard key={c.slug} course={c} />
             ))}
           </div>
