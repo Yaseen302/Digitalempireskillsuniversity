@@ -1,143 +1,81 @@
-import Image from "next/image";
-import {
-  Compass,
-  HeartHandshake,
-  Lightbulb,
-  Globe2,
-  BookOpen,
-  Users,
-} from "lucide-react";
-import { PageIntro, CTA } from "@/components/ui";
 export const metadata = {
-  title: "About Us",
-  description:
-    "Discover the practical learning philosophy behind Digital Empire Skills University.",
+  title: "About Digital Empire Skills University",
+  description: "Learn about Digital Empire Skills University, our practical training in Karachi and our vision for Pakistan’s learners.",
   alternates: { canonical: "/about" },
 };
+
+const priorities = [
+  {
+    title: "Our Vision",
+    text: "Our vision is to help Pakistan’s youth build a future with greater independence. We help aspiring entrepreneurs and e-commerce sellers gain the knowledge, guidance and practical experience to start their own journeys.",
+  },
+  {
+    title: "Empowering Women",
+    text: "We’re committed to helping women develop skills they can use to work from home, offer services online and build businesses. These skills can open opportunities to earn in PKR or foreign currencies, on terms that fit their values and circumstances.",
+  },
+  {
+    title: "Learning by Doing",
+    text: "We believe learning should be practical, honest and grounded in real work. We teach through guided practice and clear expectations in a supportive environment. Every learner’s path is different, and consistent practice can open new opportunities.",
+  },
+];
+
 export default function About() {
   return (
     <>
-      <PageIntro
-        label="THE AMBITION BEHIND THE EMPIRE"
-        title="A bigger future begins with a practical skill."
-        text="We bring purposeful learning and a business-minded outlook together, helping aspiring digital professionals find their direction."
-      />
-      <section className="section container about-grid">
-        <div className="about-image">
-          <Image
-            src="/images/learning.jpg"
-            alt="A learner focused on a practical laptop project"
-            fill
-            sizes="(max-width:760px) 90vw,45vw"
-          />
-        </div>
-        <div>
-          <span className="eyebrow">OUR STORY & PURPOSE</span>
-          <h2>
-            Knowledge is a beginning.
-            <br />
-            <span>Practice is progress.</span>
-          </h2>
-          <p>
-            Digital Empire Skills University is a digital skills training brand
-            built around a simple idea: learning should help you take meaningful
-            action.
+      <section className="bg-[#081c40] bg-gradient-to-br from-[#081c40] to-[#143d75] px-5 py-16 text-center sm:py-24">
+        <div className="container mx-auto max-w-4xl">
+          <span className="inline-flex rounded-full border border-[#f2cc76]/40 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#f2cc76]">About Us</span>
+          <h1 className="my-5 text-4xl leading-tight sm:text-6xl" style={{ color: "#fff" }}>
+            About Digital Empire Skills University
+          </h1>
+          <p className="text-lg font-semibold sm:text-2xl" style={{ color: "#f2cc76" }}>
+            Learn Skills. Build Independence. Create Your Future.
           </p>
-          <p>
-            Our focus is on the tools, ways of thinking, and practical knowledge
-            that connect education with digital business. Whether you’re
-            exploring e-commerce, marketing, or a new professional direction,
-            your curiosity has a place here.
-          </p>
-          <p className="small-note">
-            The brand name does not imply verified accreditation or
-            degree-awarding status. Contact admissions for details about any
-            specific certification.
+          <p className="mx-auto mt-5 max-w-xl" style={{ color: "#dce8fb" }}>
+            Every big journey begins with one decision: the decision to learn and take the first step.
           </p>
         </div>
       </section>
-      <section className="soft-section">
-        <div className="container mission-grid">
-          <article>
-            <Compass />
-            <span className="eyebrow">OUR MISSION</span>
-            <h2>Make practical learning purposeful.</h2>
-            <p>
-              Help learners understand digital opportunities, build applicable
-              skills, and approach their next steps with confidence and
-              responsibility.
-            </p>
-          </article>
-          <article>
-            <Globe2 />
-            <span className="eyebrow">OUR VISION</span>
-            <h2>Ambition without boundaries.</h2>
-            <p>
-              A community of curious, capable learners who use digital knowledge
-              to shape their own professional and entrepreneurial futures.
-            </p>
-          </article>
+
+      <section className="container py-14 sm:py-20" aria-labelledby="about-story">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <h2 id="about-story" className="mb-4 text-3xl sm:text-4xl">Our Story</h2>
+          <p className="leading-relaxed">
+            At Digital Empire Skills University, we help people turn that decision into practical action. At our Saddar and Gulshan-e-Iqbal campuses in Karachi, learners get hands-on training in e-commerce, digital marketing and online business so they can build useful skills, practise with confidence and explore new opportunities.
+          </p>
         </div>
-      </section>
-      <section className="section container">
-        <div className="center-heading">
-          <span className="eyebrow">WHAT GUIDES US</span>
-          <h2>Values that show up in the work.</h2>
+        <div className="grid gap-5 md:grid-cols-3">
+          {priorities.map(({ title, text }, index) => (
+            <article key={title} className="rounded-3xl border border-[#dce6f4] bg-[#f5f8fc] p-6 shadow-sm sm:p-8">
+              <span className="text-sm font-bold tracking-widest text-[#8a5b10]" aria-hidden="true">0{index + 1}</span>
+              <h3 className="my-3 text-2xl">{title}</h3>
+              <p className="leading-relaxed">{text}</p>
+            </article>
+          ))}
         </div>
-        <div className="values-grid">
-          {[
-            [
-              Lightbulb,
-              "Curiosity",
-              "Ask better questions. Explore new ideas. Keep learning.",
-            ],
-            [
-              BookOpen,
-              "Practicality",
-              "Connect concepts to tasks you can work through.",
-            ],
-            [
-              HeartHandshake,
-              "Integrity",
-              "Clear expectations and responsible decision-making.",
-            ],
-            [
-              Users,
-              "Community",
-              "Learn through shared perspectives and encouragement.",
-            ],
-          ].map(([Icon, title, text], i) => {
-            const I = Icon as typeof Users;
-            return (
-              <article key={i}>
-                <I />
-                <h3>{title as string}</h3>
-                <p>{text as string}</p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-      <section className="container teaching">
-        <span className="eyebrow">OUR TEACHING APPROACH</span>
-        <h2>Understand. Practice. Reflect. Repeat.</h2>
-        <p>
-          We organize learning around clear foundations, guided workflows,
-          practical projects and reflection. Course-specific teaching formats
-          and trainer details are confirmed by admissions for each intake.
-        </p>
-        <div className="trainer-note">
-          <Users />
+
+        <div className="mt-10 grid items-center gap-6 rounded-3xl border border-[#e0e8f4] bg-white p-6 shadow-sm sm:p-10 md:grid-cols-[1fr_2fr]">
           <div>
-            <h3>Meet the people behind your learning</h3>
-            <p>
-              Ask our team for the verified trainer profiles and current
-              teaching schedule for your chosen course.
+            <strong className="block text-5xl text-[#124391]">1,000+</strong>
+            <span className="font-semibold">Learners trained</span>
+          </div>
+          <div>
+            <h2 className="mb-3 text-2xl">A Community That Grows Together</h2>
+            <p className="leading-relaxed">
+              Over the years, more than 1,000 learners have trained with us and begun pursuing their goals. Their progress inspires us to make practical learning more accessible and help Pakistani talent reach opportunities in a global economy.
             </p>
+            <p className="mt-3 leading-relaxed">Our aim is to create a place where people can learn, practise, support one another and build with confidence.</p>
           </div>
         </div>
+
+        <div className="mt-10 rounded-3xl bg-[#081c40] px-6 py-10 text-center sm:px-12">
+          <h2 className="mx-auto max-w-3xl text-2xl sm:text-3xl" style={{ color: "#fff" }}>
+            Your future can start with a skill and a decision to take that first step.
+          </h2>
+          <p className="mt-5 font-semibold" style={{ color: "#f2cc76" }}>Digital Empire Skills University</p>
+          <p className="mt-2" style={{ color: "#dce8fb" }}>Practical Skills. Real Possibilities. A More Independent Future.</p>
+        </div>
       </section>
-      <CTA />
     </>
   );
 }
