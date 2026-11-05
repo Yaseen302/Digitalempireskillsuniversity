@@ -8,6 +8,7 @@ import {LayoutDashboard,PanelsTopLeft,Inbox,Images,Star,Settings,Plus,GripVertic
 type Lead={id:string;created_at:string;kind:string;name:string;email:string;phone:string;subject:string;message:string;course:string;country:string;status:string};
 export default function AdminStudio(){
 const [videoCourse, setVideoCourse] = useState("shopify");
+const [successVideoUrl, setSuccessVideoUrl] = useState("");
 const [showPassword, setShowPassword] = useState(false);
 const[auth,setAuth]=useState<boolean|null>(null),[configured,setConfigured]=useState(true),[email,setEmail]=useState(""),[password,setPassword]=useState(""),[tab,setTab]=useState("overview"),[content,setContent]=useState<SiteContent>(defaultContent),[version,setVersion]=useState(0),[publishedAt,setPublishedAt]=useState<string|null>(null),[selected,setSelected]=useState("hero"),[busy,setBusy]=useState(false),[notice,setNotice]=useState(""),[error,setError]=useState(""),[dirty,setDirty]=useState(false),[ready,setReady]=useState(false),[leads,setLeads]=useState<Lead[]>([]),[query,setQuery]=useState(""),[mobile,setMobile]=useState(false),[preview,setPreview]=useState(0),[addType,setAddType]=useState("text");
 const[design,setDesign]=useState(false);
@@ -35,7 +36,7 @@ async function save(action:"save"|"publish"){
     return;
   }
   setBusy(true);setError("");setNotice("");try{const d=await request("/api/admin/content",{method:"PUT",body:JSON.stringify({draft:content,version,action})});setVersion(d.version);setPublishedAt(d.publishedAt);setDirty(false);setNotice(action==="publish"?"Published. The website now uses this version.":"Draft saved. Preview is ready.");setPreview(Date.now());}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
-async function upload(file:File){setBusy(true);setError("");try{if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>12*1024*1024)throw Error("Choose a PNG, JPEG or WebP image under 12 MB.");const bitmap=await createImageBitmap(file);const scale=Math.min(1,1800/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement("canvas");canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const ctx=canvas.getContext("2d");if(!ctx)throw Error("Image processing is unavailable.");ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();const blob=await new Promise<Blob>((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error("Could not optimize image.")),"image/webp",.84));const optimized=new File([blob],file.name.replace(/\.[^.]+$/,"")+".webp",{type:"image/webp"});const form=new FormData();form.append("file",optimized);const res=await fetch("/api/admin/upload",{method:"POST",body:form});const d=await res.json();if(!res.ok)throw Error(d.error);change({...content,gallery:[...content.gallery,d]});setNotice("Image uploaded. Add a Gallery section and publish to show it.");}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+async function upload(file:File, destination:"gallery"|"successPhotos" = "gallery"){setBusy(true);setError("");try{if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>12*1024*1024)throw Error("Choose a PNG, JPEG or WebP image under 12 MB.");const bitmap=await createImageBitmap(file);const scale=Math.min(1,1800/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement("canvas");canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const ctx=canvas.getContext("2d");if(!ctx)throw Error("Image processing is unavailable.");ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();const blob=await new Promise<Blob>((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error("Could not optimize image.")),"image/webp",.84));const optimized=new File([blob],file.name.replace(/\.[^.]+$/,"")+".webp",{type:"image/webp"});const form=new FormData();form.append("file",optimized);const res=await fetch("/api/admin/upload",{method:"POST",body:form});const d=await res.json();if(!res.ok)throw Error(d.error);change({...content,[destination]:[...content[destination],d]});setNotice(destination === "successPhotos" ? "Screenshot uploaded. Publish to show it on Student Success." : "Image uploaded. Add a Gallery section and publish to show it.");}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
 function field(label:string,key:keyof SiteContent,multi=false){return <label className="cms-field">{label}{multi?<textarea rows={5} value={String(content[key])} onChange={e=>update(key,e.target.value)}/>:<input value={String(content[key])} onChange={e=>update(key,e.target.value)}/>}</label>;}
 const block=content.sections.find(b=>b.id===selected);
 if(auth===null)return <div className="cms-loading">Opening Digital Empire Studio…</div>;
@@ -52,7 +53,7 @@ if(!auth)return <div className="cms-login"><div className="cms-login-brand">DE<s
     </button>
   </div>
 </div><button className="cms-primary" disabled={busy||!configured}>{busy?"Signing in…":"Sign in to your studio"}</button><a href="/">Back to website <ExternalLink size={14}/></a><small>Admin accounts are created in your Supabase project. Public sign-up is disabled here.</small></form><div className="cms-login-footer">Digital Empire Skills University · Karachi</div></div>;
-return <div className="cms-shell"><aside className="cms-sidebar"><a className="cms-brand" href="/admin"><span>DE</span><div>Digital Empire<small>Website studio</small></div></a><div className="cms-store"><span className="cms-store-dot"/>University website<small>Vercel production</small></div><nav>{[["overview",LayoutDashboard,"Overview"],["editor",PanelsTopLeft,"Page editor"],["analytics",Eye,"Analytics"],["inbox",Inbox,"Form inbox"],["gallery",Images,"Gallery"],["course-videos",Monitor,"Course videos"],["reviews",Star,"Reviews"],["settings",Settings,"Settings"]].map(([id,Icon,label])=>{const I=Icon as typeof Inbox;return <button key={String(id)} className={tab===id?"active":""} onClick={()=>{setTab(String(id));setError("");}}><I size={18}/>{String(label)}{id==="inbox"&&leads.filter(l=>l.status==="new").length>0&&<b>{leads.filter(l=>l.status==="new").length}</b>}</button>})}</nav><div className="cms-sidebar-bottom"><a href="/" target="_blank" rel="noopener noreferrer"><ExternalLink size={16}/> View website</a><button onClick={async()=>{try{await request("/api/admin/session",{method:"DELETE"});setAuth(false);setContent(defaultContent);setLeads([]);}catch(e){setError((e as Error).message);}}}><LogOut size={16}/> Sign out</button></div></aside>
+return <div className="cms-shell"><aside className="cms-sidebar"><a className="cms-brand" href="/admin"><span>DE</span><div>Digital Empire<small>Website studio</small></div></a><div className="cms-store"><span className="cms-store-dot"/>University website<small>Vercel production</small></div><nav>{[["overview",LayoutDashboard,"Overview"],["editor",PanelsTopLeft,"Page editor"],["analytics",Eye,"Analytics"],["inbox",Inbox,"Form inbox"],["gallery",Images,"Gallery"],["success-stories",Star,"Success Stories"],["course-videos",Monitor,"Course videos"],["reviews",Star,"Reviews"],["settings",Settings,"Settings"]].map(([id,Icon,label])=>{const I=Icon as typeof Inbox;return <button key={String(id)} className={tab===id?"active":""} onClick={()=>{setTab(String(id));setError("");}}><I size={18}/>{String(label)}{id==="inbox"&&leads.filter(l=>l.status==="new").length>0&&<b>{leads.filter(l=>l.status==="new").length}</b>}</button>})}</nav><div className="cms-sidebar-bottom"><a href="/" target="_blank" rel="noopener noreferrer"><ExternalLink size={16}/> View website</a><button onClick={async()=>{try{await request("/api/admin/session",{method:"DELETE"});setAuth(false);setContent(defaultContent);setLeads([]);}catch(e){setError((e as Error).message);}}}><LogOut size={16}/> Sign out</button></div></aside>
 <div className="cms-workspace"><header className="cms-topbar"><div><span className="cms-breadcrumb">Digital Empire /</span><b>{tab==="editor"?"Homepage":tab.charAt(0).toUpperCase()+tab.slice(1)}</b><span className={dirty?"cms-status dirty":"cms-status"}>{dirty?"Unsaved changes":"Saved"}</span></div><div className="cms-top-actions"><button disabled={busy||!ready} onClick={()=>save("save")}><Save size={15}/>Save draft</button><button className="cms-primary" disabled={busy||!ready} onClick={()=>save("publish")}><Upload size={15}/>{busy?"Working…":"Publish"}</button></div></header>
 {design&&<div className="cms-notice" role="status">Design preview only. Changes in this preview are temporary; saving, publishing, uploads and inbox require the connected admin account.</div>}{error&&<div className="cms-alert" role="alert">{error}</div>}{notice&&<div className="cms-notice" role="status"><CheckCircle2 size={16}/>{notice}</div>}
 {tab==="analytics"&&<AdminAnalytics design={design}/>}
@@ -79,6 +80,57 @@ return <div className="cms-shell"><aside className="cms-sidebar"><a className="c
         <p className="cms-help">Use a public YouTube link or an HTTPS link ending in .mp4 or .webm.</p>
       )}
       <p className="cms-help">Clear the link and publish to remove the video.</p>
+    </section>
+  </main>
+)}
+{tab==="success-stories" && (
+  <main className="cms-main">
+    <div className="cms-page-heading">
+      <div><h1>Success Stories</h1><p>Add WhatsApp screenshots and student videos here, then click Publish.</p></div>
+      <a className="cms-secondary" href="/student-success" target="_blank" rel="noopener noreferrer">View Student Success</a>
+    </div>
+    <section className="cms-card">
+      <h2>WhatsApp screenshots</h2>
+      <label className="cms-field">Upload a screenshot
+        <input type="file" accept="image/png,image/jpeg,image/webp" disabled={!ready || busy || content.successPhotos.length >= 50} onChange={event => {
+          const file = event.target.files?.[0];
+          if (file) void upload(file, "successPhotos");
+          event.target.value = "";
+        }} />
+      </label>
+      <div className="cms-media-grid">
+        {content.successPhotos.map(photo => (
+          <article key={photo.id} className="cms-card">
+            <img src={photo.url} alt={photo.alt} />
+            <label className="cms-field">Image description
+              <input disabled={busy} value={photo.alt} onChange={event => update("successPhotos", content.successPhotos.map(item => item.id === photo.id ? {...item, alt: event.target.value} : item))} />
+            </label>
+            <button className="cms-danger" disabled={busy} onClick={() => update("successPhotos", content.successPhotos.filter(item => item.id !== photo.id))}>Remove screenshot</button>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section className="cms-card">
+      <h2>Student videos</h2>
+      <label className="cms-field">Public YouTube link or direct HTTPS MP4/WebM link
+        <input type="url" value={successVideoUrl} onChange={event => setSuccessVideoUrl(event.target.value)} />
+      </label>
+      <button className="cms-primary" disabled={!ready || busy || !successVideoUrl.trim() || content.successVideos.length >= 50} onClick={() => {
+        const url = successVideoUrl.trim();
+        if (!courseVideoSource(url)) { setError("Enter a supported YouTube, MP4 or WebM link."); return; }
+        setError("");
+        update("successVideos", [...content.successVideos, {id: crypto.randomUUID(), url, alt: ""}]);
+        setSuccessVideoUrl("");
+      }}>Add video</button>
+      {content.successVideos.map((video, index) => (
+        <article className="cms-card" key={video.id}>
+          <a href={video.url} target="_blank" rel="noopener noreferrer">Open video {index + 1}</a>
+          <label className="cms-field">Video title
+            <input disabled={busy} value={video.alt} onChange={event => update("successVideos", content.successVideos.map(item => item.id === video.id ? {...item, alt: event.target.value} : item))} />
+          </label>
+          <button className="cms-danger" disabled={busy} onClick={() => update("successVideos", content.successVideos.filter(item => item.id !== video.id))}>Remove video</button>
+        </article>
+      ))}
     </section>
   </main>
 )}

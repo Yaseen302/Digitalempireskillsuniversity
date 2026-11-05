@@ -1,3 +1,4 @@
+import CourseVideo from "@/components/course-video";
 import Link from "next/link";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { publishedContent } from "@/lib/cms-server";
@@ -9,7 +10,7 @@ export const metadata = {
 };
 
 export default async function StudentSuccess() {
-  const { gallery } = await publishedContent();
+  const { successPhotos, successVideos } = await publishedContent();
   return (
     <main>
       <section className="bg-[#081c40] bg-gradient-to-br from-[#081c40] to-[#124391] py-16 text-center sm:py-24">
@@ -22,15 +23,11 @@ export default async function StudentSuccess() {
           </h1>
         </div>
       </section>
-      <section className="bg-[#f4f7fc] py-12 sm:py-20" aria-labelledby="feedback-title">
+      <section className="bg-[#f4f7fc] py-12 sm:py-20" aria-label="Student success media">
         <div className="container">
-          <div className="mb-8 text-center">
-            <span className="eyebrow">From our students</span>
-            <h2 id="feedback-title" className="mt-3 text-3xl sm:text-4xl">WhatsApp Feedback</h2>
-          </div>
-          {gallery.length ? (
+          {successPhotos.length > 0 && (
             <ul className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
-              {gallery.map(({ id, url, alt }, index) => (
+              {successPhotos.map(({ id, url, alt }, index) => (
                 <li key={id} className="rounded-2xl border border-[#dce6f4] bg-white p-3 shadow-sm">
                   <a href={url} target="_blank" rel="noopener noreferrer" className="block rounded-xl" aria-label={`Open full image: ${alt || `student gallery image ${index + 1}`}`}>
                     {/* Gallery image hosts are managed through the CMS. */}
@@ -40,10 +37,15 @@ export default async function StudentSuccess() {
                 </li>
               ))}
             </ul>
-          ) : (
-            <p className="mx-auto max-w-xl rounded-2xl border border-dashed border-[#b9cbea] bg-white px-6 py-8 text-center">
-              Student screenshots will appear here as they are shared.
-            </p>
+          )}
+          {successVideos.length > 0 && (
+            <ul className="my-6 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
+              {successVideos.map((video, index) => (
+                <li key={video.id} className="rounded-2xl border border-[#dce6f4] bg-white p-3 shadow-sm">
+                  <CourseVideo url={video.url} title={video.alt || `Student story ${index + 1}`} story />
+                </li>
+              ))}
+            </ul>
           )}
           <div className="mt-9 text-center">
             <Link className="inline-link" href="/courses">Explore our courses <ArrowUpRight size={17} aria-hidden="true" /></Link>
