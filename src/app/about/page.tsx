@@ -36,7 +36,7 @@ export default function About() {
         <div className="container mx-auto max-w-4xl">
           <span className="inline-flex rounded-full border border-[#f2cc76]/40 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#f2cc76]">About Us</span>
           <h1 className="my-5 text-4xl leading-tight sm:text-6xl" style={{ color: "#fff" }}>
-            About Digital Empire Skills University
+            Digital Empire Skills University
           </h1>
           <p className="text-lg font-semibold sm:text-2xl" style={{ color: "#f2cc76" }}>
             Learn Skills. Build Independence. Create Your Future.
@@ -53,8 +53,7 @@ export default function About() {
           <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
             {classroomPhotos.map((caption, index) => (
               <li key={caption} className="overflow-hidden rounded-2xl border border-[#dce6f4] bg-white shadow-sm">
-                <Image src={`/images/classroom-${index + 1}.jpg`} alt={`Group photo: ${caption}`} width={900} height={[600, 600, 754, 675][index]} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover object-center" />
-                <p className="px-3 py-3 text-sm font-semibold">{caption}</p>
+                <Image src={`/images/classroom-${index + 1}.jpg`} alt={`Group photo: ${caption}`} width={900} height={[600, 600, 754, 675][index]} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="aspect-[4/3] block w-full object-cover object-center" />
               </li>
             ))}
           </ul>
