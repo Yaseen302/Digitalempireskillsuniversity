@@ -14,9 +14,18 @@ function Brand({name}:{name:string}){
        </svg>
        Meta
        </span>
-       <span className="flex items-center gap-3" style={{ lineHeight: 1 }}>
+       <span className="flex items-center gap-2.5" style={{ lineHeight: 1 }}>
          <span role="img" aria-label="Facebook" className="text-[#0866ff]"><SocialIcon name="Facebook" /></span>
          <span role="img" aria-label="Instagram" className="text-[#d62976]"><SocialIcon name="Instagram" /></span>
+         <svg role="img" aria-label="WhatsApp" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#12854b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+           <path d="M3 21l1.3-4.6a9 9 0 1 1 3.4 3.4L3 21Z M9 8c-.7 0-1.3.7-1 2 .6 2.8 3.2 5.2 6 5.8 1.2.2 2-.6 2-1.3l-2.6-1.5-1 1c-1.4-.6-2.3-1.5-2.9-2.9l1-1L9 8Z" />
+         </svg>
+         <svg role="img" aria-label="Messenger" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0866ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+           <path d="M3 11.5a9 9 0 1 1 5 8L4 21v-4.5a8 8 0 0 1-1-5Z M7.5 14l3-4 3 2 3-2" />
+         </svg>
+         <svg role="img" aria-label="Threads" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#17252e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+           <path d="M19.5 8.5C18.8 4.7 16 3 12 3c-5.2 0-8 3.4-8 9s2.8 9 8 9c4.3 0 7-2.1 7-5.2 0-2.8-2.2-4.3-5.7-4.3-2.8 0-4.3 1.1-4.3 2.8 0 1.4 1.1 2.2 2.5 2.2 2.7 0 4-2.1 4-5 0-3-1.3-4.5-3.6-4.5-1.3 0-2.4.5-3.2 1.5" />
+         </svg>
        </span>
      </span>
    );
