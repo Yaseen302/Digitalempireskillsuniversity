@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import StatCount from "@/components/stat-count";
-import { pageContent } from "@/lib/cms-server";
+import { adminUser, pageContent } from "@/lib/cms-server";
 import { defaultContent } from "@/lib/cms-model";
 import ContentBlock from "@/components/content-block";
 import { SocialIcon } from "@/components/social-links";
@@ -35,6 +35,18 @@ export const metadata = { title: {absolute:"Digital Skills & E-commerce Courses 
 export default async function Home({searchParams}:{searchParams:Promise<{cmsPreview?:string}>}) {
  const preview=(await searchParams).cmsPreview==="1";const content=await pageContent(preview);
  const studentReviews = content.reviews.filter(review => review.name.trim() && review.text.trim());
+ const showReviewSamples = preview && studentReviews.length === 0 && Boolean(await adminUser());
+ if (showReviewSamples) {
+   const topics = ["Shopify store setup", "Amazon product research", "Etsy listings", "Digital marketing", "Freelancing", "AI tools"];
+   studentReviews.push(...topics.map((topic, index) => ({
+     id: "sample-" + index,
+     name: "Sample review " + (index + 1),
+     text: "Preview card for " + topic + ". Published student feedback will appear here.",
+     rating: 0,
+     source: "",
+     url: "",
+   })));
+ }
  const reviewRows = studentReviews.length >= 4
    ? [studentReviews.filter((_, index) => index % 2 === 0), studentReviews.filter((_, index) => index % 2 === 1)]
    : [studentReviews];
@@ -353,6 +365,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           <div className="container mb-7 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#073aab]">Testimonials</span>
             <h2 id="student-testimonials-title" style={{ color: "#0b285b", fontFamily: "Georgia, serif", marginTop: 8 }}>What Our Students Say</h2>
+            {showReviewSamples && <p className="text-sm font-semibold text-[#52627a]">Layout preview · Sample cards only</p>}
           </div>
           {studentReviews.length > 1 && (
             <input id="pause-student-reviews" type="checkbox" className="review-pause peer ml-[max(1.5rem,calc((100%-1320px)/2))] accent-[#0b285b]" />
@@ -368,14 +381,14 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
                         <li key={review.id} className="flex max-w-sm flex-col rounded-3xl border border-[#e0e8f4] bg-white p-6 shadow-sm">
                           <div className="mb-4 flex items-center justify-between gap-3">
                             <span aria-hidden="true" className="grid size-10 place-items-center rounded-xl bg-[#fff2d4] font-serif text-3xl text-[#785719]">“</span>
-                            <span aria-label={review.rating + " out of 5 stars"} className="text-sm tracking-wide text-[#785719]">{"★".repeat(Math.round(review.rating))}</span>
+                            {!showReviewSamples && <span aria-label={review.rating + " out of 5 stars"} className="text-sm tracking-wide text-[#785719]">{"★".repeat(Math.round(review.rating))}</span>}
                           </div>
                           <blockquote className="m-0 mb-6 flex-1 whitespace-pre-line text-sm leading-relaxed" style={{ color: "#52627a" }}>{review.text}</blockquote>
                           <div className="flex items-center gap-3">
                             <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-full bg-[#eaf0fb] font-bold text-[#073aab]">{Array.from(review.name)[0]}</span>
                             <div>
                               <strong className="block text-sm text-[#0b285b]">{review.name}</strong>
-                              <span className="block text-xs text-[#52627a]">Digital Empire Student</span>
+                              <span className="block text-xs text-[#52627a]">{showReviewSamples ? "Preview sample" : "Digital Empire Student"}</span>
                             </div>
                           </div>
                         </li>
