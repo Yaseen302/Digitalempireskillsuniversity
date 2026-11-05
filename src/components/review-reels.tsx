@@ -12,6 +12,11 @@ const featuredReels = [
   "1675805277211450",
 ].map(id => ({ name: "", url: "https://www.facebook.com/reel/" + id + "/" }));
 
+featuredReels.push({
+  name: "From Digital Empire University",
+  url: "https://www.facebook.com/reel/29305422105749108/",
+});
+
 function facebookVideo(value: string) {
   try {
     const url = new URL(value);
@@ -50,7 +55,7 @@ export default function ReviewReels({ reviews }: { reviews: Review[] }) {
         <div className="mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-[#073aab]">In their own words</span>
           <h2 id="student-reels-title" style={{ color: "#0b285b", fontFamily: "Georgia, serif", margin: "8px 0" }}>Student Review Reels</h2>
-          <p>Watch learners share their experiences at Digital Empire.</p>
+          <p>Watch student stories and videos from Digital Empire University.</p>
         </div>
         <div className="relative">
           <ol ref={track} tabIndex={0} aria-label="Student review videos" className="m-0 flex snap-x snap-mandatory list-none gap-4 overflow-x-auto px-0 pb-4">
