@@ -356,5 +356,5 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
     ),
 "faq": null,
 "cta": null};
- return <>{preview&&<meta name="robots" content="noindex,nofollow"/>}{content.sections.filter(b=>b.enabled).map(block=><Fragment key={block.id}>{sections[block.type]||<ContentBlock block={block} content={content}/>}</Fragment>)}</>;
+ return <>{preview&&<meta name="robots" content="noindex,nofollow"/>}{content.sections.filter(b=>b.enabled).map(block=><Fragment key={block.id}>{Object.hasOwn(sections, block.type) ? sections[block.type] : <ContentBlock block={block} content={content}/>}</Fragment>)}</>;
 }
