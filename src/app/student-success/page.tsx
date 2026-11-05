@@ -10,6 +10,25 @@ export const metadata = {
   alternates: { canonical: "/student-success" },
 };
 
+function socialPlayer(value: string) {
+  const url = new URL(value);
+  const host = url.hostname.replace(/^(www|m)\./, "");
+  if (host === "facebook.com" || host === "fb.watch") {
+    return "https://www.facebook.com/plugins/video.php?" + new URLSearchParams({
+      href: value, show_text: "false", autoplay: "false",
+    });
+  }
+  const instagram = url.pathname.match(/^\/(reel|p|tv)\/([\w-]+)\/?$/);
+  if (host === "instagram.com" && instagram) {
+    return `https://www.instagram.com/${instagram[1]}/${instagram[2]}/embed/`;
+  }
+  const tiktok = url.pathname.match(/^\/@[^/]+\/video\/(\d+)\/?$/);
+  if (host === "tiktok.com" && tiktok) {
+    return `https://www.tiktok.com/player/v1/${tiktok[1]}`;
+  }
+  return null;
+}
+
 export default async function StudentSuccess() {
   const { successPhotos, successVideos } = await publishedContent();
   return (
@@ -41,18 +60,27 @@ export default async function StudentSuccess() {
           )}
           {successVideos.length > 0 && (
             <ul className="my-6 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
-              {successVideos.map((video, index) => (
+              {successVideos.map((video, index) => {
+                const title = video.alt || `Student story ${index + 1}`;
+                const embed = socialPlayer(video.url);
+                return (
                 <li key={video.id} className="rounded-2xl border border-[#dce6f4] bg-white p-3 shadow-sm">
                   {courseVideoSource(video.url) ? (
                     <CourseVideo url={video.url} title={video.alt || `Student story ${index + 1}`} story />
                   ) : (
-                    <h3 className="mb-3 text-lg">{video.alt || `Student story ${index + 1}`}</h3>
+                    <>
+                      <h3 className="mb-3 text-lg">{title}</h3>
+                      {embed && (
+                        <iframe src={embed} title={title} loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen className="aspect-[9/16] w-full rounded-xl border-0 bg-[#081c40]" />
+                      )}
+                    </>
                   )}
-                  <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#081c40] px-4 py-3 text-center font-semibold" style={{ color: "#fff" }} href={video.url} target="_blank" rel="noopener noreferrer">
-                    Watch video <ArrowUpRight size={17} aria-hidden="true" />
+                  <a className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#124391]" href={video.url} target="_blank" rel="noopener noreferrer">
+                    Open original <ArrowUpRight size={17} aria-hidden="true" />
                   </a>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           )}
           <div className="mt-9 text-center">
