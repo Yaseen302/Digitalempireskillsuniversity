@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { pageContent } from "@/lib/cms-server";
+import { defaultContent } from "@/lib/cms-model";
 import ContentBlock from "@/components/content-block";
 import { SocialIcon } from "@/components/social-links";
 import PlatformLogo from "@/components/platform-logo";
@@ -102,10 +103,21 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         </div>
       </div>),
 "marquee": (      <PlatformMarquee />),
-"about": (      <section className="home-about-centered" aria-labelledby="home-about-title">
-        <h2 id="home-about-title">{content.aboutTitle}</h2>
-        <p>{content.aboutText}</p>
-      </section>),
+"about": (
+      <section className="home-about-centered" aria-labelledby="home-about-title" style={{ paddingInline: 0, textAlign: "left" }}>
+        <div className="container">
+          <div className="mb-3 text-xs font-bold tracking-widest text-[#073aab] uppercase">About Us</div>
+          <h2 id="home-about-title">
+            {content.aboutTitle === defaultContent.aboutTitle ? "Digital Empire Skills University" : content.aboutTitle}
+          </h2>
+          <p style={{ maxWidth: "none", fontSize: "clamp(14px, 1.2vw, 16px)", color: "#52627a", textWrap: "pretty" }}>
+            {content.aboutText === defaultContent.aboutText
+              ? "At our Saddar and Gulshan-e-Iqbal campuses in Karachi, we help Pakistan’s youth build practical skills in e-commerce, digital marketing and online business. Through guided practice, learners gain the confidence to offer services, start businesses and explore opportunities beyond their local market. We’re especially committed to helping women build skills and work from home on their own terms. More than 1,000 learners have trained with us, each taking a step toward a more independent future."
+              : content.aboutText}
+          </p>
+        </div>
+      </section>
+    ),
 "paths": (      <section className="container learning-bento">
         <Link className="bento-commerce" href="/courses?category=E-commerce"><span className="eyebrow">01 / E-COMMERCE</span><h3>Build your store.<br/>Grow your ambition.</h3><div className="bento-brands"><PlatformLogo platform="shopify"/><PlatformLogo platform="amazon"/><PlatformLogo platform="etsy"/></div><span className="bento-link">Explore e-commerce <ArrowUpRight size={20}/></span></Link>
         <Link className="bento-business bento-forex" href="/forex-trading"><span className="eyebrow">02 / FOREX TRADING</span><h3>Understand the chart.<br/>Build your discipline.</h3><div className="bento-chart" aria-hidden="true"><span/><span/><span/><span/><span/><span/><span/><span/></div><span className="bento-link">Explore forex trading <ArrowUpRight size={20}/></span></Link>
