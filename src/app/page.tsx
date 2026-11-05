@@ -24,7 +24,6 @@ import {
   Truck,
   Settings2,
   BriefcaseBusiness,
-  Compass,
   GraduationCap,
 } from "lucide-react";
 import { Button, CourseCard } from "@/components/ui";
@@ -197,15 +196,6 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
               .map((course) => <CourseCard key={course.slug} course={course} />)}
           </div>
         </Reveal>
-        <div className="course-note">
-          <Compass size={19} />
-          <span>
-            Not sure where to start? Let’s find the right path for you.
-          </span>
-          <Link href="/book-a-call">
-            Talk to our team <ArrowRight size={15} />
-          </Link>
-        </div>
       </section>),
 "story": (
       <section className="bg-white py-12 sm:py-16 lg:py-24" aria-labelledby="ecommerce-benefits-title">
