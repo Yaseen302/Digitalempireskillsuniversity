@@ -224,14 +224,14 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
       </section>
     ),
 "ecommerce-kit": (
-      <section className="bg-[#f3f6fb] py-14 sm:py-20" aria-labelledby="ecommerce-kit-title">
+      <section className="bg-[radial-gradient(ellipse_at_top_right,#153c72,#0b2346_45%,#07172e_85%)] py-14 sm:py-20" aria-labelledby="ecommerce-kit-title">
         <div className="container mx-auto" style={{ maxWidth: 1080 }}>
           <div className="mb-10 text-center">
-            <span className="inline-flex rounded-full border border-[#e6d6ae] bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#614912]">Why choose us</span>
-            <h2 id="ecommerce-kit-title" className="mt-4" style={{ fontFamily: "Georgia, serif", color: "#0b285b", fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.14 }}>
+            <span className="inline-flex rounded-full border border-[#f2cc76]/35 bg-[#f2cc76]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#f2cc76]">Why choose us</span>
+            <h2 id="ecommerce-kit-title" className="mt-4" style={{ fontFamily: "Georgia, serif", color: "#fff", fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.14 }}>
               Everything You Need to Succeed in E-commerce
             </h2>
-            <p style={{ color: "#52627a", marginTop: 12 }}>Learn the skills to plan, launch and manage an online business.</p>
+            <p style={{ color: "#ccd9eb", marginTop: 12 }}>Learn the skills to plan, launch and manage an online business.</p>
           </div>
           <ol className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -242,11 +242,11 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
               { Icon: Truck, title: "From listing to delivery", description: "Learn how to prepare listings, handle orders and plan shipping and returns." },
               { Icon: Settings2, title: "Business automation", description: "Explore tools that simplify routine work, from tracking stock to organizing orders." },
             ].map(({ Icon, title, description }, index) => (
-              <li key={title} className="relative isolate overflow-hidden rounded-3xl border border-[#e2e9f3] border-l-4 border-l-[#e4bc63] bg-white p-6 shadow-[0_12px_30px_-18px_#0b285b55] sm:min-h-[220px]">
-                <span className="absolute right-5 top-3 -z-10 font-serif text-7xl font-bold leading-none text-[#e7edf6]" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span className="mb-5 grid size-12 place-items-center rounded-2xl bg-[#fff4da] text-[#745514]" aria-hidden="true"><Icon size={21} /></span>
-                <h3 style={{ color: "#0b285b", fontFamily: "Georgia, serif", fontSize: "1.3rem", margin: "0 0 10px" }}>{title}</h3>
-                <p style={{ color: "#52627a", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{description}</p>
+              <li key={title} className="relative isolate overflow-hidden rounded-3xl border border-white/15 border-l-4 border-l-[#f2cc76] bg-[linear-gradient(145deg,#18365c,#0d2445)] p-6 shadow-[0_14px_32px_-18px_#0009] sm:min-h-[220px]">
+                <span className="absolute right-5 top-3 -z-10 font-serif text-7xl font-bold leading-none text-white/10" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className="mb-5 grid size-12 place-items-center rounded-2xl border border-[#f2cc76]/25 bg-[#f2cc76]/10 text-[#f2cc76]" aria-hidden="true"><Icon size={21} /></span>
+                <h3 style={{ color: "#fff", fontFamily: "Georgia, serif", fontSize: "1.3rem", margin: "0 0 10px" }}>{title}</h3>
+                <p style={{ color: "#d0dcf0", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{description}</p>
               </li>
             ))}
           </ol>
