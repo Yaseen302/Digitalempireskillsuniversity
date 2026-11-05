@@ -106,8 +106,8 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
 "about": (
       <section className="home-about-centered" aria-labelledby="home-about-title" style={{ paddingInline: 0, textAlign: "left" }}>
         <div className="container">
-          <div className="mb-3 text-xs font-bold tracking-widest text-[#073aab] uppercase">About Us</div>
-          <h2 id="home-about-title">
+          <div className="mb-3 text-center text-xs font-bold tracking-widest text-[#073aab] uppercase">About Us</div>
+          <h2 id="home-about-title" className="text-center">
             {content.aboutTitle === defaultContent.aboutTitle ? "Digital Empire Skills University" : content.aboutTitle}
           </h2>
           <p style={{ maxWidth: "none", fontSize: "clamp(14px, 1.2vw, 16px)", color: "#52627a", textWrap: "pretty" }}>
