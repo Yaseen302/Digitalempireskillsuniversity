@@ -41,9 +41,6 @@ export default function About() {
           <p className="text-lg font-semibold sm:text-2xl" style={{ color: "#f2cc76" }}>
             Learn Skills. Build Independence. Create Your Future.
           </p>
-          <p className="mx-auto mt-5 max-w-xl" style={{ color: "#dce8fb" }}>
-            Every big journey begins with one decision: the decision to learn and take the first step.
-          </p>
         </div>
       </section>
 
@@ -68,7 +65,7 @@ export default function About() {
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <h2 id="about-story" className="mb-4 text-3xl sm:text-4xl">Our Story</h2>
           <p className="leading-relaxed">
-            At Digital Empire Skills University, we help people turn that decision into practical action. At our Saddar and Gulshan-e-Iqbal campuses in Karachi, learners get hands-on training in e-commerce, digital marketing and online business so they can build useful skills, practise with confidence and explore new opportunities.
+            At Digital Empire Skills University, we help learners put their skills into practice. At our Saddar and Gulshan-e-Iqbal campuses in Karachi, learners get hands-on training in e-commerce, digital marketing and online business so they can build useful skills, practise with confidence and explore new opportunities.
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
