@@ -2,11 +2,15 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Pause, Play, Sparkles } from "lucide-react";
-export default function HeroScene({role="CEO & Founder of Digital Empire Skills University"}:{role?:string}) {
+const founderTitle = "Founder & CEO Digital Empire";
+
+export default function HeroScene({role=founderTitle}:{role?:string}) {
  const [paused, setPaused] = useState(false);
+ const usesStandardTitle = role.trim() === founderTitle ||
+  /^CEO & Founder of Digital Empire(?: Skills University)?$/i.test(role.trim());
  const roleBreak = role.indexOf(" of ");
- const roleTitle = roleBreak === -1 ? role : role.slice(0, roleBreak + 3);
- const organization = roleBreak === -1 ? "" : role.slice(roleBreak + 4);
+ const roleTitle = usesStandardTitle ? "Founder & CEO" : roleBreak === -1 ? role : role.slice(0, roleBreak + 3);
+ const organization = usesStandardTitle ? "Digital Empire" : roleBreak === -1 ? "" : role.slice(roleBreak + 4);
  return <div className={`empire-scene founder-scene ${paused ? "scene-paused" : ""}`}>
   <div className="founder-glow" aria-hidden="true" />
   <div className="founder-ring" aria-hidden="true" />
