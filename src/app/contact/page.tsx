@@ -1,8 +1,6 @@
 import CampusVisual from "@/components/campus-visual";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
-import { PageIntro } from "@/components/ui";
 import InquiryForm from "@/components/inquiry-form";
-import SocialLinks from "@/components/social-links";
 import BranchMap from "@/components/branch-map";
 import { WhatsAppIcon } from "@/components/whatsapp";
 import { site, branches, mapsUrl, whatsappUrl } from "@/data/site";
@@ -15,14 +13,24 @@ export const metadata = {
 export default function Contact() {
   return (
     <>
+      <section className="container scroll-mt-28 py-10 sm:py-14" id="send-a-message" aria-labelledby="contact-form-title">
+        <div className="mx-auto mb-7 max-w-xl text-center">
+          <span className="eyebrow">Contact Us</span>
+          <h1 id="contact-form-title" className="my-3">Send us a message</h1>
+          <p>Tell us which course you’re interested in or how we can help.</p>
+        </div>
+        <div className="mx-auto max-w-2xl">
+          <InquiryForm kind="contact" />
+        </div>
+      </section>
       <section className="contact-editorial-hero container">
         <div>
           <span className="eyebrow">EVERY NEXT CHAPTER STARTS WITH HELLO.</span>
-          <h1>
+          <h2>
             Big ambitions.
             <br />
             <span>Let’s talk.</span>
-          </h1>
+          </h2>
           <p>
             A question, an idea, a new direction. Wherever you are in your
             journey, we’ll help you find your next practical step.
@@ -131,45 +139,6 @@ export default function Contact() {
             </article>
           ))}
         </div>
-      </section>
-      <section
-        className="section container form-layout contact-form-section"
-        id="send-a-message"
-      >
-        <aside>
-          <span className="eyebrow">EVERY BIG IDEA STARTS WITH HELLO</span>
-          <h2>
-            Your questions.
-            <br />
-            Our next conversation.
-          </h2>
-          <p>
-            Not sure which course to choose? Tell us about your interests and
-            we’ll help you explore a practical next step.
-          </p>
-          <div className="contact-item">
-            <Mail />
-            <div>
-              <h3>Email our team</h3>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-            </div>
-          </div>
-          <div className="contact-socials">
-            <h3>Follow the Digital Empire journey</h3>
-            <SocialLinks text />
-          </div>
-          <div className="contact-note">
-            <h3>Prefer to talk it through?</h3>
-            <p>
-              Share your goals in a consultation request. Our team will get in
-              touch to agree a time.
-            </p>
-            <a className="inline-link" href="/book-a-call">
-              Book a call <ArrowUpRight size={16} />
-            </a>
-          </div>
-        </aside>
-        <InquiryForm kind="contact" />
       </section>
       <section className="contact-next-step container">
         <span className="eyebrow gold">YOUR AMBITION HAS A PLACE HERE.</span>
