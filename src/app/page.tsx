@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import StatCount from "@/components/stat-count";
-import { adminUser, pageContent } from "@/lib/cms-server";
+import { pageContent } from "@/lib/cms-server";
 import { defaultContent } from "@/lib/cms-model";
 import ContentBlock from "@/components/content-block";
 import { SocialIcon } from "@/components/social-links";
@@ -30,34 +30,45 @@ import {
 import { Button, CourseCard } from "@/components/ui";
 import { courses } from "@/data/courses";
 export const metadata = { title: {absolute:"Digital Skills & E-commerce Courses in Karachi | Digital Empire"}, description:"Learn Shopify, Amazon, Etsy, Meta Ads, WordPress and digital business skills at Digital Empire Skills University in Karachi. Saddar and Gulshan campuses.", alternates: { canonical: "/" } };
+const suppliedTestimonials = [
+  ["Muhammad Ahmed","Shopify","Digital Empire mein Shopify ka experience bohat acha raha. Teachers ne har step asaan tareeqe se samjhaya. Ab mujhe apna online store banana aur manage karna aata hai."],
+  ["Ayesha Khan","Etsy","I started with no experience on Etsy. The instructors were supportive, and the hands-on training helped me understand how the platform works."],
+  ["Muhammad Usman","Amazon","Amazon FBA aur FBM dono achi tarah samajh aa gaye. Training structured thi, is liye beginner ke taur par mere liye lessons follow karna asaan raha."],
+  ["Fatima Noor","Shopify","I’m glad I joined the Shopify course. I can now upload products, organize them into collections, and design my own storefront."],
+  ["Muhammad Bilal","Forex Trading","Forex ke basics se advanced topics tak achi guidance mili. Chart analysis aur risk management ko jis tarah samjhaya gaya, us se dono concepts clear ho gaye."],
+  ["Sana Malik","Etsy","I liked the learning environment at Digital Empire. The course gave me practical experience setting up an Etsy shop, researching products, and improving listings."],
+  ["Muhammad Hamza","Amazon","Amazon business ke baare mein kaafi kuch seekha. Mere liye product research, sourcing aur account management wali training sab se zyada helpful rahi."],
+  ["Zainab Ali","Shopify","The instructors took the time to answer my questions in detail. Building a Shopify website feels much easier now."],
+  ["Muhammad Saad","Forex Trading","Practical charts par examples dekh kar market structure aur technical analysis samajhna mere liye asaan ho gaya."],
+  ["Hira Ahmed","Etsy","The course was easy to follow as a beginner. I especially appreciated the clear explanation of digital and physical products on Etsy."],
+  ["Muhammad Taha","Shopify","Store setup ki practical training kaafi helpful rahi. Ab domain connect karne, theme customize karne aur payments set up karne ke steps clear hain."],
+  ["Maryam Sheikh","Amazon","The Amazon VA course helped me understand product research, listing creation, and how to use Seller Central."],
+  ["Muhammad Farhan","Forex Trading","Candlesticks, support aur resistance, aur risk management ko simple language mein samjhaya gaya. Is se trading ke basics samajhne mein kaafi madad mili."],
+  ["Eman Fatima","Shopify","I wanted to start an online business and needed a place to begin. The practical Shopify sessions at Digital Empire gave me a clear direction."],
+  ["Muhammad Abdullah","Etsy","Etsy shop banane se le kar listings behtar karne tak, har step seekhne ko mila. Overall, course ka experience acha raha."],
+  ["Laiba Noor","Amazon","The instructors explained each topic in detail. By the end of the course, I had a clearer understanding of how an e-commerce business works."],
+  ["Muhammad Huzaifa","Shopify","Shopify store banane ke saath website customization aur store management bhi seekha. Practical assignments se meri skills improve hui hain."],
+  ["Mahnoor Fatima","Forex Trading","The course helped me learn how to read charts, identify entry and exit points, and think about risk before placing a trade."],
+  ["Muhammad Zubair","Amazon","Training ka tareeqa professional tha. Amazon ke different business models aur unke day-to-day workflows pehle se zyada clear ho gaye."],
+  ["Alina Shah","Shopify & Etsy","I learned how both Shopify and Etsy work. The instructors were approachable and guided me throughout the course. I’d recommend it to anyone getting started."],
+].map(([name, course, text], index) => ({
+  id: "supplied-testimonial-" + (index + 1),
+  name,
+  course,
+  text,
+  rating: 0,
+}));
+
 export default async function Home({searchParams}:{searchParams:Promise<{cmsPreview?:string}>}) {
  const preview=(await searchParams).cmsPreview==="1";const content=await pageContent(preview);
- const studentReviews = content.reviews.filter(review => review.name.trim() && review.text.trim());
- const showReviewSamples = preview && Boolean(await adminUser());
- if (showReviewSamples) {
-   const examples = [
-     ["Ayesha", "Shopify store setup and product pages"],
-     ["Bilal", "Amazon product research and listing practice"],
-     ["Hira", "Etsy digital products and shop setup"],
-     ["Usman", "Forex chart reading and risk management"],
-     ["Sana", "Shopify checkout and order management"],
-     ["Hamza", "Amazon fees and margin calculations"],
-     ["Fatima", "Etsy listing photos and keywords"],
-     ["Zain", "Forex demo trading and trade journaling"],
-     ["Maryam", "Shopify theme customization"],
-     ["Saad", "Amazon inventory planning"],
-     ["Iqra", "Etsy product mockups"],
-     ["Ahmed", "Forex position sizing"],
-   ];
-   studentReviews.push(...examples.map(([name, topic], index) => ({
-     id: "preview-example-" + index,
-     name,
-     text: "Layout sample for " + topic + ".",
-     rating: 0,
-     source: "",
-     url: "",
-   })));
- }
+ const savedReviews = content.reviews
+   .filter(review => review.name.trim() && review.text.trim())
+   .map(review => ({ ...review, course: "" }));
+ const savedNames = new Set(savedReviews.map(review => review.name.trim().toLowerCase()));
+ const studentReviews = [
+   ...savedReviews,
+   ...suppliedTestimonials.filter(review => !savedNames.has(review.name.toLowerCase())),
+ ];
  const reviewRows = studentReviews.length >= 4
    ? [studentReviews.filter((_, index) => index % 2 === 0), studentReviews.filter((_, index) => index % 2 === 1)]
    : [studentReviews];
@@ -302,7 +313,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           <div className="container mb-7 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#073aab]">Testimonials</span>
             <h2 id="student-testimonials-title" style={{ color: "#0b285b", fontFamily: "Georgia, serif", marginTop: 8 }}>What Our Students Say</h2>
-            {showReviewSamples && <p className="text-sm font-semibold text-[#52627a]">Layout preview · Sample cards are labeled</p>}
+
           </div>
           {studentReviews.length > 1 && (
             <input id="pause-student-reviews" type="checkbox" className="review-pause peer ml-[max(1.5rem,calc((100%-1320px)/2))] accent-[#0b285b]" />
@@ -325,7 +336,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
                             <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-full bg-[#eaf0fb] font-bold text-[#073aab]">{Array.from(review.name)[0]}</span>
                             <div>
                               <strong className="block text-sm text-[#0b285b]">{review.name}</strong>
-                              <span className="block text-xs text-[#52627a]">{review.rating === 0 ? "Preview sample" : "Digital Empire Student"}</span>
+                              <span className="block text-xs text-[#52627a]">{review.course ? review.course + " · Digital Empire Student" : "Digital Empire Student"}</span>
                             </div>
                           </div>
                         </li>
