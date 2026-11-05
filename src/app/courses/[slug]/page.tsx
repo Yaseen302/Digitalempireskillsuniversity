@@ -7,6 +7,7 @@ import { branches, site, whatsappUrl } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
+  ShoppingCart, Store, Search, Boxes, Palette, Tags, CreditCard, Truck, ClipboardList, Headphones, Globe2, Megaphone, Camera, BarChart3, ListChecks, Laptop, Check,
   BookOpen,
   Clock,
   Monitor,
@@ -15,6 +16,25 @@ import {
 } from "lucide-react";
 import { courses } from "@/data/courses";
 import { Button } from "@/components/ui";
+const shopifyModules = [
+  { title: "E-commerce Basics", Icon: ShoppingCart },
+  { title: "Shopify Store Setup", Icon: Store },
+  { title: "Product & Niche Research", Icon: Search },
+  { title: "Sourcing & Business Models", Icon: Boxes },
+  { title: "Themes & Store Design", Icon: Palette },
+  { title: "Product Listings & Collections", Icon: Tags },
+  { title: "Payments & Checkout", Icon: CreditCard },
+  { title: "Shipping & Fulfillment", Icon: Truck },
+  { title: "Order Management", Icon: ClipboardList },
+  { title: "Customer Service", Icon: Headphones },
+  { title: "Store SEO", Icon: Globe2 },
+  { title: "Social Media Marketing", Icon: Megaphone },
+  { title: "Content Creation", Icon: Camera },
+  { title: "Analytics & Tracking", Icon: BarChart3 },
+  { title: "Launch Checklist", Icon: ListChecks },
+  { title: "Guided Store Project", Icon: Laptop },
+];
+
 export function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
 }
@@ -93,6 +113,54 @@ export default async function Course({
         </div>
       </section>
       )}
+      {isShopify ? (
+        <>
+          <section id="course-outline" aria-labelledby="shopify-outline-title" className="scroll-mt-28 bg-[#f4f7fc] py-14 sm:py-20">
+            <div className="container">
+              <div className="mb-9 text-center">
+                <span className="eyebrow">Shopify training roadmap</span>
+                <h2 id="shopify-outline-title" className="mt-3">Shopify Course Outline</h2>
+                <p className="mx-auto mt-3 max-w-xl">Explore the topics below and ask admissions for the current syllabus and batch schedule.</p>
+              </div>
+              <CourseVideo url={courseVideos[slug]} title={c.title} />
+              <ol role="list" className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+                {shopifyModules.map(({title, Icon}, index) => (
+                  <li key={title} className="overflow-hidden rounded-3xl border border-[#dce6f4] bg-white p-4 shadow-sm transition-shadow hover:shadow-lg">
+                    <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#0b2247] to-[#225391]">
+                      <div className="absolute size-40 rounded-full border border-white/20" />
+                      <div className="absolute size-28 rounded-full border border-white/20" />
+                      <Icon size={58} strokeWidth={1.4} className="relative text-[#f2cc76]" />
+                    </div>
+                    <div className="px-1 pb-2 pt-4">
+                      <span className="text-xs font-bold tracking-widest text-[#124391]">{String(index + 1).padStart(2, "0")}</span>
+                      <h3 className="mt-2 text-lg">{title}</h3>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-8 text-center">
+                <a className="button whatsapp-link" href={whatsappUrl(branches[0], "Assalam o Alaikum! I would like to know more about Shopify training.")} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle size={19} aria-hidden="true" /> Contact on WhatsApp
+                </a>
+              </div>
+            </div>
+          </section>
+          <section className="container grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2">
+            <div>
+              <span className="eyebrow">Practical training in Karachi</span>
+              <h2 className="mt-3">From your first product to a working storefront</h2>
+              <p className="mt-4">Practise how to build a store, present products and handle orders with guidance from Digital Empire.</p>
+            </div>
+            <ul className="m-0 grid list-none gap-3 p-0">
+              {["Set up and customize a Shopify storefront", "Research products and organize collections", "Plan checkout, shipping and fulfillment", "Build a launch plan and track store performance"].map(item => (
+                <li key={item} className="flex items-center gap-3 rounded-xl border border-[#dce6f4] bg-[#f4f7fc] p-4 font-semibold">
+                  <Check size={20} className="shrink-0 text-[#087a42]" aria-hidden="true" />{item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      ) : (
       <section className="section container detail-grid">
         <div>
           <CourseVideo url={courseVideos[slug]} title={c.title} />
@@ -101,12 +169,9 @@ export default async function Course({
             Indicative learning structure. The admissions team will confirm the
             detailed syllabus.
           </p>
-          <ol className={isShopify ? "my-6 grid list-none gap-3 p-0" : "my-6 grid list-decimal gap-4 pl-6"}>
-            {courseSeo[slug]?.topics?.length ? courseSeo[slug].topics.map((topic, index) => (
-              <li className={isShopify ? "flex items-center gap-4 rounded-xl border border-[#dce6f4] bg-[#f5f8fc] p-4 font-semibold" : "pl-1"} key={topic}>
-                {isShopify && <span className="rounded-lg bg-[#081c40] px-3 py-2 text-sm text-[#f2cc76]" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>}
-                <span className={isShopify ? "first-letter:uppercase" : undefined}>{topic}</span>
-              </li>
+          <ol className="my-6 grid list-decimal gap-4 pl-6">
+            {courseSeo[slug]?.topics?.length ? courseSeo[slug].topics.map(topic => (
+              <li className="pl-1" key={topic}>{topic}</li>
             )) : c.modules.map(module => (
               <li className="pl-1" key={module.title}>
                 <strong>{module.title.replace(/^\d+\s*·\s*/, "")}</strong>
@@ -148,6 +213,7 @@ export default async function Course({
           </div>
         </aside>
       </section>
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
