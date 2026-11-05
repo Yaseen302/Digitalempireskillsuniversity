@@ -1,3 +1,5 @@
+import Image from "next/image";
+import PlatformLogo from "@/components/platform-logo";
 import { courseSeo } from "@/data/course-seo";
 import CourseVideo from "@/components/course-video";
 import { publishedContent } from "@/lib/cms-server";
@@ -39,8 +41,41 @@ export default async function Course({
   const c = courses.find((c) => c.slug === slug);
   if (!c) notFound();
   const { courseVideos } = await publishedContent();
+  const isShopify = slug === "shopify";
   return (
     <>
+      {isShopify ? (
+        <section className="bg-[#081c40] bg-gradient-to-br from-[#081c40] to-[#143d75] py-14 sm:py-20">
+          <div className="container grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <div className="mb-6 flex items-center gap-2 text-sm text-[#dce8fb]">
+                <Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/courses">Courses</Link>
+              </div>
+              <span className="eyebrow gold">Hands-on training · Karachi</span>
+              <h1 className="my-5" style={{ color: "#fff", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 1.06 }}>
+                Build Your Online Store with <span style={{ color: "#f2cc76" }}>Shopify</span>
+              </h1>
+              <p className="mb-7 max-w-xl leading-relaxed" style={{ color: "#dce8fb" }}>
+                Learn how to set up a Shopify storefront, organize products and manage payments and orders through guided practice.
+              </p>
+              <div className="flex flex-wrap items-center gap-4">
+                <Button href="/apply?course=shopify" light>Apply for Shopify training</Button>
+                <a className="rounded-lg border border-white/30 px-4 py-3 text-sm font-semibold" style={{ color: "#fff" }} href="#course-outline">View course outline</a>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-white/20 bg-[#0b2247] shadow-xl">
+              <div className="flex items-center justify-between gap-4 bg-white px-5 py-3">
+                <PlatformLogo platform="shopify" />
+                <span className="text-sm font-semibold text-[#124391]">Digital Empire · Karachi</span>
+              </div>
+              <Image src="/images/classroom-4.jpg" alt="A Digital Empire classroom group" width={900} height={675} sizes="(min-width: 1024px) 48vw, 100vw" className="block aspect-[16/10] w-full object-cover object-[center_60%]" priority />
+              <div className="flex flex-wrap justify-between gap-2 px-5 py-4 text-sm text-[#dce8fb]">
+                <span>Practical classroom training</span><span>Saddar &amp; Gulshan-e-Iqbal</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : (
       <section className="page-intro">
         <div className="container">
           <div className="breadcrumbs">
@@ -57,17 +92,21 @@ export default async function Course({
           </Button>
         </div>
       </section>
+      )}
       <section className="section container detail-grid">
         <div>
           <CourseVideo url={courseVideos[slug]} title={c.title} />
-          <h2 className="curriculum-title">{c.title} Course Outline</h2>
+          <h2 id="course-outline" className="curriculum-title scroll-mt-28">{c.title} Course Outline</h2>
           <p className="muted">
             Indicative learning structure. The admissions team will confirm the
             detailed syllabus.
           </p>
-          <ol className="my-6 grid list-decimal gap-4 pl-6">
-            {courseSeo[slug]?.topics?.length ? courseSeo[slug].topics.map(topic => (
-              <li className="pl-1" key={topic}>{topic}</li>
+          <ol className={isShopify ? "my-6 grid list-none gap-3 p-0" : "my-6 grid list-decimal gap-4 pl-6"}>
+            {courseSeo[slug]?.topics?.length ? courseSeo[slug].topics.map((topic, index) => (
+              <li className={isShopify ? "flex items-center gap-4 rounded-xl border border-[#dce6f4] bg-[#f5f8fc] p-4 font-semibold" : "pl-1"} key={topic}>
+                {isShopify && <span className="rounded-lg bg-[#081c40] px-3 py-2 text-sm text-[#f2cc76]" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>}
+                <span className={isShopify ? "first-letter:uppercase" : undefined}>{topic}</span>
+              </li>
             )) : c.modules.map(module => (
               <li className="pl-1" key={module.title}>
                 <strong>{module.title.replace(/^\d+\s*·\s*/, "")}</strong>
