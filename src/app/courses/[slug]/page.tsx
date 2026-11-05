@@ -7,7 +7,7 @@ import { branches, site, whatsappUrl } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ShoppingCart, Store, Search, Boxes, Palette, Tags, CreditCard, Truck, ClipboardList, Headphones, Globe2, Megaphone, Camera, BarChart3, ListChecks, Laptop, Check,
+  Check,
   BookOpen,
   Clock,
   Monitor,
@@ -17,22 +17,22 @@ import {
 import { courses } from "@/data/courses";
 import { Button } from "@/components/ui";
 const shopifyModules = [
-  { title: "E-commerce Basics", Icon: ShoppingCart },
-  { title: "Shopify Store Setup", Icon: Store },
-  { title: "Product & Niche Research", Icon: Search },
-  { title: "Sourcing & Business Models", Icon: Boxes },
-  { title: "Themes & Store Design", Icon: Palette },
-  { title: "Product Listings & Collections", Icon: Tags },
-  { title: "Payments & Checkout", Icon: CreditCard },
-  { title: "Shipping & Fulfillment", Icon: Truck },
-  { title: "Order Management", Icon: ClipboardList },
-  { title: "Customer Service", Icon: Headphones },
-  { title: "Store SEO", Icon: Globe2 },
-  { title: "Social Media Marketing", Icon: Megaphone },
-  { title: "Content Creation", Icon: Camera },
-  { title: "Analytics & Tracking", Icon: BarChart3 },
-  { title: "Launch Checklist", Icon: ListChecks },
-  { title: "Guided Store Project", Icon: Laptop },
+  { title: "E-commerce Basics", image: "ecommerce-basics-400x400.webp" },
+  { title: "Shopify Store Setup", image: "shopify%20setup.webp" },
+  { title: "Product & Niche Research", image: "product-research-400x400.webp" },
+  { title: "Sourcing & Business Models", image: "private-label-400x400.webp" },
+  { title: "Themes & Store Design", image: "shoipify-store-design-400x400.webp" },
+  { title: "Product Listings & Collections", image: "shoipify-store-design-400x400.webp" },
+  { title: "Payments & Checkout", image: "payments-400x400.webp" },
+  { title: "Shipping & Fulfillment", image: "courier-400x400.webp" },
+  { title: "Order Management", image: "ecommerce-basics-400x400.webp" },
+  { title: "Customer Service", image: "customer-service-400x400.webp" },
+  { title: "Store SEO", image: "seo-basics-400x400.webp" },
+  { title: "Social Media Marketing", image: "ads-400x400.webp" },
+  { title: "Content Creation", image: "content-creation-400x400.webp" },
+  { title: "Analytics & Tracking", image: "analytics-400x400.webp" },
+  { title: "Launch Checklist", image: "shopify%20setup.webp" },
+  { title: "Guided Store Project", image: "product-research-400x400.webp" },
 ];
 
 export function generateStaticParams() {
@@ -120,17 +120,19 @@ export default async function Course({
               <div className="mb-9 text-center">
                 <span className="eyebrow">Shopify training roadmap</span>
                 <h2 id="shopify-outline-title" className="mt-3">Shopify Course Outline</h2>
-                <p className="mx-auto mt-3 max-w-xl">Explore the topics below and ask admissions for the current syllabus and batch schedule.</p>
               </div>
               <CourseVideo url={courseVideos[slug]} title={c.title} />
               <ol role="list" className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
-                {shopifyModules.map(({title, Icon}, index) => (
+                {shopifyModules.map(({ title, image }, index) => (
                   <li key={title} className="overflow-hidden rounded-3xl border border-[#dce6f4] bg-white p-4 shadow-sm transition-shadow hover:shadow-lg">
-                    <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#0b2247] to-[#225391]">
-                      <div className="absolute size-40 rounded-full border border-white/20" />
-                      <div className="absolute size-28 rounded-full border border-white/20" />
-                      <Icon size={58} strokeWidth={1.4} className="relative text-[#f2cc76]" />
-                    </div>
+                    <Image
+                      src={`https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/${image}`}
+                      alt=""
+                      width={400}
+                      height={400}
+                      unoptimized
+                      className="block aspect-square w-full rounded-2xl bg-[#f4f7fc] object-contain"
+                    />
                     <div className="px-1 pb-2 pt-4">
                       <span className="text-xs font-bold tracking-widest text-[#124391]">{String(index + 1).padStart(2, "0")}</span>
                       <h3 className="mt-2 text-lg">{title}</h3>
