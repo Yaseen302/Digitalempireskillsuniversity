@@ -17,7 +17,6 @@ import {
   ArrowUpRight,
   MessageCircle,
   MapPin,
-  MousePointer2,
   BookOpen,
   Globe2,
   Package,
@@ -27,9 +26,8 @@ import {
   BriefcaseBusiness,
   Compass,
   GraduationCap,
-  Sparkles,
 } from "lucide-react";
-import { Button, CourseCard, CTA } from "@/components/ui";
+import { Button, CourseCard } from "@/components/ui";
 import { courses } from "@/data/courses";
 export const metadata = { title: {absolute:"Digital Skills & E-commerce Courses in Karachi | Digital Empire"}, description:"Learn Shopify, Amazon, Etsy, Meta Ads, WordPress and digital business skills at Digital Empire Skills University in Karachi. Saddar and Gulshan campuses.", alternates: { canonical: "/" } };
 export default async function Home({searchParams}:{searchParams:Promise<{cmsPreview?:string}>}) {
@@ -270,83 +268,10 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         </div>
       </section>
     ),
-"steps": (      <section className="section container">
-        <div className="center-heading">
-          <span className="eyebrow">SMALL STEPS. BIG POSSIBILITIES.</span>
-          <h2>Your ambition. A clear path forward.</h2>
-          <p>
-            You don’t need to have it all figured out. You just need a place to
-            start.
-          </p>
-        </div>
-        <div className="steps">
-          {[
-            [
-              Compass,
-              "Explore your options",
-              "Find the skills that match your interests.",
-            ],
-            [
-              MousePointer2,
-              "Choose your path",
-              "Turn your goals into a learning direction.",
-            ],
-            [
-              BookOpen,
-              "Learn by doing",
-              "Put knowledge into practice, step by step.",
-            ],
-            [
-              Sparkles,
-              "Build your future",
-              "Take your new skills into your next chapter.",
-            ],
-          ].map(([Icon, title, text], i) => {
-            const I = Icon as typeof Compass;
-            return (
-              <div key={i}>
-                <span className="step-number">0{i + 1}</span>
-                <I size={26} />
-                <h3>{title as string}</h3>
-                <p>{text as string}</p>
-              </div>
-            );
-          })}
-        </div>
-      </section>),
+"steps": null,
 "community": (
       <>
       <ReviewReels reviews={content.reviews} />
-      <section className="community">
-        <div className="container community-inner">
-          <div>
-            <span className="eyebrow gold">A COMMUNITY WITH AMBITION</span>
-            <h2>
-              Different starting points.
-              <br />A shared drive to grow.
-            </h2>
-            <p>
-              Student stories belong to the people who live them. As our
-              community grows, this space will feature their experiences, in
-              their own words.
-            </p>
-            <Link className="inline-link" href="/contact">
-              Share your learning story <ArrowUpRight size={17} />
-            </Link>
-          </div>
-          <div className="community-quote">
-            <span>“</span>
-            <h3>
-              Build Skills.
-              <br />
-              Build Income.
-              <br />
-              <em>Build Empire.</em>
-            </h3>
-            <small>THE DIGITAL EMPIRE VISION</small>
-          </div>
-        </div>
-      </section>
       {studentReviews.length > 0 && (
         <section className="student-testimonials bg-[#f3f6fb] py-14 sm:py-20" aria-labelledby="student-testimonials-title">
           <style>{`
@@ -403,48 +328,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
       )}
       </>
     ),
-"faq": (      <section className="section container home-faq">
-        <div>
-          <span className="eyebrow">BEFORE YOUR FIRST STEP</span>
-          <h2>
-            Big questions.
-            <br />
-            <span>Honest answers.</span>
-          </h2>
-          <p>Clarity helps you make the right decision.</p>
-          <Link href="/contact" className="inline-link">
-            Ask us anything <ArrowUpRight size={17} />
-          </Link>
-        </div>
-        <div>
-          {[
-            [
-              "Where should I start?",
-              "Start with what interests you. Explore our courses, or speak with our team to find a path that fits your experience and goals.",
-            ],
-            [
-              "Can I visit a campus?",
-              "Yes. We have branches in Saddar and Gulshan-e-Iqbal, Karachi. Call your preferred branch before visiting so the team can guide you.",
-            ],
-            [
-              "What are the course fees and timings?",
-              "Our admissions team confirms the current fees, duration, delivery format and schedules for each intake before enrollment.",
-            ],
-            [
-              "Will a course guarantee income?",
-              "No. Education develops knowledge and skills. Business, career and trading outcomes depend on your circumstances, effort and market conditions.",
-            ],
-          ].map(([question, answer]) => (
-            <details className="module" key={question}>
-              <summary>
-                {question}
-                <span>+</span>
-              </summary>
-              <p>{answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>),
-"cta": (      <CTA />)};
+"faq": null,
+"cta": null};
  return <>{preview&&<meta name="robots" content="noindex,nofollow"/>}{content.sections.filter(b=>b.enabled).map(block=><Fragment key={block.id}>{sections[block.type]||<ContentBlock block={block} content={content}/>}</Fragment>)}</>;
 }
