@@ -300,6 +300,9 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         <section className="student-testimonials bg-[#f3f6fb] py-14 sm:py-20" aria-labelledby="student-testimonials-title">
           <style>{`
             .student-testimonials .review-track { display: flex; width: max-content; animation: student-review-scroll 48s linear infinite; }
+            .student-testimonials .review-track.reverse { animation-direction: reverse; }
+            .student-testimonials .review-scroll { scrollbar-width: none; }
+            .student-testimonials .review-scroll::-webkit-scrollbar { display: none; }
             .student-testimonials .review-set { display: flex; flex: none; gap: 16px; padding: 0 16px 0 0; min-width: 100vw; }
             .student-testimonials .review-set > li { flex: 1 0 clamp(240px, 25vw, 320px); }
             .student-testimonials .review-rows:hover .review-track,
@@ -321,8 +324,8 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           {studentReviews.length > 1 && <label htmlFor="pause-student-reviews" className="ml-2 text-sm font-semibold text-[#0b285b]">Pause scrolling</label>}
           <div className="review-rows mt-4 space-y-4">
             {reviewRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="overflow-x-auto px-4 pb-2" tabIndex={0} aria-label={"Student reviews, row " + (rowIndex + 1)}>
-                <div className={row.length > 1 ? "review-track" : "mx-auto w-full max-w-sm"}>
+              <div key={rowIndex} className="review-scroll overflow-x-auto px-4 pb-2" tabIndex={0} aria-label={"Student reviews, row " + (rowIndex + 1)}>
+                <div className={row.length > 1 ? (rowIndex === 1 ? "review-track reverse" : "review-track") : "mx-auto w-full max-w-sm"}>
                   {(row.length > 1 ? [false, true] : [false]).map(duplicate => (
                     <ul key={String(duplicate)} aria-hidden={duplicate || undefined} className={row.length > 1 ? "review-set m-0 list-none" : "m-0 list-none p-0"}>
                       {row.map(review => (
