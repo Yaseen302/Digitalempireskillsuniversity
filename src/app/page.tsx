@@ -159,52 +159,61 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         </div>
       </section>),
 "story": (
-      <section className="bg-[#071b37] text-white" aria-labelledby="ecommerce-benefits-title">
-        <div className="container relative isolate grid overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_at_90%_40%,#174783_0%,#0b2850_38%,#071b37_72%)] lg:grid-cols-[1.4fr_1fr]">
-          <div className="relative z-10 py-12 sm:py-16 lg:py-20">
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#f2cc76]">
-              <span className="h-px w-8 bg-current" aria-hidden="true" />
-              Why learn e-commerce?
-            </div>
-            <h2 id="ecommerce-benefits-title" className="m-0 text-[clamp(2rem,4vw,3.75rem)] leading-[1.08] text-white">
-              Build skills that <span className="text-[#f2cc76]">travel with you.</span>
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#cfddf2] sm:text-base">
-              E-commerce connects your skills to customers beyond your city. Learn how to sell products online or offer freelance services, with the flexibility to build from home.
-            </p>
-            <ul className="mt-7 grid list-none gap-3 p-0 sm:grid-cols-2">
-              {[
-                ["Work from home", "Run an online store or serve clients from a workspace that suits you."],
-                ["Build on your own terms", "Women can learn, offer services and grow an online business around their schedules."],
-                ["Reach customers worldwide", "Explore marketplaces and freelance platforms to serve buyers beyond Pakistan."],
-                ["Build skills you can use", "Practise product research, listing creation and store management with guided projects."],
-              ].map(([title, description]) => (
-                <li key={title} className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/5 p-4">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#f2cc76]" aria-hidden="true" />
-                  <div>
-                    <strong className="block text-sm text-white">{title}</strong>
-                    <p className="mt-1 text-xs leading-relaxed text-[#cfddf2]">{description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <Link href="/courses?category=E-commerce" className="mt-7 inline-flex items-center gap-3 rounded-lg bg-[#f2cc76] px-5 py-3 text-sm font-bold text-[#071b37] hover:bg-[#ffe09c] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
-              Explore e-commerce courses <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <figure className="relative m-0 min-h-[22rem] lg:min-h-0">
-            <Image
-              src="/images/ali-butt-cutout.png"
-              alt="Ali Butt, Founder and CEO of Digital Empire"
-              fill
-              sizes="(max-width: 1023px) 90vw, 42vw"
-              className="object-contain object-bottom"
-            />
-            <figcaption className="absolute bottom-5 right-0 rounded-xl border border-white/15 bg-[#071b37]/90 px-4 py-3 text-right text-white">
-              <strong className="block text-sm">Ali Butt</strong>
+      <section className="bg-white py-12 sm:py-16 lg:py-24" aria-labelledby="ecommerce-benefits-title">
+        <div className="container relative isolate mx-auto overflow-hidden rounded-[28px] bg-[#08172b] shadow-[0_28px_65px_-28px_#08172b70]" style={{ maxWidth: 1150 }}>
+          <figure className="relative m-0 h-[320px] overflow-hidden bg-[#112d50] lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-[49%]">
+            <Image src="/images/ali-butt-cutout.png" alt="Ali Butt, Founder and CEO of Digital Empire" fill
+              sizes="(max-width: 1023px) 90vw, 565px" className="object-cover object-[center_55%] lg:object-[center_60%]" />
+            <div className="absolute inset-0 bg-[linear-gradient(0deg,#08172b,transparent_55%)] lg:bg-[linear-gradient(90deg,#08172b,transparent_45%),linear-gradient(0deg,#08172b,transparent_60%)]" aria-hidden="true" />
+            <figcaption className="absolute bottom-5 right-6 text-right lg:bottom-8 lg:right-9">
+              <strong className="block text-sm text-white">Ali Butt</strong>
               <span className="text-xs text-[#f2cc76]">Founder &amp; CEO · Digital Empire</span>
             </figcaption>
           </figure>
+          <div className="relative z-10 px-5 py-8 sm:px-9 sm:py-11 lg:w-[59%] lg:px-12 lg:py-12">
+            <div className="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#f2cc76]">
+              <span className="h-px w-7 bg-current" aria-hidden="true" />
+              Who this is for
+            </div>
+            <h2 id="ecommerce-benefits-title" style={{ color: "#fff", fontSize: "clamp(2.05rem, 4vw, 3.35rem)", lineHeight: 1.04, margin: 0 }}>
+              <em className="block font-semibold" style={{ color: "#f2cc76" }}>This program</em>
+              is for you if…
+            </h2>
+            <div className="my-5 h-[2px] w-12 bg-[#f2cc76]" aria-hidden="true" />
+            <p className="max-w-md" style={{ color: "#ccd9eb", fontSize: 14, lineHeight: 1.55, margin: 0 }}>
+              Want to build an online business or work with international clients? Learn practical skills you can use from home, with the flexibility to work around your commitments.
+            </p>
+            <ul className="mt-6 grid list-none grid-cols-1 gap-2 p-0 min-[440px]:grid-cols-2 sm:grid-cols-3">
+              {[
+                "You want to work from home",
+                "You want to build around family commitments",
+                "You want to start an online store",
+                "You want to offer freelance services",
+                "You want to find clients abroad",
+                "You want to sell products internationally",
+                "You want to turn a hobby into a business",
+                "You want to learn how Shopify stores work",
+                "You want to explore Amazon and Etsy",
+                "You want to research what customers buy",
+                "You want to price your products",
+                "You want to write better product listings",
+                "You want to market your own products",
+                "You want to build a freelance portfolio",
+                "You want to learn alongside work or studies",
+                "You want to choose hours that suit you",
+                "You want to practise with guided projects",
+                "You want to build toward financial independence"
+              ].map((benefit) => (
+                <li key={benefit} className="flex min-h-[55px] items-start gap-2 rounded-[11px] border border-white/15 bg-[#172941]/95 px-3 py-2.5 text-xs font-semibold leading-snug text-[#edf4ff]">
+                  <span className="mt-[5px] size-[5px] shrink-0 rounded-full bg-[#f2cc76]" aria-hidden="true" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+            <Link href="/courses?category=E-commerce" className="mt-6 inline-flex items-center gap-3 rounded-lg bg-[#f2cc76] px-4 py-3 text-sm font-bold hover:bg-[#ffe09c]" style={{ color: "#08172b" }}>
+              Explore e-commerce courses <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
     ),
