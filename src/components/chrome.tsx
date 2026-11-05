@@ -54,7 +54,6 @@ export function Header() {
               ["/courses", "Courses"],
               ["/student-success", "Student Success"],
               ["/contact", "Contact"],
-              ["/book-a-call", "Book a call"],
             ].map(([href, label]) =>
               href === "/courses" ? (
                 <CourseMenu
@@ -66,7 +65,7 @@ export function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className={`${path === href ? "active" : ""} ${href === "/book-a-call" ? "nav-consultation" : ""}`}
+                  className={`${path === href ? "active" : ""}`}
                   onClick={() => setOpen(false)}
                 >
                   {label}
