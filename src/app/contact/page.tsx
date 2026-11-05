@@ -113,21 +113,6 @@ export default function Contact() {
           ))}
         </div>
       </section>
-      <section className="contact-next-step container">
-        <span className="eyebrow gold">YOUR AMBITION HAS A PLACE HERE.</span>
-        <h2>
-          You don’t have to
-          <br />
-          figure it out alone.
-        </h2>
-        <p>
-          Explore your options with our team. A conversation is a good place to
-          begin.
-        </p>
-        <a className="button light" href="/book-a-call">
-          Find your learning path <ArrowUpRight size={17} />
-        </a>
-      </section>
     </>
   );
 }
