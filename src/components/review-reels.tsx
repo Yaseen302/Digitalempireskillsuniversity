@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import type { Review } from "@/lib/cms-model";
 
 const featuredReels = [
@@ -60,9 +60,19 @@ export default function ReviewReels({ reviews }: { reviews: Review[] }) {
               return (
                 <li key={video.url} className="w-[min(76vw,250px)] md:w-[calc((100%_-_32px)/3)] xl:w-[calc((100%_-_64px)/5)] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#dbe4f1] bg-white">
                   <div className="relative grid aspect-[9/16] place-items-center bg-[radial-gradient(ellipse_at_top_right,#214b85,#081a35_70%)]">
-                    <iframe title={title} src={embed} loading="lazy"
+                    {video.url === "https://www.facebook.com/reel/1098602963135173/" ? (
+                      <a href={video.url} target="_blank" rel="noopener noreferrer"
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-5 text-center focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white"
+                        style={{ color: "#fff" }} aria-label={"Watch " + title + " on Facebook"}>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#f2cc76]">Digital Empire University</span>
+                        <span className="grid size-16 place-items-center rounded-full bg-[#f2cc76] text-[#081a35]"><Play size={25} fill="currentColor" aria-hidden="true" /></span>
+                        <span className="text-sm font-semibold">Watch on Facebook <ArrowUpRight size={14} className="inline" aria-hidden="true" /></span>
+                      </a>
+                    ) : (
+                      <iframe title={title} src={embed} loading="lazy"
                       allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen
                       className="absolute inset-0 h-full w-full border-0" />
+                    )}
                   </div>
                   <div className="p-4">
                     <h3 className="m-0 text-base font-bold text-[#0b285b]">{title}</h3>
