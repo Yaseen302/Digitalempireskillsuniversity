@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const format = new Intl.NumberFormat("en");
 
-export default function StatCount({ value, finalLabel }: { value: number; finalLabel: string }) {
+export default function StatCount({ value, finalLabel, startValue = 100 }: { value: number; finalLabel: string; startValue?: number }) {
   const number = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function StatCount({ value, finalLabel }: { value: number; finalL
       if (!entry.isIntersecting) return;
       observer.disconnect();
       const start = performance.now();
-      element.textContent = "100";
+      element.textContent = format.format(startValue);
 
       function tick(now: number) {
         const progress = Math.min((now - start) / 1000, 1);
@@ -24,7 +24,7 @@ export default function StatCount({ value, finalLabel }: { value: number; finalL
           element!.textContent = finalLabel;
           return;
         }
-        element!.textContent = format.format(Math.floor(100 + (value - 100) * progress));
+        element!.textContent = format.format(Math.floor(startValue + (value - startValue) * progress));
         frame = requestAnimationFrame(tick);
       }
 
@@ -36,7 +36,7 @@ export default function StatCount({ value, finalLabel }: { value: number; finalL
       observer.disconnect();
       cancelAnimationFrame(frame);
     };
-  }, [value, finalLabel]);
+  }, [value, finalLabel, startValue]);
 
   return <><span className="sr-only">{finalLabel}</span><b ref={number} aria-hidden="true" className="font-inherit tabular-nums" style={{ fontWeight: "inherit" }}>{finalLabel}</b></>;
 }

@@ -1,3 +1,13 @@
+import Image from "next/image";
+import StatCount from "@/components/stat-count";
+
+const classroomPhotos = [
+  "Amazon training · Batch 3",
+  "Amazon training · Batch 2",
+  "Daraz training · Batch 6",
+  "Digital Empire classroom group"
+];
+
 export const metadata = {
   title: "About Digital Empire Skills University",
   description: "Learn about Digital Empire Skills University, our practical training in Karachi and our vision for Pakistan’s learners.",
@@ -37,6 +47,23 @@ export default function About() {
         </div>
       </section>
 
+      <section className="bg-[#f5f8fc] py-12 text-center sm:py-16" aria-labelledby="classroom-title">
+        <div className="container">
+          <span className="eyebrow">Our Classroom</span>
+          <h2 id="classroom-title" className="my-3 text-3xl sm:text-5xl">
+            <span className="text-[#124391]"><StatCount value={1000} finalLabel="1,000+" startValue={1} /></span> Learners Trained
+          </h2>
+          <p className="mx-auto max-w-xl">Meet the learners building practical e-commerce skills in our Karachi classrooms.</p>
+          <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+            {classroomPhotos.map((caption, index) => (
+              <li key={caption} className="overflow-hidden rounded-2xl border border-[#dce6f4] bg-white shadow-sm">
+                <Image src={`/images/classroom-${index + 1}.jpg`} alt={`Group photo: ${caption}`} width={900} height={[600, 600, 754, 675][index]} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover object-center" />
+                <p className="px-3 py-3 text-sm font-semibold">{caption}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
       <section className="container py-14 sm:py-20" aria-labelledby="about-story">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <h2 id="about-story" className="mb-4 text-3xl sm:text-4xl">Our Story</h2>
