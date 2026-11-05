@@ -20,9 +20,6 @@ export default async function StudentSuccess() {
           <h1 className="my-5 text-4xl sm:text-6xl" style={{ color: "#fff" }}>
             Student Success <span style={{ color: "#f2cc76" }}>Stories</span>
           </h1>
-          <p className="mx-auto max-w-xl leading-relaxed" style={{ color: "#dce8fb" }}>
-            Hear from Digital Empire students about what they learned, what they built and the milestones they reached along the way.
-          </p>
         </div>
       </section>
       <section className="bg-[#f4f7fc] py-12 sm:py-20" aria-labelledby="feedback-title">
