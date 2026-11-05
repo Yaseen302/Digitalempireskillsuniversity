@@ -172,15 +172,16 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         <Reveal>
           <div className="featured-grid">
             <article className="course-card">
-              <div className="course-art green">
+              <Link className="course-art green block focus-visible:outline-2 focus-visible:outline-offset-[-4px]" href="/courses/shopify" aria-label="Explore the Shopify course">
                 <span className="art-grid" />
                 <div className="course-logo-plaque"><PlatformLogo platform="shopify" /></div>
                 <span className="course-art-topline">DIGITAL EMPIRE <span>LEARNING PATH</span></span>
                 <span className="art-tag">SHOPIFY + DIGITAL MARKETING</span>
-              </div>
+                <ArrowUpRight className="art-arrow" size={24} aria-hidden="true" />
+              </Link>
               <div className="course-content">
                 <span className="eyebrow">E-commerce &amp; Marketing</span>
-                <h3>Shopify + Digital Marketing</h3>
+                <h3><Link href="/courses/shopify">Shopify + Digital Marketing</Link></h3>
                 <p>Build a Shopify store and learn how to promote it online.</p>
                 <div className="course-bottom flex-wrap gap-2">
                   <Link className="inline-link" href="/courses/shopify">Shopify <ArrowRight size={15} /></Link>
