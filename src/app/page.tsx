@@ -208,6 +208,9 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
             {courses.filter((course) => course.slug === "etsy" || course.slug === "forex").map((c) => (
               <CourseCard key={c.slug} course={c} />
             ))}
+            {courses.slice(0, 9)
+              .filter((course) => !["shopify", "marketing", "etsy", "forex"].includes(course.slug))
+              .map((course) => <CourseCard key={course.slug} course={course} />)}
           </div>
         </Reveal>
         <div className="course-note">
