@@ -7,6 +7,7 @@ import { branches, site, whatsappUrl } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
+  ShoppingBag, Store, Search, Package, Palette, Printer, Camera, Tags, Calculator, Truck, Headphones, BarChart3,
   Check,
   BookOpen,
   Clock,
@@ -16,6 +17,21 @@ import {
 } from "lucide-react";
 import { courses } from "@/data/courses";
 import { Button } from "@/components/ui";
+const etsyModules = [
+  { title: "Etsy & POD Basics", Icon: ShoppingBag },
+  { title: "Shop Setup", Icon: Store },
+  { title: "Niche Research", Icon: Search },
+  { title: "Product Selection", Icon: Package },
+  { title: "Original Design", Icon: Palette },
+  { title: "Print Partner Setup", Icon: Printer },
+  { title: "Mockups & Photography", Icon: Camera },
+  { title: "Listings & Etsy SEO", Icon: Tags },
+  { title: "Pricing & Margins", Icon: Calculator },
+  { title: "Orders & Shipping", Icon: Truck },
+  { title: "Customer Service", Icon: Headphones },
+  { title: "Launch & Analytics", Icon: BarChart3 },
+];
+
 const shopifyModules = [
   { title: "E-commerce Basics", image: "ecommerce-basics-400x400.webp" },
   { title: "Shopify Store Setup", image: "shopify%20setup.webp" },
@@ -113,7 +129,34 @@ export default async function Course({
         </div>
       </section>
       )}
-      {isShopify ? (
+      {slug === "etsy" ? (
+        <section className="bg-[#f4f7fc] py-14 sm:py-20" aria-labelledby="etsy-outline">
+          <div className="container">
+            <h2 id="etsy-outline" className="mb-8 text-center">Etsy Print-on-Demand Course Outline</h2>
+            <CourseVideo url={courseVideos[slug]} title={c.title} />
+            <ol role="list" className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+              {etsyModules.map(({ title, Icon }, index) => (
+                <li key={title} className="rounded-3xl border border-[#dce6f4] bg-white p-4 shadow-sm">
+                  <div className="grid aspect-[5/3] place-items-center rounded-2xl bg-[#eaf1fa]" aria-hidden="true">
+                    <span className="grid size-20 place-items-center rounded-full bg-[#081c40] text-[#f2cc76]">
+                      <Icon size={36} strokeWidth={1.5} />
+                    </span>
+                  </div>
+                  <div className="px-1 pb-2 pt-4">
+                    <span className="text-xs font-bold tracking-widest text-[#124391]">{String(index + 1).padStart(2, "0")}</span>
+                    <h3 className="mt-2 text-lg">{title}</h3>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-8 text-center">
+              <a className="button whatsapp-link" href={whatsappUrl(branches[0], "Assalam o Alaikum! I would like to know more about Etsy Print-on-Demand training.")} target="_blank" rel="noopener noreferrer">
+                <MessageCircle size={19} aria-hidden="true" /> Contact on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : isShopify ? (
         <>
           <section id="course-outline" aria-labelledby="shopify-outline-title" className="scroll-mt-28 bg-[#f4f7fc] py-14 sm:py-20">
             <div className="container">
