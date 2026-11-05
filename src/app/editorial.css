@@ -71,7 +71,7 @@ h2 {
 }
 .premium-header nav > a,
 .nav-course-trigger > a {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 550;
   padding: 12px 17px;
   letter-spacing: -0.01em;
@@ -82,6 +82,10 @@ h2 {
   background: #fff;
   color: #073aab;
   box-shadow: 0 3px 10px #0b295909;
+}
+/* Match the active navigation marker to the link color. */
+.premium-header nav > a.active::before {
+  background: #073aab;
 }
 .nav-course-trigger:has(a.active) {
   background: #fff;
@@ -1070,7 +1074,7 @@ footer {
   .nav-course-trigger > a {
     padding-left: 12px;
     padding-right: 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .nav-course-trigger > a {
     padding-right: 4px;
@@ -1191,7 +1195,7 @@ footer {
   }
   .premium-header nav > a,
   .nav-course-trigger > a {
-    font-size: 13px;
+    font-size: 14px;
     padding: 13px 15px;
     border-radius: 6px;
   }
