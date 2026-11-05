@@ -8,6 +8,7 @@ import PlatformMarquee from "@/components/platform-marquee";
 import HeroScene from "@/components/hero-scene";
 import { branches, whatsappUrl, mapsUrl } from "@/data/site";
 import Reveal from "@/components/reveal";
+import ReviewReels from "@/components/review-reels";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -296,7 +297,10 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           })}
         </div>
       </section>),
-"community": (      <section className="community">
+"community": (
+      <>
+      <ReviewReels reviews={content.reviews} />
+      <section className="community">
         <div className="container community-inner">
           <div>
             <span className="eyebrow gold">A COMMUNITY WITH AMBITION</span>
@@ -325,7 +329,9 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
             <small>THE DIGITAL EMPIRE VISION</small>
           </div>
         </div>
-      </section>),
+      </section>
+      </>
+    ),
 "faq": (      <section className="section container home-faq">
         <div>
           <span className="eyebrow">BEFORE YOUR FIRST STEP</span>

@@ -1,0 +1,82 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import type { Review } from "@/lib/cms-model";
+
+function facebookVideo(value: string) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !["facebook.com", "www.facebook.com", "m.facebook.com"].includes(url.hostname)) return null;
+    if (/^\/(?:reel|(?:[^/]+\/)?videos)\/\d+\/?$/.test(url.pathname)) return "https://www.facebook.com" + url.pathname;
+    const id = url.searchParams.get("v");
+    if (["/watch", "/watch/", "/video.php"].includes(url.pathname) && id && /^\d+$/.test(id)) return "https://www.facebook.com/watch/?v=" + id;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export default function ReviewReels({ reviews }: { reviews: Review[] }) {
+  const track = useRef<HTMLOListElement>(null);
+  const [playing, setPlaying] = useState<string | null>(null);
+  const seen = new Set<string>();
+  const videos = reviews.flatMap(review => {
+    const url = facebookVideo(review.url);
+    if (!url || seen.has(url)) return [];
+    seen.add(url);
+    return [{ ...review, url }];
+  });
+
+  if (!videos.length) return null;
+
+  function slide(direction: number) {
+    const list = track.current;
+    const card = list?.firstElementChild;
+    if (!list || !card) return;
+    list.scrollBy({ left: direction * (card.getBoundingClientRect().width + 16), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }
+
+  return (
+    <section className="bg-[#f3f6fb] py-14 sm:py-20" aria-labelledby="student-reels-title">
+      <div className="container">
+        <div className="mb-8 text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#073aab]">In their own words</span>
+          <h2 id="student-reels-title" style={{ color: "#0b285b", fontFamily: "Georgia, serif", margin: "8px 0" }}>Student Review Reels</h2>
+          <p>Watch learners share their experiences at Digital Empire.</p>
+        </div>
+        <div className="relative">
+          <ol ref={track} tabIndex={0} aria-label="Student review videos" className="m-0 flex snap-x snap-mandatory list-none gap-4 overflow-x-auto px-0 pb-4">
+            {videos.map((video, index) => {
+              const title = video.name || "Student review " + (index + 1);
+              const embed = "https://www.facebook.com/plugins/video.php?" + new URLSearchParams({ href: video.url, show_text: "false", autoplay: "true", mute: "true" });
+              return (
+                <li key={video.url} className="w-[min(76vw,250px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#dbe4f1] bg-white">
+                  <div className="relative grid aspect-[9/16] place-items-center bg-[radial-gradient(ellipse_at_top_right,#214b85,#081a35_70%)]">
+                    {playing === video.url ? (
+                      <iframe title={title} src={embed} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen className="absolute inset-0 h-full w-full border-0" />
+                    ) : (
+                      <button type="button" aria-label={"Play " + title} onClick={() => setPlaying(video.url)} className="grid size-14 place-items-center rounded-full bg-[#f2cc76] text-[#081a35] hover:bg-[#ffe09c]">
+                        <Play size={24} fill="currentColor" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="m-0 text-base font-bold text-[#0b285b]">{title}</h3>
+                    <a href={video.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#073aab]">
+                      Watch on Facebook <ArrowUpRight size={13} aria-hidden="true" />
+                    </a>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          {videos.length > 1 && <div className="mt-2 flex justify-center gap-3">
+            <button type="button" aria-label="Previous review" onClick={() => slide(-1)} className="grid size-10 place-items-center rounded-full border border-[#dbe4f1] bg-white text-[#0b285b]"><ChevronLeft size={20} /></button>
+            <button type="button" aria-label="Next review" onClick={() => slide(1)} className="grid size-10 place-items-center rounded-full border border-[#dbe4f1] bg-white text-[#0b285b]"><ChevronRight size={20} /></button>
+          </div>}
+        </div>
+      </div>
+    </section>
+  );
+}
