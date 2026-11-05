@@ -50,7 +50,6 @@ export default function About() {
           <h2 id="classroom-title" className="my-3 text-3xl sm:text-5xl">
             <span className="text-[#124391]"><StatCount value={1000} finalLabel="1,000+" startValue={1} /></span> Learners Trained
           </h2>
-          <p className="mx-auto max-w-xl">Meet the learners building practical e-commerce skills in our Karachi classrooms.</p>
           <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
             {classroomPhotos.map((caption, index) => (
               <li key={caption} className="overflow-hidden rounded-2xl border border-[#dce6f4] bg-white shadow-sm">
