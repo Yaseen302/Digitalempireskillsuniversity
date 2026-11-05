@@ -262,24 +262,27 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           <div className="mb-10 text-center">
             <span className="inline-flex rounded-full border border-[#f2cc76]/35 bg-[#f2cc76]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#f2cc76]">Why choose us</span>
             <h2 id="ecommerce-kit-title" className="mt-4" style={{ fontFamily: "Georgia, serif", color: "#fff", fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.14 }}>
-              Everything You Need to Succeed in E-commerce
+              Practical Skills for Every Stage of E-commerce
             </h2>
-            <p style={{ color: "#ccd9eb", marginTop: 12 }}>Learn the skills to plan, launch and manage an online business.</p>
+            <p style={{ color: "#ccd9eb", marginTop: 12 }}>Learn by doing, get lifetime support and access A to Z e-commerce services.</p>
           </div>
           <ol className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { Icon: BookOpen, title: "Practical training", description: "Build confidence through guided tasks in store setup, product listings and order management." },
+              { Icon: BookOpen, title: "Hands-on Practical Training", description: "Set up a practice store, create product listings and work through order management with step-by-step guidance." },
               { Icon: Globe2, title: "Marketplace knowledge", description: "Explore how Shopify, Amazon and Etsy work so you can choose where to sell." },
               { Icon: Package, title: "Product research", description: "Compare demand, sourcing costs and margins before deciding what to sell." },
-              { Icon: Headphones, title: "Guidance as you learn", description: "Get feedback on practice tasks and ask questions when you reach a new step." },
-              { Icon: Truck, title: "From listing to delivery", description: "Learn how to prepare listings, handle orders and plan shipping and returns." },
+              { Icon: Headphones, title: "Lifetime Support", description: "Stay connected with our team after training for guidance as you apply your skills and tackle new challenges." },
+              { Icon: Truck, title: "A to Z E-commerce Services", description: "Get help with store setup, product listings, marketing and day-to-day operations as your business grows." },
               { Icon: Settings2, title: "Business automation", description: "Explore tools that simplify routine work, from tracking stock to organizing orders." },
             ].map(({ Icon, title, description }, index) => (
-              <li key={title} className="relative isolate overflow-hidden rounded-3xl border border-white/15 border-l-4 border-l-[#f2cc76] bg-[linear-gradient(145deg,#18365c,#0d2445)] p-6 shadow-[0_14px_32px_-18px_#0009] sm:min-h-[220px]">
-                <span className="absolute right-5 top-3 -z-10 font-serif text-7xl font-bold leading-none text-white/10" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span className="mb-5 grid size-12 place-items-center rounded-2xl border border-[#f2cc76]/25 bg-[#f2cc76]/10 text-[#f2cc76]" aria-hidden="true"><Icon size={21} /></span>
-                <h3 style={{ color: "#fff", fontFamily: "Georgia, serif", fontSize: "1.3rem", margin: "0 0 10px" }}>{title}</h3>
-                <p style={{ color: "#d0dcf0", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{description}</p>
+              <li key={title} className="relative">
+                <input type="checkbox" id={`ecommerce-benefit-${index}`} aria-label={`Highlight ${title}`} className="peer sr-only" />
+                <label htmlFor={`ecommerce-benefit-${index}`} className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/15 border-l-4 border-l-[#f2cc76] bg-[linear-gradient(145deg,#18365c,#0d2445)] p-6 shadow-[0_14px_32px_-18px_#0009] transition hover:border-[#f2cc76]/70 hover:shadow-lg peer-checked:border-[#f2cc76] peer-checked:[&_.benefit-number]:text-[#f2cc76] peer-checked:bg-[linear-gradient(145deg,#224877,#102849)] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-[#f2cc76] sm:min-h-[220px]">
+                  <span className="benefit-number absolute right-5 top-3 font-serif text-6xl font-bold leading-none text-[#f2cc76]/55 transition-colors group-hover:text-[#f2cc76]" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="mb-5 grid size-12 place-items-center rounded-2xl border border-[#f2cc76]/25 bg-[#f2cc76]/10 text-[#f2cc76]" aria-hidden="true"><Icon size={21} /></span>
+                  <span className="mb-2.5 block font-serif text-xl font-bold text-white">{title}</span>
+                  <span className="block text-sm leading-relaxed text-[#d0dcf0]">{description}</span>
+                </label>
               </li>
             ))}
           </ol>
