@@ -1,4 +1,3 @@
-import CampusVisual from "@/components/campus-visual";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import InquiryForm from "@/components/inquiry-form";
 import BranchMap from "@/components/branch-map";
@@ -22,32 +21,6 @@ export default function Contact() {
         <div className="mx-auto max-w-2xl">
           <InquiryForm kind="contact" />
         </div>
-      </section>
-      <section className="contact-editorial-hero container">
-        <div>
-          <span className="eyebrow">EVERY NEXT CHAPTER STARTS WITH HELLO.</span>
-          <h2>
-            Big ambitions.
-            <br />
-            <span>Let’s talk.</span>
-          </h2>
-          <p>
-            A question, an idea, a new direction. Wherever you are in your
-            journey, we’ll help you find your next practical step.
-          </p>
-          <div className="contact-hero-actions">
-            <a className="button" href="#send-a-message">
-              Start a conversation <ArrowUpRight size={17} />
-            </a>
-            <a className="inline-link" href={`mailto:${site.email}`}>
-              Email our team <ArrowUpRight size={16} />
-            </a>
-          </div>
-          <div className="contact-hero-note">
-            <span /> SADDAR & GULSHAN-E-IQBAL · KARACHI
-          </div>
-        </div>
-        <CampusVisual />
       </section>
       <section className="contact-channel-bar container">
         <a href={`mailto:${site.email}`}>
