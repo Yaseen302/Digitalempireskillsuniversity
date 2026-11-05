@@ -1,3 +1,4 @@
+import { courseVideoSource } from "@/lib/course-video";
 import CourseVideo from "@/components/course-video";
 import Link from "next/link";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
@@ -42,7 +43,14 @@ export default async function StudentSuccess() {
             <ul className="my-6 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
               {successVideos.map((video, index) => (
                 <li key={video.id} className="rounded-2xl border border-[#dce6f4] bg-white p-3 shadow-sm">
-                  <CourseVideo url={video.url} title={video.alt || `Student story ${index + 1}`} story />
+                  {courseVideoSource(video.url) ? (
+                    <CourseVideo url={video.url} title={video.alt || `Student story ${index + 1}`} story />
+                  ) : (
+                    <h3 className="mb-3 text-lg">{video.alt || `Student story ${index + 1}`}</h3>
+                  )}
+                  <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#081c40] px-4 py-3 text-center font-semibold" style={{ color: "#fff" }} href={video.url} target="_blank" rel="noopener noreferrer">
+                    Watch video <ArrowUpRight size={17} aria-hidden="true" />
+                  </a>
                 </li>
               ))}
             </ul>

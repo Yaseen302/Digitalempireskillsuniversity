@@ -3,7 +3,7 @@ import { courses } from "@/data/courses";
 import { courseVideoSource } from "@/lib/course-video";
 import AdminAnalytics from "./admin-analytics";
 import {useEffect,useState,useRef} from "react";
-import {defaultContent,sectionLabels,type SiteContent,type Block} from "@/lib/cms-model";
+import {defaultContent,sectionLabels,safeUrl,type SiteContent,type Block} from "@/lib/cms-model";
 import {LayoutDashboard,PanelsTopLeft,Inbox,Images,Star,Settings,Plus,GripVertical,ArrowUp,ArrowDown,Eye,EyeOff,Save,Upload,Trash2,LogOut,Monitor,Smartphone,Search,CheckCircle2,ExternalLink,Menu} from "lucide-react";
 type Lead={id:string;created_at:string;kind:string;name:string;email:string;phone:string;subject:string;message:string;course:string;country:string;status:string};
 export default function AdminStudio(){
@@ -112,12 +112,12 @@ return <div className="cms-shell"><aside className="cms-sidebar"><a className="c
     </section>
     <section className="cms-card">
       <h2>Student videos</h2>
-      <label className="cms-field">Public YouTube link or direct HTTPS MP4/WebM link
+      <label className="cms-field">Public video link (Facebook, Instagram, TikTok, YouTube or other HTTPS link)
         <input type="url" value={successVideoUrl} onChange={event => setSuccessVideoUrl(event.target.value)} />
       </label>
       <button className="cms-primary" disabled={!ready || busy || !successVideoUrl.trim() || content.successVideos.length >= 50} onClick={() => {
-        const url = successVideoUrl.trim();
-        if (!courseVideoSource(url)) { setError("Enter a supported YouTube, MP4 or WebM link."); return; }
+        const url = safeUrl(successVideoUrl);
+        if (!url) { setError("Enter a valid HTTPS video link."); return; }
         setError("");
         update("successVideos", [...content.successVideos, {id: crypto.randomUUID(), url, alt: ""}]);
         setSuccessVideoUrl("");
