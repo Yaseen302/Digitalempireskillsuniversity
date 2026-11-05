@@ -57,7 +57,25 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
         <div className="container empire-stats" aria-label="Digital Empire community and campuses">
           <div className="empire-stat rating-stat"><span className="stat-label"><span className="google-stat-mark" aria-hidden="true">G</span> GOOGLE RATINGS</span><div className="branch-rating"><a href={mapsUrl(branches[1])} target="_blank" rel="noopener noreferrer"><strong>4.8<small>/5</small></strong><span><span className="rating-stars" aria-label="4.8 out of 5 stars">★★★★★</span><b>Gulshan · 21 reviews</b></span></a><a href={mapsUrl(branches[0])} target="_blank" rel="noopener noreferrer"><strong>4.4<small>/5</small></strong><span><span className="rating-stars" aria-label="4.4 out of 5 stars">★★★★☆</span><b>Saddar · 8 reviews</b></span></a></div></div>
           <div className="empire-stat"><span className="stat-label">SOCIAL COMMUNITY</span><strong className="stat-value">204K<span>+</span></strong><p>Combined followers &amp; subscribers</p><div className="stat-socials"><a href="https://www.facebook.com/alibuttempire" target="_blank" rel="noopener noreferrer" aria-label="Ali Butt Empire on Facebook"><SocialIcon name="Facebook"/></a><a href="https://www.instagram.com/digitalempireuniversity/" target="_blank" rel="noopener noreferrer" aria-label="Digital Empire on Instagram"><SocialIcon name="Instagram"/></a><a href="https://www.youtube.com/@alibuttempire" target="_blank" rel="noopener noreferrer" aria-label="Ali Butt Empire on YouTube"><SocialIcon name="YouTube"/></a><a href="https://www.tiktok.com/@digitalempireuniversity" target="_blank" rel="noopener noreferrer" aria-label="Digital Empire on TikTok"><span className="stat-tiktok">♪</span></a></div><small className="stat-detail">Across Digital Empire &amp; Ali Butt accounts</small></div>
-          <div className="empire-stat"><span className="stat-label"><BookOpen size={16}/> LEARNING PATHS</span><strong className="stat-value">{courses.length}<span>+</span></strong><p>Practical digital skills courses</p><Link className="stat-link" href="/courses">Explore courses <ArrowUpRight size={15}/></Link></div>
+          <div className="empire-stat">
+            <span className="stat-label"><BookOpen size={16} aria-hidden="true" /> STUDENT SUCCESS</span>
+            <strong className="stat-value">1,000<span>+</span></strong>
+            <p>Students trained</p>
+            <a className="stat-link flex-wrap" href={mapsUrl(branches[1])} target="_blank" rel="noopener noreferrer">
+              <span className="rating-stars" aria-hidden="true">★★★★★</span>
+              Read Google reviews <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+            <div className="mt-4 border-t border-white/15 pt-3">
+              <div className="mb-2 text-[10px] font-semibold tracking-wide text-white">The reason for success</div>
+              <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-white">
+                <span>10% Theory</span>
+                <strong className="text-[#f2cc76]">90% Practical</strong>
+              </div>
+              <div className="mt-2 flex h-1 overflow-hidden rounded-full bg-white/20" aria-hidden="true">
+                <span className="ml-[10%] w-[90%] rounded-full bg-[#f2cc76]" />
+              </div>
+            </div>
+          </div>
           <div className="empire-stat"><span className="stat-label"><MapPin size={16}/> KARACHI CAMPUSES</span><strong className="stat-value">2</strong><p>Saddar &amp; Gulshan-e-Iqbal</p><Link className="stat-link" href="/contact">Find your campus <ArrowUpRight size={15}/></Link></div>
         </div><p className="stats-source-note container">Ratings and social counts from supplied profile screenshots · 4 November 2026. Combined account counts may include the same people across platforms.</p>
       </section>),
