@@ -92,9 +92,6 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
               <span>EST. FOR YOUR FUTURE ↗</span>
             </div>
             <HeroScene role={content.founderRole}/>
-            <div className="showcase-footer">
-              <span style={{ marginInlineStart: "auto" }}>01 — ∞</span>
-            </div>
           </div>
         </div>
         <div className="container empire-stats" aria-label="Digital Empire community and campuses">
