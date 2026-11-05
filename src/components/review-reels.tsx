@@ -1,14 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useRef } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Review } from "@/lib/cms-model";
+
+const featuredReels = [
+  "1089112973984402",
+  "1155437113492314",
+  "1422007916235393",
+  "2291358721643072",
+  "1675805277211450",
+].map(id => ({ name: "", url: "https://www.facebook.com/reel/" + id + "/" }));
 
 function facebookVideo(value: string) {
   try {
     const url = new URL(value);
     if (url.protocol !== "https:" || !["facebook.com", "www.facebook.com", "m.facebook.com"].includes(url.hostname)) return null;
-    if (/^\/(?:reel|(?:[^/]+\/)?videos)\/\d+\/?$/.test(url.pathname)) return "https://www.facebook.com" + url.pathname;
+    if (/^\/(?:reel|(?:[^/]+\/)?videos)\/\d+\/?$/.test(url.pathname)) return "https://www.facebook.com" + url.pathname.replace(/\/$/, "") + "/";
     const id = url.searchParams.get("v");
     if (["/watch", "/watch/", "/video.php"].includes(url.pathname) && id && /^\d+$/.test(id)) return "https://www.facebook.com/watch/?v=" + id;
     return null;
@@ -19,9 +27,8 @@ function facebookVideo(value: string) {
 
 export default function ReviewReels({ reviews }: { reviews: Review[] }) {
   const track = useRef<HTMLOListElement>(null);
-  const [playing, setPlaying] = useState<string | null>(null);
   const seen = new Set<string>();
-  const videos = reviews.flatMap(review => {
+  const videos = [...reviews, ...featuredReels].flatMap(review => {
     const url = facebookVideo(review.url);
     if (!url || seen.has(url)) return [];
     seen.add(url);
@@ -49,17 +56,13 @@ export default function ReviewReels({ reviews }: { reviews: Review[] }) {
           <ol ref={track} tabIndex={0} aria-label="Student review videos" className="m-0 flex snap-x snap-mandatory list-none gap-4 overflow-x-auto px-0 pb-4">
             {videos.map((video, index) => {
               const title = video.name || "Student review " + (index + 1);
-              const embed = "https://www.facebook.com/plugins/video.php?" + new URLSearchParams({ href: video.url, show_text: "false", autoplay: "true", mute: "true" });
+              const embed = "https://www.facebook.com/plugins/video.php?" + new URLSearchParams({ href: video.url, show_text: "false", autoplay: "false" });
               return (
-                <li key={video.url} className="w-[min(76vw,250px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#dbe4f1] bg-white">
+                <li key={video.url} className="w-[min(76vw,250px)] md:w-[calc((100%_-_32px)/3)] xl:w-[calc((100%_-_64px)/5)] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#dbe4f1] bg-white">
                   <div className="relative grid aspect-[9/16] place-items-center bg-[radial-gradient(ellipse_at_top_right,#214b85,#081a35_70%)]">
-                    {playing === video.url ? (
-                      <iframe title={title} src={embed} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen className="absolute inset-0 h-full w-full border-0" />
-                    ) : (
-                      <button type="button" aria-label={"Play " + title} onClick={() => setPlaying(video.url)} className="grid size-14 place-items-center rounded-full bg-[#f2cc76] text-[#081a35] hover:bg-[#ffe09c]">
-                        <Play size={24} fill="currentColor" aria-hidden="true" />
-                      </button>
-                    )}
+                    <iframe title={title} src={embed} loading="lazy"
+                      allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen
+                      className="absolute inset-0 h-full w-full border-0" />
                   </div>
                   <div className="p-4">
                     <h3 className="m-0 text-base font-bold text-[#0b285b]">{title}</h3>
