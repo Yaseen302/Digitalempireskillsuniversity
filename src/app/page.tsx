@@ -15,15 +15,12 @@ import {
   ArrowUpRight,
   MessageCircle,
   MapPin,
-  Globe2,
   MousePointer2,
   BookOpen,
-  Users,
   BriefcaseBusiness,
   Compass,
   GraduationCap,
   Sparkles,
-  ShieldCheck,
 } from "lucide-react";
 import { Button, CourseCard, CTA } from "@/components/ui";
 import { courses } from "@/data/courses";
@@ -161,57 +158,56 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
           </Link>
         </div>
       </section>),
-"story": (      <section className="about-home section">
-        <div className="container about-grid">
-          <div className="about-image">
-            <Image
-              src="/images/learning.jpg"
-              alt="A learner developing digital skills with a laptop"
-              fill
-              sizes="(max-width: 760px) 90vw, 45vw"
-            />
-            <div className="image-note">
-              <span>THE DIGITAL EMPIRE MINDSET</span>
-              <strong>
-                Learn with purpose.
-                <br />
-                Build with confidence.
-              </strong>
+"story": (
+      <section className="bg-[#071b37] text-white" aria-labelledby="ecommerce-benefits-title">
+        <div className="container relative isolate grid overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_at_90%_40%,#174783_0%,#0b2850_38%,#071b37_72%)] lg:grid-cols-[1.4fr_1fr]">
+          <div className="relative z-10 py-12 sm:py-16 lg:py-20">
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#f2cc76]">
+              <span className="h-px w-8 bg-current" aria-hidden="true" />
+              Why learn e-commerce?
             </div>
-          </div>
-          <div>
-            <span className="eyebrow">
-              MORE THAN A COURSE. A NEW DIRECTION.
-            </span>
-            <h2>
-              Big ambitions.
-              <br />
-              Real-world <span>skills.</span>
+            <h2 id="ecommerce-benefits-title" className="m-0 text-[clamp(2rem,4vw,3.75rem)] leading-[1.08] text-white">
+              Build skills that <span className="text-[#f2cc76]">travel with you.</span>
             </h2>
-            <p>
-              We believe your future should be shaped by your ambition. At
-              Digital Empire, we make digital learning practical, purposeful,
-              and connected to the world beyond the classroom.
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#cfddf2] sm:text-base">
+              E-commerce connects your skills to customers beyond your city. Learn how to sell products online or offer freelance services, with the flexibility to build from home.
             </p>
-            <p>
-              Explore ideas. Put knowledge into practice. Build the confidence
-              to take your next step.
-            </p>
-            <div className="about-ticks">
-              <span>
-                <ShieldCheck /> Practical, step-by-step learning
-              </span>
-              <span>
-                <Users /> A supportive learning community
-              </span>
-              <span>
-                <Globe2 /> A business-minded, global outlook
-              </span>
-            </div>
-            <Button href="/about">Get to know Digital Empire</Button>
+            <ul className="mt-7 grid list-none gap-3 p-0 sm:grid-cols-2">
+              {[
+                ["Work from home", "Run an online store or serve clients from a workspace that suits you."],
+                ["Build on your own terms", "Women can learn, offer services and grow an online business around their schedules."],
+                ["Reach customers worldwide", "Explore marketplaces and freelance platforms to serve buyers beyond Pakistan."],
+                ["Build skills you can use", "Practise product research, listing creation and store management with guided projects."],
+              ].map(([title, description]) => (
+                <li key={title} className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/5 p-4">
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#f2cc76]" aria-hidden="true" />
+                  <div>
+                    <strong className="block text-sm text-white">{title}</strong>
+                    <p className="mt-1 text-xs leading-relaxed text-[#cfddf2]">{description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <Link href="/courses?category=E-commerce" className="mt-7 inline-flex items-center gap-3 rounded-lg bg-[#f2cc76] px-5 py-3 text-sm font-bold text-[#071b37] hover:bg-[#ffe09c] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              Explore e-commerce courses <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
           </div>
+          <figure className="relative m-0 min-h-[22rem] lg:min-h-0">
+            <Image
+              src="/images/ali-butt-cutout.png"
+              alt="Ali Butt, Founder and CEO of Digital Empire"
+              fill
+              sizes="(max-width: 1023px) 90vw, 42vw"
+              className="object-contain object-bottom"
+            />
+            <figcaption className="absolute bottom-5 right-0 rounded-xl border border-white/15 bg-[#071b37]/90 px-4 py-3 text-right text-white">
+              <strong className="block text-sm">Ali Butt</strong>
+              <span className="text-xs text-[#f2cc76]">Founder &amp; CEO · Digital Empire</span>
+            </figcaption>
+          </figure>
         </div>
-      </section>),
+      </section>
+    ),
 "steps": (      <section className="section container">
         <div className="center-heading">
           <span className="eyebrow">SMALL STEPS. BIG POSSIBILITIES.</span>
