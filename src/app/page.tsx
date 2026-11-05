@@ -170,7 +170,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
               Your skills. Your advantage.
             </span>
             <h2 className="m-0 text-3xl leading-tight text-white sm:text-5xl" style={{ color: "#fff" }}>
-              Find the path that<br className="hidden sm:block" /> moves you <span style={{ color: "#f2cc76" }}>forward.</span>
+              Our <span style={{ color: "#f2cc76" }}>Programs</span>
             </h2>
           </div>
           <div className="border-t border-white/20 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
