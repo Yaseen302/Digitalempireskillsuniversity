@@ -3,7 +3,7 @@ import {adminUser,database} from "@/lib/cms-server";
 import {defaultContent,validateContent} from "@/lib/cms-model";
 import {revalidateTag} from "next/cache";
 export const runtime="nodejs";
-export async function GET(){if(!await adminUser())return NextResponse.json({error:"Sign in required"},{status:401});const {data,error}=await database().from("site_content").select("*").eq("id","homepage").single();if(error)return NextResponse.json({error:"CMS tables are not ready. Run supabase/admin-cms.sql."},{status:503});return NextResponse.json({draft:data.draft||defaultContent,published:data.published||defaultContent,version:data.version,publishedAt:data.published_at},{headers:{"Cache-Control":"no-store"}});}
+export async function GET(){if(!await adminUser())return NextResponse.json({error:"Sign in required"},{status:401});const {data,error}=await database().from("site_content").select("*").eq("id","homepage").single();if(error)return NextResponse.json({error:"CMS tables are not ready. Run supabase/admin-cms.sql."},{status:503});return NextResponse.json({draft:data.draft?validateContent(data.draft):defaultContent,published:data.published?validateContent(data.published):defaultContent,version:data.version,publishedAt:data.published_at},{headers:{"Cache-Control":"no-store"}});}
 export async function PUT(req:NextRequest){
  if(req.headers.get("origin")!==new URL(req.url).origin)return NextResponse.json({error:"Invalid origin"},{status:403});
  if(!await adminUser())return NextResponse.json({error:"Session expired. Sign in again."},{status:401});

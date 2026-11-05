@@ -17,6 +17,11 @@ import {
   MapPin,
   MousePointer2,
   BookOpen,
+  Globe2,
+  Package,
+  Headphones,
+  Truck,
+  Settings2,
   BriefcaseBusiness,
   Compass,
   GraduationCap,
@@ -214,6 +219,36 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
               Explore e-commerce courses <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
+        </div>
+      </section>
+    ),
+"ecommerce-kit": (
+      <section className="bg-[#f3f6fb] py-14 sm:py-20" aria-labelledby="ecommerce-kit-title">
+        <div className="container mx-auto" style={{ maxWidth: 1080 }}>
+          <div className="mb-10 text-center">
+            <span className="inline-flex rounded-full border border-[#e6d6ae] bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#614912]">Why choose us</span>
+            <h2 id="ecommerce-kit-title" className="mt-4" style={{ fontFamily: "Georgia, serif", color: "#0b285b", fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.14 }}>
+              Everything You Need to Succeed in E-commerce
+            </h2>
+            <p style={{ color: "#52627a", marginTop: 12 }}>Learn the skills to plan, launch and manage an online business.</p>
+          </div>
+          <ol className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { Icon: BookOpen, title: "Practical training", description: "Build confidence through guided tasks in store setup, product listings and order management." },
+              { Icon: Globe2, title: "Marketplace knowledge", description: "Explore how Shopify, Amazon and Etsy work so you can choose where to sell." },
+              { Icon: Package, title: "Product research", description: "Compare demand, sourcing costs and margins before deciding what to sell." },
+              { Icon: Headphones, title: "Guidance as you learn", description: "Get feedback on practice tasks and ask questions when you reach a new step." },
+              { Icon: Truck, title: "From listing to delivery", description: "Learn how to prepare listings, handle orders and plan shipping and returns." },
+              { Icon: Settings2, title: "Business automation", description: "Explore tools that simplify routine work, from tracking stock to organizing orders." },
+            ].map(({ Icon, title, description }, index) => (
+              <li key={title} className="relative isolate overflow-hidden rounded-3xl border border-[#e2e9f3] border-l-4 border-l-[#e4bc63] bg-white p-6 shadow-[0_12px_30px_-18px_#0b285b55] sm:min-h-[220px]">
+                <span className="absolute right-5 top-3 -z-10 font-serif text-7xl font-bold leading-none text-[#e7edf6]" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className="mb-5 grid size-12 place-items-center rounded-2xl bg-[#fff4da] text-[#745514]" aria-hidden="true"><Icon size={21} /></span>
+                <h3 style={{ color: "#0b285b", fontFamily: "Georgia, serif", fontSize: "1.3rem", margin: "0 0 10px" }}>{title}</h3>
+                <p style={{ color: "#52627a", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     ),
