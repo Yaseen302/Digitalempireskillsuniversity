@@ -50,10 +50,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{cmsPrev
             </div>
             <HeroScene role={content.founderRole}/>
             <div className="showcase-footer">
-              <span>
-                <span /> AMBITION, MEET OPPORTUNITY.
-              </span>
-              <span>01 — ∞</span>
+              <span style={{ marginInlineStart: "auto" }}>01 — ∞</span>
             </div>
           </div>
         </div>
