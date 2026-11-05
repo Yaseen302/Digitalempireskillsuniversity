@@ -7,7 +7,6 @@ import { branches, site, whatsappUrl } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  ShoppingBag, Store, Search, Package, Palette, Printer, Camera, Tags, Calculator, Truck, Headphones, BarChart3,
   Check,
   BookOpen,
   Clock,
@@ -18,18 +17,18 @@ import {
 import { courses } from "@/data/courses";
 import { Button } from "@/components/ui";
 const etsyModules = [
-  { title: "Etsy & POD Basics", Icon: ShoppingBag },
-  { title: "Shop Setup", Icon: Store },
-  { title: "Niche Research", Icon: Search },
-  { title: "Product Selection", Icon: Package },
-  { title: "Original Design", Icon: Palette },
-  { title: "Print Partner Setup", Icon: Printer },
-  { title: "Mockups & Photography", Icon: Camera },
-  { title: "Listings & Etsy SEO", Icon: Tags },
-  { title: "Pricing & Margins", Icon: Calculator },
-  { title: "Orders & Shipping", Icon: Truck },
-  { title: "Customer Service", Icon: Headphones },
-  { title: "Launch & Analytics", Icon: BarChart3 },
+  { title: "Etsy & POD Basics", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/etsy-logo.webp" },
+  { title: "Shop Setup", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/etsy-logo.webp" },
+  { title: "Niche Research", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/trend-hunting-400x400.webp" },
+  { title: "Product Selection", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/v-1.webp" },
+  { title: "Original Design", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/Canva-Poster-For-E-Commerce-1-400x400.webp" },
+  { title: "Print Partner Setup", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/pod-suppliers-400x400.webp" },
+  { title: "Mockups & Photography", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/v-1.webp" },
+  { title: "Listings & Etsy SEO", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/product-optimization-400x400.webp" },
+  { title: "Pricing & Margins", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/banking-400x400.webp" },
+  { title: "Orders & Shipping", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/fedex-and-dhl-400x400.webp" },
+  { title: "Customer Service", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/pod-suppliers-400x400.webp" },
+  { title: "Launch & Analytics", image: "https://easycommerce.pk/wp-content/themes/easycommerce-theme/assets/images/ai-toools-400x400.webp" },
 ];
 
 const shopifyModules = [
@@ -135,14 +134,10 @@ export default async function Course({
             <h2 id="etsy-outline" className="mb-8 text-center">Etsy Print-on-Demand Course Outline</h2>
             <CourseVideo url={courseVideos[slug]} title={c.title} />
             <ol role="list" className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
-              {etsyModules.map(({ title, Icon }, index) => (
+              {etsyModules.map(({ title, image }, index) => (
                 <li key={title} className="rounded-3xl border border-[#dce6f4] bg-white p-4 shadow-sm">
-                  <div className="grid aspect-[5/3] place-items-center rounded-2xl bg-[#eaf1fa]" aria-hidden="true">
-                    <span className="grid size-20 place-items-center rounded-full bg-[#081c40] text-[#f2cc76]">
-                      <Icon size={36} strokeWidth={1.5} />
-                    </span>
-                  </div>
-                  <div className="px-1 pb-2 pt-4">
+                  <Image src={image} alt="" width={400} height={400} unoptimized className="block aspect-square w-full rounded-2xl bg-[#f4f7fc] object-contain" />
+                  <div className="px-1 pb-2 pt-4 text-center">
                     <span className="text-xs font-bold tracking-widest text-[#124391]">{String(index + 1).padStart(2, "0")}</span>
                     <h3 className="mt-2 text-lg">{title}</h3>
                   </div>
