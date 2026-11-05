@@ -1,5 +1,7 @@
 import { courseSeo } from "@/data/course-seo";
-import { site } from "@/data/site";
+import CourseVideo from "@/components/course-video";
+import { publishedContent } from "@/lib/cms-server";
+import { branches, site, whatsappUrl } from "@/data/site";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -7,6 +9,7 @@ import {
   BookOpen,
   Clock,
   Monitor,
+  MessageCircle,
   ArrowRight,
 } from "lucide-react";
 import { courses } from "@/data/courses";
@@ -36,6 +39,7 @@ export default async function Course({
   const { slug } = await params;
   const c = courses.find((c) => c.slug === slug);
   if (!c) notFound();
+  const { courseVideos } = await publishedContent();
   return (
     <>
       <section className="page-intro">
@@ -79,7 +83,8 @@ export default async function Course({
               </p>
             ))}
           </div>
-          <h2 className="curriculum-title">Your learning roadmap</h2>
+          <CourseVideo url={courseVideos[slug]} title={c.title} />
+          <h2 className="curriculum-title">{c.title} Course Outline</h2>
           <p className="muted">
             Indicative learning structure. The admissions team will confirm the
             detailed syllabus.
@@ -97,6 +102,9 @@ export default async function Course({
               </ul>
             </details>
           ))}
+          <a className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#087a42] px-5 py-3 font-semibold text-white hover:bg-[#066334]" href={whatsappUrl(branches[0], `Assalam o Alaikum! I would like to know more about the ${c.title} course.`)} target="_blank" rel="noopener noreferrer">
+            <MessageCircle size={19} aria-hidden="true" /> Contact on WhatsApp
+          </a>
           <h2 className="curriculum-title">Study in Saddar or Gulshan-e-Iqbal</h2><p>Contact our Karachi admissions team to confirm the current {c.title} course fees, class timings, trainer and online or campus availability. <Link href="/contact">View campus addresses and contact details</Link>.</p>
           <h2 className="curriculum-title">Good questions. Clear answers.</h2>
           {[
