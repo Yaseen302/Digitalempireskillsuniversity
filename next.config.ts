@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{
+      source: "/:path*",
+      has: [{ type: "host", value: "digital-empire-skills-university\\.vercel\\.app" }],
+      destination: "https://www.digitalempireuniversity.com/:path*",
+      permanent: true,
+    }];
+  },
   async headers() {
     return [
       {

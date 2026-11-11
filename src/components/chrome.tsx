@@ -53,6 +53,7 @@ export function Header() {
               ["/about", "About us"],
               ["/courses", "Courses"],
               ["/student-success", "Student Success"],
+              ["/services", "Services"],
               ["/contact", "Contact"],
             ].map(([href, label]) =>
               href === "/courses" ? (

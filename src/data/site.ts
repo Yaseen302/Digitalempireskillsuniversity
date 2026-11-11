@@ -32,9 +32,7 @@ export const socials = [
 ];
 export const site = {
   name: "Digital Empire Skills University",
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://digital-empire-skills-university.vercel.app",
+  url: "https://www.digitalempireuniversity.com",
   tagline: "Learn Today. Earn Tomorrow.",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "digitalempire999@gmail.com",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || branches[0].phone,

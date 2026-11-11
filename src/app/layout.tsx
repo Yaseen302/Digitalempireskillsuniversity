@@ -51,6 +51,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@graph": [{
+                "@type": "WebSite",
+                "@id": site.url + "/#website",
+                name: site.name,
+                alternateName: "Digital Empire",
+                url: site.url,
+                publisher: { "@id": site.url + "/#organization" },
+              }, {
               "@type": "EducationalOrganization",
               "@id": site.url + "/#organization",
               logo: site.url + "/images/digital-empire-logo.webp",
@@ -78,6 +86,7 @@ export default function RootLayout({
                 },
               })),
               url: site.url,
+              }],
             }),
           }}
         />
